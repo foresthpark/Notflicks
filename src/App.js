@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import NavBar from "./components/NavBar"
-import LeftMenu from "./components/LeftMenu"
+import MainCarousel222 from "./components/Landing/MainCarousel222"
 
 import { requestMovies } from './actions'
 
@@ -28,7 +28,7 @@ class App extends Component {
   return (
     <div className = "App">
       <NavBar/>
-      <LeftMenu/>
+      <MainCarousel222/>
     </div>
   )
   }
