@@ -8,8 +8,11 @@ import {requestMovies} from './actions'
 import PureReactCarousel from "./components/Landing/PureReactCarousel";
 import NukaCarousel from "./components/Landing/NukaCarousel";
 import SimpleSlider from "./components/Landing/SimpleSlider";
+import "./components/cards/moviecard.css"
 import "./App.css"
-import MovieCard from "./components/Landing/MovieCard";
+import MovieCard from "./components/cards/MovieCard";
+import TopRated from "./components/cards/TopRated";
+import MaterialUiCarousel from "./components/Landing/MaterialUiCarousel"
 
 const mapStateToProps = (state) => {
   return {
@@ -31,30 +34,29 @@ class App extends Component {
     this.props.onRequestMovies()
   }
 
-  render(){
-  //   const { movies, isPending, error } = this.props
-  //   console.log('aap', movies)
-  //   return isPending ? 
-  //   <h1>loading....</h1> :
+  render() {
+    //   const { movies, isPending, error } = this.props
+    //   console.log('aap', movies)
+    //   return isPending ?
+    //   <h1>loading....</h1> :
 
 
-  
-  //   // const movieDetail = movies.map( movie => movie.results)
-  //   // console.log(movieDetail[0])
-  //   // for(let x in movies[0]){
-  //   //   console.log(x)
-  //   // }
+    //   // const movieDetail = movies.map( movie => movie.results)
+    //   // console.log(movieDetail[0])
+    //   // for(let x in movies[0]){
+    //   //   console.log(x)
+    //   // }
 
-  //   // setTimeout(() => {
-  //   //   console.log(movies[0].results[0].title)
-  //   // }, 3000)
-    
-  // (
-  //   <div className = "App">
-  //     <NavBar />
-  //     <MovieDetail movies = {movies} />
-  //   </div>
-  // )
+    //   // setTimeout(() => {
+    //   //   console.log(movies[0].results[0].title)
+    //   // }, 3000)
+
+    // (
+    //   <div className = "App">
+    //     <NavBar />
+    //     <MovieDetail movies = {movies} />
+    //   </div>
+    // )
 
     const images = ["https://via.placeholder.com/600/92c952",
       "https://via.placeholder.com/600/771796",
@@ -73,13 +75,17 @@ class App extends Component {
         <NavBar/>
         <div className="sliderdiv">
           {/*<SimpleSlider/>*/}
-          <NukaCarousel/>
-          {moviecards}
+          {/*<NukaCarousel/>*/}
+          <MaterialUiCarousel/>
+        </div>
+        <div>
+          <TopRated/>
         </div>
       </div>
     )
 
+  }
 }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App) 
+export default connect(mapStateToProps, mapDispatchToProps)(App)
