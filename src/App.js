@@ -1,9 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
 import MainCarousel222 from "./components/Landing/MainCarousel222"
-
-import { requestMovies } from './actions'
+import CarouselPage from "./components/Landing/CarouselPage"
+import {requestMovies} from './actions'
+import PureReactCarousel from "./components/Landing/PureReactCarousel";
+import NukaCarousel from "./components/Landing/NukaCarousel";
+import SimpleSlider from "./components/Landing/SimpleSlider";
+import "./App.css"
 
 const mapStateToProps = (state) => {
   return {
@@ -20,17 +24,20 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
-  
+
   componentDidMount() {
     this.props.onRequestMovies()
   }
-  render(){
-  return (
-    <div className = "App">
-      <NavBar/>
-      <MainCarousel222/>
-    </div>
-  )
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar/>
+        <div className="sliderdiv">
+          <SimpleSlider/>
+        </div>
+      </div>
+    )
   }
 }
 

@@ -1,25 +1,24 @@
 {
-  "name": "benevity_project",
+  "name": "Benevity",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "material-ui-carousel": "^1.0.0",
+    "mdbreact": "^4.13.0",
+    "nuka-carousel": "^4.5.4",
+    "pure-react-carousel": "^1.19.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-<<<<<<< HEAD
     "react-redux": "^7.0.3",
-    "react-scripts": "3.0.0",
-    "redux": "^4.0.1",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
-=======
     "react-responsive-carousel": "^3.1.49",
     "react-scripts": "3.0.0",
     "react-slick": "^0.24.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1"
->>>>>>> 3f27cad3a2a3bdaff1b36a57266d42284dd20639
   },
   "scripts": {
     "start": "react-scripts start",
