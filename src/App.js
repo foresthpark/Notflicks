@@ -7,8 +7,11 @@ import {requestMovies} from './actions'
 import PureReactCarousel from "./components/Landing/PureReactCarousel";
 import NukaCarousel from "./components/Landing/NukaCarousel";
 import SimpleSlider from "./components/Landing/SimpleSlider";
+import "./components/cards/moviecard.css"
 import "./App.css"
-import MovieCard from "./components/Landing/MovieCard";
+import MovieCard from "./components/cards/MovieCard";
+import TopRated from "./components/cards/TopRated";
+import MaterialUiCarousel from "./components/Landing/MaterialUiCarousel"
 
 const mapStateToProps = (state) => {
   return {
@@ -48,8 +51,11 @@ class App extends Component {
         <NavBar/>
         <div className="sliderdiv">
           {/*<SimpleSlider/>*/}
-          <NukaCarousel/>
-          {moviecards}
+          {/*<NukaCarousel/>*/}
+          <MaterialUiCarousel/>
+        </div>
+        <div>
+          <TopRated/>
         </div>
       </div>
     )
