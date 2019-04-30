@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import NavBar from "./components/NavBar"
 import MovieDetail from './components/MovieDetail'
 import MainCarousel222 from "./components/Landing/MainCarousel222"
@@ -79,6 +79,7 @@ class App extends Component {
       </div>
     )
 
+}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App) 
