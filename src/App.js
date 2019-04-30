@@ -36,54 +36,15 @@ class App extends Component {
   }
 
   render() {
-      const { movies, isPending, error } = this.props
-      // console.log('aap', JSON.stringify(movies[0]))
-      return isPending ?
-      <h1>loading....</h1> :
-      
-    //   // const movieDetail = movies.map( movie => movie.results)
-    //   // console.log(movieDetail[0])
-    //   // for(let x in movies[0]){
-    //   //   console.log(x)
-    //   // }
-
-    //   // setTimeout(() => {
-    //   //   console.log(movies[0].results[0].title)
-    //   // }, 3000)
-
+    const { movies, isPending } = this.props
+    return isPending ?
+    <h1>loading....</h1> :
     (
       <div className = "App">
         <NavBar />
-        <MovieDetail movies = {movies} />
+        <TopRated movies = { movies }/>
       </div>
     )
-
-    // const images = ["https://via.placeholder.com/600/92c952",
-    //   "https://via.placeholder.com/600/771796",
-    //   "https://via.placeholder.com/600/24f355",
-    //   "https://via.placeholder.com/600/d32776",
-    //   "https://via.placeholder.com/600/f66b97"
-    // ]
-
-    // const moviecards = images.map((image, index) =>
-    //   <MovieCard image={image} index={index}/>
-    // )
-
-
-    // return (
-    //   <div className="App">
-    //     <NavBar/>
-    //     <div className="sliderdiv">
-    //       {/*<SimpleSlider/>*/}
-    //       {/*<NukaCarousel/>*/}
-    //       <MaterialUiCarousel/>
-    //     </div>
-    //     <div>
-    //       <TopRated/>
-    //     </div>
-    //   </div>
-    // )
-
   }
 }
 
