@@ -13,10 +13,7 @@
     "react-dom": "^16.8.6",
     "react-lines-ellipsis": "^0.14.1",
     "react-redux": "^7.0.3",
-<<<<<<< HEAD
-=======
     "react-responsive-carousel": "^3.1.49",
->>>>>>> efbbbc65c9e5dcfec49ee19b25c00f9a5f72c69a
     "react-scripts": "3.0.0",
     "react-slick": "^0.24.0",
     "react-swipeable-views": "^0.13.1",
