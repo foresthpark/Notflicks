@@ -118,6 +118,11 @@ h3 {
     background-color: grey;
 }
 
+.imageslide {
+    padding-left: 530px;
+    padding-right: 530px;
+}
+
 /* .slick-prev {
   z-index: 100;
   left: 20px !important;

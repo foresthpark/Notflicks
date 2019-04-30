@@ -6,13 +6,13 @@ class NukaCarousel extends React.Component {
   render() {
     return (
       <div>
-        <Carousel>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=Whattt"/>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=slide2"/>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=slide3"/>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=slide4"/>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=slide5"/>
-          <img src="http://placehold.it/1000x100/ffffff/c0392b/&text=slide6"/>
+        <Carousel slidesToShow={3} cellAlign="left" cellSpacing={20} slideWidth={0.6}>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
+          <img src="https://image.tmdb.org/t/p/w500/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg"/>
         </Carousel>
       </div>
     );

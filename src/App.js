@@ -8,6 +8,7 @@ import PureReactCarousel from "./components/Landing/PureReactCarousel";
 import NukaCarousel from "./components/Landing/NukaCarousel";
 import SimpleSlider from "./components/Landing/SimpleSlider";
 import "./App.css"
+import MovieCard from "./components/Landing/MovieCard";
 
 const mapStateToProps = (state) => {
   return {
@@ -30,11 +31,25 @@ class App extends Component {
   }
 
   render() {
+    const images = ["https://via.placeholder.com/600/92c952",
+      "https://via.placeholder.com/600/771796",
+      "https://via.placeholder.com/600/24f355",
+      "https://via.placeholder.com/600/d32776",
+      "https://via.placeholder.com/600/f66b97"
+    ]
+
+    const moviecards = images.map((image, index) =>
+      <MovieCard image={image} index={index}/>
+    )
+
+
     return (
       <div className="App">
         <NavBar/>
         <div className="sliderdiv">
-          <SimpleSlider/>
+          {/*<SimpleSlider/>*/}
+          <NukaCarousel/>
+          {moviecards}
         </div>
       </div>
     )
