@@ -5,7 +5,7 @@ import {
 } from './constants'
 
 const intialStateMovies = {
-	isPending: false,
+	isPending: true,
 	movies: [],
 	error: ''
 }
@@ -15,6 +15,7 @@ export const requestMovies = (state=intialStateMovies, action={}) => {
 		case REQUEST_MOVIES_PENDING:
 			return {...state, isPending: true }
 		case REQUEST_MOVIES_SUCCESS:
+		console.log(action.payload)
 			return {...state, movies: action.payload, isPending: false}
 		case REQUEST_MOVIES_FAILED:
 			return {...state, error: action.payload, isPending: false}
