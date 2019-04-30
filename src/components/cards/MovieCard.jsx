@@ -22,23 +22,22 @@ const styles = {
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating} = props;
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
   const imgURL = "https://image.tmdb.org/t/p/w500";
 
   return (
-    <div className="innnercard">
+    <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <a href="https://google.com">
-            <CardMedia
-              component="img"
-              alt="a movie poster"
-              className={classes.media}
-              height="450"
-              image={`${imgURL}` + poster}
-              title={title}
-              movieid={movieid}
-            /></a>
+          <div id={index} onClick={clicker}><CardMedia
+            component="img"
+            alt="a movie poster"
+            className={classes.media}
+            height="450"
+            image={`${imgURL}` + poster}
+            title={title}
+            movieid={movieid}
+          /></div>
           <CardContent>
             <Typography gutterBottom variant="title">
               {title}

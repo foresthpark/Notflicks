@@ -5,7 +5,10 @@ import "./moviecard.css"
 class TopRated extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      detailspage: false,
+      selectedmovie: null
+    }
   }
 
   componentWillMount() {
@@ -33,7 +36,7 @@ class TopRated extends React.Component {
   }
 
   _renderMovies = () => {
-    const movies = this.state.movies.map((movie) =>
+    const movies = this.state.movies.map((movie, index) =>
       <MovieCard
         title={movie.original_title}
         poster={movie.poster_path}
@@ -41,9 +44,19 @@ class TopRated extends React.Component {
         release={movie.release_date}
         movieid={movie.id}
         rating={movie.vote_average}
+        index={index}
+        clicker={this.clickHandler}
       />
     );
     return movies
+  }
+
+  clickHandler = (event) => {
+    this.setState({
+      detailspage: true,
+      selectedmovie: event.currentTarget.id
+    }, () => console.log(this.state.selectedmovie))
+
   }
 
   render() {
