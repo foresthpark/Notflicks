@@ -22,5 +22,3 @@ export const requestMovies = () => async (dispatch) => {
 		dispatch({type: REQUEST_MOVIES_FAILED, payload: err})
 	}
 }
-
-
