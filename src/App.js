@@ -70,15 +70,12 @@ class App extends Component {
             />
             }
           </Scroll>
-<<<<<<< HEAD
           }
           {renderDetail === true &&
             <MovieDetails
               movieId = {movieId}
             />
           }
-=======
->>>>>>> 31aced5adfa96a56f608dcf65b207258deca5d87
         </div>
       )
   }
