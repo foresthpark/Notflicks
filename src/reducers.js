@@ -25,14 +25,14 @@ export const requestMovies = (state=intialStateMovies, action={}) => {
 }
 
 const intialStateDetail = {
-	movieDetail: '',
+	movieId: null,
 	renderDetail: false
 }
 
 export const getMovieDetail = (state=intialStateDetail, action={}) => {
 	switch (action.type) {
 		case GET_MOVIE_DETAIL:
-			return {...state, movieDetail: action.payload, renderDetail: true}
+			return {...state, movieId: action.payload, renderDetail: true}
 		default:
 			return state
 	}

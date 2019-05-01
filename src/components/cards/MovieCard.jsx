@@ -27,7 +27,7 @@ function MovieCard(props) {
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={index} onClick={clicker}>
+          <div id={movieid} onClick={clicker}>
             <CardMedia
               component="img"
               alt="a movie poster"
