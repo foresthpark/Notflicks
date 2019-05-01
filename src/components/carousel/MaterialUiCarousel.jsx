@@ -9,53 +9,40 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import {autoPlay} from 'react-swipeable-views-utils';
+import "./materialcarousel.css"
+import LinesEllipsis from 'react-lines-ellipsis'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const tutorialSteps = [
-  {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
-  },
-  {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-  {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-  },
-];
 
 const styles = theme => ({
   root: {
     maxWidth: 400,
     flexGrow: 1,
   },
-  header: {
+  image: {
     display: 'flex',
     alignItems: 'center',
+    flexDirection: "column"
+  },
+  title: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: "column",
+    padding: 10,
+    height: 50
+  },
+  header: {
+    display: 'flex',
+    textAlign: 'center',
     height: 50,
-    paddingLeft: theme.spacing.unit * 4,
+    fontFamily: 'Roboto',
+    // paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 400,
     display: 'block',
-    maxWidth: 400,
+    maxWidth: 300,
     overflow: 'hidden',
     width: '100%',
   },
@@ -83,26 +70,41 @@ class MaterialUiCarousel extends React.Component {
   };
 
   render() {
-    const {classes, theme} = this.props;
+    const {classes, theme, movies, head} = this.props;
     const {activeStep} = this.state;
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = movies.results.length;
+    const imgURL = "https://image.tmdb.org/t/p/original";
 
     return (
       <div className={classes.root}>
-        <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].label}</Typography>
+
+        <Paper square elevation={0} className={classes.title}>
+          <Typography gutterBottom variant="title">{head}</Typography>
         </Paper>
+
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map((step, index) => (
-            <div key={step.label}>
+          {movies.results.map((movie, index) => (
+            <div key={movie.title} className={classes.image}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.imgPath} alt={step.label}/>
+                <img className={classes.img} src={`${imgURL}${movie.poster_path}`} alt={movie.label}/>
               ) : null}
+              <Paper square elevation={0} className={classes.title}>
+                <Typography gutterBottom variant="title">
+                  <LinesEllipsis
+                    text={movie.title}
+                    maxLine='2'
+                    lineHeight='20'
+                    ellipsis=' ...'
+                    trimRight
+                    basedOn='words'
+                  />
+                </Typography>
+              </Paper>
             </div>
           ))}
         </AutoPlaySwipeableViews>

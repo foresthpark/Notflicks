@@ -1,18 +1,12 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
-import MovieDetail from './components/MovieDetail'
-import MainCarousel222 from "./components/Landing/MainCarousel222"
-import CarouselPage from "./components/Landing/CarouselPage"
 import {requestMovies} from './actions'
-import PureReactCarousel from "./components/Landing/PureReactCarousel";
-import NukaCarousel from "./components/Landing/NukaCarousel";
-import SimpleSlider from "./components/Landing/SimpleSlider";
 import "./components/cards/moviecard.css"
 import "./App.css"
-import MovieCard from "./components/cards/MovieCard";
 import TopRated from "./components/cards/TopRated";
-import MaterialUiCarousel from "./components/Landing/MaterialUiCarousel"
+import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
+import Loading from "./components/loading/Loading"
 
 const mapStateToProps = (state) => {
   console.log(state)
@@ -36,15 +30,20 @@ class App extends Component {
   }
 
   render() {
-    const { movies, isPending } = this.props
+    const {movies, isPending} = this.props
     return isPending ?
-    <h1>loading....</h1> :
-    (
-      <div className = "App">
-        <NavBar />
-        <TopRated movies = { movies }/>
-      </div>
-    )
+      <Loading/> :
+      (
+        <div className="App">
+          <NavBar/>
+          <div className="mainpagecarousel">
+            <MaterialUiCarousel movies={movies[0]} head={"Hello?"}/>
+            <MaterialUiCarousel movies={movies[1]} head={"Is it me..."}/>
+            <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"}/>
+          </div>
+          <TopRated movies={movies}/>
+        </div>
+      )
   }
 }
 

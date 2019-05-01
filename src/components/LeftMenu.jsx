@@ -38,12 +38,6 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {/*{['Top Rated', 'Currently Showing', 'Another Menu', 'Yet One More Menu'].map((text, index) => (*/}
-          {/*<ListItem button key={text}>*/}
-          {/*<ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>*/}
-          {/*<a href="https://google.com"><ListItemText primary={text}/></a>*/}
-          {/*</ListItem>*/}
-          {/*))}*/}
           <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
             primary="Hello, is it me?"/></ListItem></a>
           <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
