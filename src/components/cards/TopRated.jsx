@@ -30,14 +30,14 @@ class TopRated extends React.Component {
   }
 
   render() {
-    const {head} = this.props
+    const {head, movies} = this.props
     return (
       <div classname="cardcontainer">
         <div className="cardhead">
           {head}
         </div>
         <div className="moviecard">
-          {this.props.movies ? this._renderMovies() : <Loading/>}
+          {movies ? this._renderMovies() : <Loading/>}
         </div>
       </div>
     );

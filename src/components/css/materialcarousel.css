@@ -6,25 +6,13 @@
     font-style: normal;
 }
 
-.moviecard {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px;
-}
-
-.innnercard {
-    padding: 20px;
-}
-
-.cardhead {
+.carouseltitle {
     font-family: "bebas_neueregular";
-    font-size: 7em;
+    font-size: 1.5em;
     text-align: center;
 }
 
-.moviecardtitle {
+.backnextbutton {
     font-family: "bebas_neueregular";
-    font-size: 1.4em;
+    font-size: 1.5em;
 }

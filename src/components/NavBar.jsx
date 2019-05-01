@@ -100,7 +100,7 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes, theme} = this.props;
+    const {classes} = this.props;
 
     const sideList = (
       <div className={classes.list}>

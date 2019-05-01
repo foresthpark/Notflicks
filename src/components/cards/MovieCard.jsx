@@ -11,34 +11,36 @@ import LinesEllipsis from 'react-lines-ellipsis'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 351,
   },
   media: {
-    // ⚠️ object-fit is not supported by IE 11.
     objectFit: 'cover',
   },
 };
 
 function MovieCard(props) {
   const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
-  const imgURL = "https://image.tmdb.org/t/p/w500";
+  const imgURL = "https://image.tmdb.org/t/p/original";
+  const lazyLoad = "?tr=w-1,h-1";
 
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={index} onClick={clicker}><CardMedia
-            component="img"
-            alt="a movie poster"
-            className={classes.media}
-            height="450"
-            image={`${imgURL}` + poster}
-            title={title}
-            movieid={movieid}
-          /></div>
+          <div id={index} onClick={clicker}>
+            <CardMedia
+              component="img"
+              alt="a movie poster"
+              className={classes.media}
+              height="468"
+              image={`${imgURL}${poster}${lazyLoad}`}
+              title={title}
+              movieid={movieid}
+            />
+          </div>
           <CardContent>
             <Typography gutterBottom variant="title">
-              {title}
+              <div className="moviecardtitle">{title}</div>
             </Typography>
             <Typography gutterBottom variant="subtitle1">
               <b>Release: </b>{release}

@@ -8,7 +8,6 @@ const Loading = () => {
       <ActivityIndicator
         number={4}
         diameter={40}
-        borderWidth={1}
         duration={100}
         activeColor="#02A7CE"
         borderColor="white"

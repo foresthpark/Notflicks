@@ -16,39 +16,39 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: 420,
     flexGrow: 1,
-    padding: 20
   },
   image: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: "column",
   },
-  footer: {
+  title: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: "column",
     padding: 10,
-    height: 38
+    height: 30
   },
   header: {
     display: 'flex',
     textAlign: 'center',
-    height: 40,
+    height: 50,
     // paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 400,
+    height: 560,
+    width: 420,
     display: 'block',
-    maxWidth: 300,
-    overflow: 'hidden',
-    width: '100%',
+    maxWidth: 'auto',
+    overflow: 'auto',
+
   },
 });
 
-class MaterialUiCarousel extends React.Component {
+class MaterialUiCarousel2 extends React.Component {
   state = {
     activeStep: 0,
   };
@@ -74,7 +74,6 @@ class MaterialUiCarousel extends React.Component {
     const {activeStep} = this.state;
     const maxSteps = movies.results.length;
     const imgURL = "https://image.tmdb.org/t/p/original";
-    const lazyLoad = "?tr=w-1,h-1"
 
     return (
       <div className={classes.root}>
@@ -95,18 +94,18 @@ class MaterialUiCarousel extends React.Component {
           {movies.results.map((movie, index) => (
             <div key={movie.title} className={classes.image}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
+                <img className={classes.img} src={`${imgURL}${movie.poster_path}`} alt={movie.label}/>
               ) : null}
-              <Paper square elevation={0} className={classes.footer}>
+              <Paper square elevation={0} className={classes.title}>
                 <Typography gutterBottom variant="title">
                   <div className="carouseltitle">
                     <LinesEllipsis
                       text={movie.title}
-                      maxLine='1'
-                      // lineHeight='20'
+                      maxLine='2'
+                      lineHeight='20'
                       ellipsis=' ...'
                       trimRight
-                      basedOn='letters'
+                      basedOn='words'
                     />
                   </div>
                 </Typography>
@@ -121,18 +120,14 @@ class MaterialUiCarousel extends React.Component {
           className={classes.mobileStepper}
           nextButton={
             <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-              <div className="backnextbutton">
-                Next
-              </div>
+              Next
               {theme.direction === 'rtl' ? <KeyboardArrowLeft/> : <KeyboardArrowRight/>}
             </Button>
           }
           backButton={
             <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight/> : <KeyboardArrowLeft/>}
-              <div className="backnextbutton">
-                Back
-              </div>
+              Back
             </Button>
           }
         />
@@ -146,4 +141,4 @@ MaterialUiCarousel.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, {withTheme: true})(MaterialUiCarousel);
+export default withStyles(styles, {withTheme: true})(MaterialUiCarousel2);
