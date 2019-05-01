@@ -64,13 +64,21 @@ class App extends Component {
             {renderPage === 'nowplaying' &&
               <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
             }
+            {renderDetail === true &&
+            <MovieDetails
+              movieId={movieId}
+            />
+            }
           </Scroll>
+<<<<<<< HEAD
           }
           {renderDetail === true &&
             <MovieDetails
               movieId = {movieId}
             />
           }
+=======
+>>>>>>> 31aced5adfa96a56f608dcf65b207258deca5d87
         </div>
       )
   }
