@@ -10,7 +10,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import "./css/leftmenu.css"
+import "../css/leftmenu.css"
 
 const styles = {
   list: {
@@ -38,10 +38,26 @@ class TemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
-            primary="Hello, is it me?"/></ListItem></a>
-          <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
-            primary="You're looking for?"/></ListItem></a>
+          <a className="menulinks" href="https://google.com">
+            <ListItem button={true}>
+              <ListItemText primary="Top Rated"/>
+            </ListItem>
+          </a>
+          <a className="menulinks" href="https://google.com">
+            <ListItem button={true}>
+              <ListItemText primary="Upcoming"/>
+            </ListItem>
+          </a>
+          <a className="menulinks" href="https://google.com">
+            <ListItem button={true}>
+              <ListItemText primary="Popular"/>
+            </ListItem>
+          </a>
+          <a className="menulinks" href="https://google.com">
+            <ListItem button={true}>
+              <ListItemText primary="Now Playing"/>
+            </ListItem>
+          </a>
         </List>
         < Divider/>
         < List>
