@@ -22,14 +22,14 @@ const styles = {
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
+  const { classes, release, title, poster, synopsis, movieid, rating, index, clicker } = props;
   const imgURL = "https://image.tmdb.org/t/p/w500";
 
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={index} onClick={clicker}><CardMedia
+          <div id={movieid} onClick={clicker} ><CardMedia
             component="img"
             alt="a movie poster"
             className={classes.media}

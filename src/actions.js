@@ -1,7 +1,8 @@
 import { 
 	REQUEST_MOVIES_PENDING,
 	REQUEST_MOVIES_SUCCESS,
-	REQUEST_MOVIES_FAILED
+	REQUEST_MOVIES_FAILED,
+	GET_MOVIE_DETAIL
 } from './constants'
 
 const urls = [
@@ -22,3 +23,9 @@ export const requestMovies = () => async (dispatch) => {
 		dispatch({type: REQUEST_MOVIES_FAILED, payload: err})
 	}
 }
+
+export const getMovieDetail = (text) => ({
+	type: GET_MOVIE_DETAIL,
+	payload: text,
+	renderDetail: false
+})
