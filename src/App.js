@@ -9,6 +9,7 @@ import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
 import NowPlaying from "./components/cards/NowPlaying";
 import TopRated from "./components/cards/TopRated"
 import Upcoming from "./components/cards/Upcoming"
+import Loading from './components/loading/Loading'
 
 const mapStateToProps = (state) => {
   return {

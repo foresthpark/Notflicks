@@ -19,30 +19,14 @@ const styles = {
 };
 
 function MovieCard(props) {
-<<<<<<< HEAD
-  const { classes, release, title, poster, synopsis, movieid, rating, index, clicker } = props;
-  const imgURL = "https://image.tmdb.org/t/p/w500";
-=======
   const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
->>>>>>> bugfix_mainpage_carousel
 
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-<<<<<<< HEAD
-          <div id={movieid} onClick={clicker} ><CardMedia
-            component="img"
-            alt="a movie poster"
-            className={classes.media}
-            height="450"
-            image={`${imgURL}` + poster}
-            title={title}
-            movieid={movieid}
-          /></div>
-=======
           <div id={index} onClick={clicker}>
             <CardMedia
               component="img"
@@ -54,7 +38,6 @@ function MovieCard(props) {
               movieid={movieid}
             />
           </div>
->>>>>>> bugfix_mainpage_carousel
           <CardContent>
             <Typography gutterBottom variant="title">
               <div className="moviecardtitle">{title}</div>
