@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
     isPending: state.requestMovies.isPending,
     movies: state.requestMovies.movies,
     error: state.requestMovies.error,
-    MovieDetail: state.getMovieDetail.MovieDetail,
+    movieId: state.getMovieDetail.movieId,
     renderDetail: state.getMovieDetail.renderDetail
   }
 }
@@ -36,8 +36,7 @@ class App extends Component {
 
 
   render() {
-    console.log('render', this.props.renderDetail)
-    const {movies, isPending, onGetMovieDetail, renderDetail} = this.props
+    const {movies, isPending, onGetMovieDetail, renderDetail, movieId} = this.props
 
     return isPending ? <Loading/> :
       (
@@ -56,7 +55,9 @@ class App extends Component {
           }
 
           {renderDetail === true &&
-          <MovieDetail/>
+          <MovieDetail
+            movie = {movieId}
+          />
           }
         </div>
       )
