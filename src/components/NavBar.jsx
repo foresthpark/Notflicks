@@ -17,7 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import "./leftmenu.css"
+import "./css/leftmenu.css"
+import "./css/navbar.css"
 
 const styles = theme => ({
   list: {
@@ -104,12 +105,6 @@ class SearchAppBar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {/*{['Top Rated', 'Currently Showing', 'Another Menu', 'Yet One More Menu'].map((text, index) => (*/}
-          {/*<ListItem button key={text}>*/}
-          {/*<ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>*/}
-          {/*<a href="https://google.com"><ListItemText primary={text}/></a>*/}
-          {/*</ListItem>*/}
-          {/*))}*/}
           <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
             primary="Hello, is it me?"/></ListItem></a>
           <a className="menulinks" href="https://google.com"><ListItem button={true}><ListItemText
@@ -151,7 +146,7 @@ class SearchAppBar extends React.Component {
               </div>
             </Drawer>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              NotFlicks
+              <div className="app_title">NotFlicks</div>
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>

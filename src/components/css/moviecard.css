@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../fonts/bebasneue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.moviecard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+.innnercard {
+    padding: 20px;
+}
+
+.cardhead {
+    font-family: "bebas_neueregular";
+    font-size: 6em;
+    text-align: center;
+}

@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 import Loading from "../loading/Loading"
 import "../css/moviecard.css"
 
-class TopRated extends React.Component {
+class NowPlaying extends React.Component {
   _renderMovies = () => {
     const {movies} = this.props
     const moviesArray = movies.results.map((movie, index) =>
@@ -32,7 +32,7 @@ class TopRated extends React.Component {
   render() {
     const {head} = this.props
     return (
-      <div classname="cardcontainer">
+      <div className="cardcontainer">
         <div className="cardhead">
           {head}
         </div>
@@ -44,4 +44,4 @@ class TopRated extends React.Component {
   }
 }
 
-export default TopRated
+export default NowPlaying
