@@ -8,8 +8,9 @@
 
 .carouseltitle {
     font-family: "bebas_neueregular";
-    font-size: 1.5em;
+    font-size: 1.1em;
     text-align: center;
+    text-shadow: 2px 2px #BCC1C4;
 }
 
 .backnextbutton {

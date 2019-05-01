@@ -30,7 +30,7 @@ const styles = theme => ({
     alignItems: 'center',
     flexDirection: "column",
     padding: 10,
-    height: 38
+    height: 30
   },
   header: {
     display: 'flex',
@@ -102,7 +102,7 @@ class MaterialUiCarousel extends React.Component {
                   <div className="carouseltitle">
                     <LinesEllipsis
                       text={movie.title}
-                      maxLine='1'
+                      maxLine='2'
                       // lineHeight='20'
                       ellipsis=' ...'
                       trimRight

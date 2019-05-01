@@ -6,8 +6,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import "../css/moviecard.css"
 import LinesEllipsis from 'react-lines-ellipsis'
+import "../css/moviecard.css"
 
 const styles = {
   card: {

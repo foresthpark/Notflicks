@@ -50,12 +50,7 @@ class TemporaryDrawer extends React.Component {
           </a>
           <a className="menulinks" href="https://google.com">
             <ListItem button={true}>
-              <ListItemText primary="Popular"/>
-            </ListItem>
-          </a>
-          <a className="menulinks" href="https://google.com">
-            <ListItem button={true}>
-              <ListItemText primary="Now Playing"/>
+              <ListItemText primary="Upcoming"/>
             </ListItem>
           </a>
         </List>

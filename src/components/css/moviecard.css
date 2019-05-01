@@ -26,5 +26,6 @@
 
 .moviecardtitle {
     font-family: "bebas_neueregular";
+    text-shadow: 2px 2px #BCC1C4;
     font-size: 1.4em;
 }

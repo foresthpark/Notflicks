@@ -23,12 +23,15 @@ import "../css/navbar.css"
 const styles = theme => ({
   list: {
     width: 250,
+    height: '100%',
+    backgroundColor: "#40BDDB",
   },
   fullList: {
     width: 'auto',
   },
   root: {
     width: '100%',
+    backgroundColor: "#40BDDB",
   },
   grow: {
     flexGrow: 1,
@@ -105,35 +108,50 @@ class SearchAppBar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
+          <ListItem>
+            <div className="listitemstitle">
+              NotFlicks
+            </div>
+          </ListItem>
+        </List>
+
+        <Divider/>
+
+        <List>
+          <ListItem button={true}>
+            <div className="listitems">
+              Top rated
+            </div>
+          </ListItem>
 
           <ListItem button={true}>
-            <a className="menulinks" href="https://google.com">
-              <div className="listitems">
-                Top rated
-              </div>
-            </a>
+            <div className="listitems">
+              Now Playing
+            </div>
           </ListItem>
+
           <ListItem button={true}>
-            <a className="menulinks" href="https://google.com"><ListItemText primary="Popular"/> </a>
+            <div className="listitems">
+              Upcoming
+            </div>
           </ListItem>
+
           <ListItem button={true}>
-            <a className="menulinks" href="https://google.com"><ListItemText primary="Now Playing"/> </a>
-          </ListItem>
-          <ListItem button={true}>
-            <a className="menulinks" href="https://google.com"><ListItemText primary="Upcoming"/> </a>
+            <div className="listitems">
+              Popular
+            </div>
           </ListItem>
 
         </List>
-        < Divider/>
-        < List>
-          {['All Stuff', 'Is this Correct?', 'I have no Idea'
-          ].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-          ))
-          }
+        <Divider/>
+        <List>
+          <ListItem button={true}>
+            <a className="menulinks" href="https://google.com">
+              <div className="listitems">
+                Search
+              </div>
+            </a>
+          </ListItem>
         </List>
       </div>
     );
@@ -155,6 +173,7 @@ class SearchAppBar extends React.Component {
                 role="button"
                 onClick={this.toggleDrawer('left', false)}
                 onKeyDown={this.toggleDrawer('left', false)}
+                className={classes.list}
               >
                 {sideList}
               </div>
