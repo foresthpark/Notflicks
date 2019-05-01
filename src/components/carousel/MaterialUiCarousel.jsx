@@ -93,7 +93,7 @@ class MaterialUiCarousel extends React.Component {
           enableMouseEvents
         >
           {movies.results.map((movie, index) => (
-            <div key={movie.title} className={classes.image}>
+            <div key={movie.title} className={classes.image} id={movie.id} onClick = {this.props.getMovieDetail}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
               ) : null}

@@ -50,9 +50,9 @@ class App extends Component {
           <Scroll>
             {renderPage === 'notflicks' &&
               <div className="mainpagecarousel">
-                <MaterialUiCarousel movies={movies[0]} head={"Hello?"}/>
-                <MaterialUiCarousel movies={movies[1]} head={"Is it me..."}/>
-                <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"}/>
+                <MaterialUiCarousel movies={movies[0]} head={"Hello?"} getMovieDetail={onGetMovieDetail}/>
+                <MaterialUiCarousel movies={movies[1]} head={"Is it me..."} getMovieDetail={onGetMovieDetail}/>
+                <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"} getMovieDetail={onGetMovieDetail}/>
               </div>
             }
             {renderPage === 'toprated' &&

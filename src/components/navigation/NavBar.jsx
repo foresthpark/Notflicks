@@ -179,7 +179,7 @@ class SearchAppBar extends React.Component {
               </div>
             </Drawer>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              <div className="app_title">NotFlicks</div>
+              <div className="app_title" id='notflicks' onClick={ this.props.renderPage } >NotFlicks</div>
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>
