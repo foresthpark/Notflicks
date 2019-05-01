@@ -4,7 +4,8 @@ import "./moviecard.css"
 
 class TopRated extends React.Component {
   render() {
-    const movies = this.props.movies.results.map((movie, index) => {
+    const { movies, getMovieDetail} = this.props
+    const moviesCard = movies.results.map((movie, index) => {
       return (
         <MovieCard
           key={movie.id}
@@ -15,13 +16,13 @@ class TopRated extends React.Component {
           movieid={movie.id}
           rating={movie.vote_average}
           index={index}
-          clicker={this.props.getMovieDetail}
+          clicker={getMovieDetail}
         />
       )
     })
     return (
       <div className="moviecard">
-        {movies}
+        {moviesCard}
       </div>
     );
   }
