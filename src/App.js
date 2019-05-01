@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import NavBar from "./components/NavBar"
+import NavBar from "./components/navigation/NavBar"
 import MovieDetails from './components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail} from './actions'
 import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
