@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../fonts/bebasneue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.detailcardcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.relatedheader {
+    display: flex;
+    flex-direction: column;
+    font-family: "bebas_neueregular";
+    text-shadow: 2px 2px #BCC1C4;
+    font-size: 4em;
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+.detailcard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}

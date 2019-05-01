@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import NavBar from "./components/NavBar"
+import NavBar from "./components/navigation/NavBar"
 import MovieDetails from './components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail} from './actions'
 import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
@@ -56,13 +56,12 @@ class App extends Component {
               <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
             </div>
             }
+            {renderDetail === true &&
+            <MovieDetails
+              movieId={movieId}
+            />
+            }
           </Scroll>
-
-          {renderDetail === true &&
-          <MovieDetails
-            movieId = {movieId}
-          />
-          }
         </div>
       )
   }
