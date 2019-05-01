@@ -3,6 +3,7 @@ import {
 	REQUEST_MOVIES_SUCCESS,
 	REQUEST_MOVIES_FAILED,
 	GET_MOVIE_DETAIL,
+	GET_RENDER_DETAIL,
 } from './constants'
 
 const urls = [
@@ -30,4 +31,8 @@ export const getMovieDetail = (text) => ({
 	renderDetail: false
 })
 
+export const renderPage = (text) => ({
+	type: GET_RENDER_DETAIL,
+	payload: text
+})
 

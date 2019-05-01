@@ -3,6 +3,7 @@ import {
 	REQUEST_MOVIES_SUCCESS,
 	REQUEST_MOVIES_FAILED,
 	GET_MOVIE_DETAIL,
+	GET_RENDER_DETAIL,
 } from './constants'
 
 const intialStateMovies = {
@@ -26,14 +27,30 @@ export const requestMovies = (state=intialStateMovies, action={}) => {
 
 const intialStateDetail = {
 	movieId: null,
-	renderDetail: false
+	renderDetail: false,
+	renderPage: 'notflicks'
 }
 
 export const getMovieDetail = (state=intialStateDetail, action={}) => {
 	switch (action.type) {
 		case GET_MOVIE_DETAIL:
 			return {...state, movieId: action.payload, renderDetail: true}
+		case GET_RENDER_DETAIL:
+			return {...state, renderPage: action.payload, renderDetail: false}
 		default:
 			return state
 	}
 }
+
+// const intialStateRender = {
+// 	renderPage: 'notflicks'
+// }
+
+// export const renderPage = (state=intialStateRender, action={}) => {
+// 	switch (action.type) {
+// 		case GET_RENDER_DETAIL:
+// 			return {...state, renderPage: action.payload}
+// 		default:
+// 			return state
+// 	}
+// }

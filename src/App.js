@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavBar from "./components/navigation/NavBar"
 import MovieDetails from './components/detailed/MovieDetails'
-import {requestMovies, getMovieDetail} from './actions'
+import {requestMovies, getMovieDetail, renderPage } from './actions'
 import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
 import NowPlaying from "./components/cards/NowPlaying";
 import TopRated from "./components/cards/TopRated"
@@ -18,7 +18,8 @@ const mapStateToProps = (state) => {
     movies: state.requestMovies.movies,
     error: state.requestMovies.error,
     movieId: state.getMovieDetail.movieId,
-    renderDetail: state.getMovieDetail.renderDetail
+    renderDetail: state.getMovieDetail.renderDetail,
+    renderPage: state.getMovieDetail.renderPage
   }
 }
 
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onRequestMovies: () => dispatch(requestMovies()),
     onGetMovieDetail: (event) => dispatch(getMovieDetail(event.currentTarget.id)),
+    onRenderPage: (event) => dispatch(renderPage(event.target.id)),
   }
 }
 
@@ -37,31 +39,37 @@ class App extends Component {
 
 
   render() {
-    const {movies, isPending, onGetMovieDetail, renderDetail, movieId} = this.props
+    console.log('app render', this.props.renderPage)
+    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage} = this.props
 
     return isPending ? <Loading/> :
       (
         <div className="App">
-          <NavBar/>
-
+          <NavBar renderPage = {onRenderPage} />
+          {renderDetail === false &&
           <Scroll>
-            {renderDetail === false &&
-            <div className="mainpagecarousel">
-              <MaterialUiCarousel movies={movies[0]} head={"Hello?"}/>
-              <MaterialUiCarousel movies={movies[1]} head={"Is it me..."}/>
-              <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"}/>
-
-              <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
+            {renderPage === 'notflicks' &&
+              <div className="mainpagecarousel">
+                <MaterialUiCarousel movies={movies[0]} head={"Hello?"}/>
+                <MaterialUiCarousel movies={movies[1]} head={"Is it me..."}/>
+                <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"}/>
+              </div>
+            }
+            {renderPage === 'toprated' &&
+              <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"} />
+            }
+            {renderPage === 'upcoming' &&
               <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            }
+            {renderPage === 'nowplaying' &&
               <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
-            </div>
             }
           </Scroll>
-
+          }
           {renderDetail === true &&
-          <MovieDetails
-            movieId = {movieId}
-          />
+            <MovieDetails
+              movieId = {movieId}
+            />
           }
         </div>
       )

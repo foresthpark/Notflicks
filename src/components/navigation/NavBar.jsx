@@ -103,13 +103,13 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes} = this.props;
+    const {classes, renderPage } = this.props;
 
     const sideList = (
       <div className={classes.list}>
         <List>
           <ListItem>
-            <div className="listitemstitle">
+            <div className="listitemstitle" onClick= { renderPage } id='notflicks'>
               NotFlicks
             </div>
           </ListItem>
@@ -119,19 +119,19 @@ class SearchAppBar extends React.Component {
 
         <List>
           <ListItem button={true}>
-            <div className="listitems">
+            <div className="listitems" onClick= { renderPage } id='toprated'>
               Top rated
             </div>
           </ListItem>
 
           <ListItem button={true}>
-            <div className="listitems">
+            <div className="listitems" onClick= { renderPage } id='nowplaying'>
               Now Playing
             </div>
           </ListItem>
 
           <ListItem button={true}>
-            <div className="listitems">
+            <div className="listitems" onClick= { renderPage } id='upcoming'>
               Upcoming
             </div>
           </ListItem>
@@ -154,7 +154,7 @@ class SearchAppBar extends React.Component {
           </ListItem>
         </List>
       </div>
-    );
+    )
 
     return (
       <div className={classes.root}>
@@ -197,7 +197,7 @@ class SearchAppBar extends React.Component {
           </Toolbar>
         </AppBar>
       </div>
-    );
+    )
   }
 }
 
