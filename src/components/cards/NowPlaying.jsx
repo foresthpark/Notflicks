@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 import Loading from "../loading/Loading"
 import "../css/moviecard.css"
 
-class Upcoming extends React.Component {
+class NowPlaying extends React.Component {
   _renderMovies = () => {
     const {movies} = this.props
     const moviesArray = movies.results.map((movie, index) =>
@@ -44,4 +44,4 @@ class Upcoming extends React.Component {
   }
 }
 
-export default Upcoming
+export default NowPlaying

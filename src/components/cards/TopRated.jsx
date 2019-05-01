@@ -1,10 +1,10 @@
 import React from "react"
 import MovieCard from "./MovieCard";
-import "./moviecard.css"
+import "../css/moviecard.css"
 
 class TopRated extends React.Component {
   render() {
-    const { movies, getMovieDetail} = this.props
+    const {movies, getMovieDetail} = this.props
     const moviesCard = movies.results.map((movie, index) => {
       return (
         <MovieCard

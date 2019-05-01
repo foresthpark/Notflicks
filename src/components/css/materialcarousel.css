@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'bebas_neueregular';
+    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
+    url('../fonts/bebasneue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.carouseltitle {
+    font-family: "bebas_neueregular";
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.backnextbutton {
+    font-family: "bebas_neueregular";
+    font-size: 1.5em;
+}

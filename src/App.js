@@ -1,18 +1,14 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
 import MovieDetail from './components/MovieDetail'
-import MainCarousel222 from "./components/Landing/MainCarousel222"
-import CarouselPage from "./components/Landing/CarouselPage"
 import {requestMovies, getMovieDetail} from './actions'
-import PureReactCarousel from "./components/Landing/PureReactCarousel";
-import NukaCarousel from "./components/Landing/NukaCarousel";
-import SimpleSlider from "./components/Landing/SimpleSlider";
-import "./components/cards/moviecard.css"
+import "./components/css/moviecard.css"
 import "./App.css"
-import MovieCard from "./components/cards/MovieCard";
-import TopRated from "./components/cards/TopRated";
-import MaterialUiCarousel from "./components/Landing/MaterialUiCarousel"
+import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
+import NowPlaying from "./components/cards/NowPlaying";
+import TopRated from "./components/cards/TopRated"
+import Upcoming from "./components/cards/Upcoming"
 
 const mapStateToProps = (state) => {
   return {
@@ -37,27 +33,34 @@ class App extends Component {
     this.props.onRequestMovies()
   }
 
+
   render() {
     console.log('render', this.props.renderDetail)
-    const { movies, isPending, onGetMovieDetail, renderDetail } = this.props
-    return isPending ?
-    <h1>loading....</h1> :
-    (
-      <div className = "App">
-        <NavBar />
-        {renderDetail === false &&
-        <TopRated 
-          movies = { movies[0] }
-          isPending = {isPending}
-          getMovieDetail = {onGetMovieDetail}
-        />
-        }
-        {renderDetail === true && 
-        <MovieDetail />     
-        }
-      </div>
-    )
+    const {movies, isPending, onGetMovieDetail, renderDetail} = this.props
+
+    return isPending ? <Loading/> :
+      (
+        <div className="App">
+          <NavBar/>
+          {renderDetail === false &&
+          <div className="mainpagecarousel">
+            <MaterialUiCarousel movies={movies[0]} head={"Hello?"}/>
+            <MaterialUiCarousel movies={movies[1]} head={"Is it me..."}/>
+            <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"}/>
+
+            <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
+            <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+          </div>
+          }
+
+          {renderDetail === true &&
+          <MovieDetail/>
+          }
+        </div>
+      )
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

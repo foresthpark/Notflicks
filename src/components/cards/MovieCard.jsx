@@ -3,32 +3,36 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import "./moviecard.css"
+import "../css/moviecard.css"
 import LinesEllipsis from 'react-lines-ellipsis'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 351,
   },
   media: {
-    // ⚠️ object-fit is not supported by IE 11.
     objectFit: 'cover',
   },
 };
 
 function MovieCard(props) {
+<<<<<<< HEAD
   const { classes, release, title, poster, synopsis, movieid, rating, index, clicker } = props;
   const imgURL = "https://image.tmdb.org/t/p/w500";
+=======
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
+  const imgURL = "https://image.tmdb.org/t/p/original";
+  const lazyLoad = "?tr=w-1,h-1";
+>>>>>>> bugfix_mainpage_carousel
 
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
+<<<<<<< HEAD
           <div id={movieid} onClick={clicker} ><CardMedia
             component="img"
             alt="a movie poster"
@@ -38,9 +42,22 @@ function MovieCard(props) {
             title={title}
             movieid={movieid}
           /></div>
+=======
+          <div id={index} onClick={clicker}>
+            <CardMedia
+              component="img"
+              alt="a movie poster"
+              className={classes.media}
+              height="468"
+              image={`${imgURL}${poster}${lazyLoad}`}
+              title={title}
+              movieid={movieid}
+            />
+          </div>
+>>>>>>> bugfix_mainpage_carousel
           <CardContent>
             <Typography gutterBottom variant="title">
-              {title}
+              <div className="moviecardtitle">{title}</div>
             </Typography>
             <Typography gutterBottom variant="subtitle1">
               <b>Release: </b>{release}
