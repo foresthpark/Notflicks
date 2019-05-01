@@ -2,7 +2,7 @@ import {
 	REQUEST_MOVIES_PENDING,
 	REQUEST_MOVIES_SUCCESS,
 	REQUEST_MOVIES_FAILED,
-	GET_MOVIE_DETAIL
+	GET_MOVIE_DETAIL,
 } from './constants'
 
 const intialStateMovies = {

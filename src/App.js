@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavBar from "./components/NavBar"
-import MovieDetail from './components/MovieDetail'
+import MovieDetails from './components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail} from './actions'
 import "./components/css/moviecard.css"
 import "./App.css"
@@ -55,8 +55,8 @@ class App extends Component {
           }
 
           {renderDetail === true &&
-          <MovieDetail
-            movie = {movieId}
+          <MovieDetails
+            movieId = {movieId}
           />
           }
         </div>
