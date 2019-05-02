@@ -4,6 +4,10 @@ import {
   REQUEST_MOVIES_FAILED,
   GET_MOVIE_DETAIL,
   GET_RENDER_DETAIL,
+  GET_SEARCH_INPUT,
+  REQUEST_SEARCH_PENDING,
+  REQUEST_SEARCH_SUCCESS,
+  REQUEST_SEARCH_FAILED,
 } from './constants'
 
 const urls = [
@@ -37,3 +41,24 @@ export const renderPage = (text) => ({
   payload: text
 })
 
+export const searchInput = (text) => ({
+  type: GET_SEARCH_INPUT,
+  payload: text
+})
+
+export const searchDetail = (text) => async (dispatch) => {
+  const urls = [
+    //movie search API
+    `https://api.themoviedb.org/3/search/movie?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&query=${text}&page=1&include_adult=false`
+  ]
+  try {
+    dispatch({type: REQUEST_SEARCH_PENDING})
+    const data = await Promise.all(urls.map(async function (url) {
+      const response = await fetch(url)
+      return response.json()
+    }))
+    await dispatch({type: REQUEST_SEARCH_SUCCESS, payload: data})
+  } catch (err) {
+    dispatch({type: REQUEST_SEARCH_FAILED, payload: err})
+  }
+}

@@ -27,24 +27,23 @@ class MovieDetails extends React.Component {
     this.props.onRequestDetail(this.props.movieId)
   }
 
+  onClick = (event) => {
+    this.props.onRequestDetail(event.currentTarget.id)
+  }
 
   render() {
-    const {movie, getMovieDetail} = this.props
-
-    console.log('movieDetail', this.props.movie)
-
+    const { movie, isPending } = this.props
     const backdrop = {
       width: "100%",
       height: "100%"
     }
 
-    return this.props.isPending ? <Loading/> :
+    return isPending ? <Loading/> :
       (
-        <div style={backdrop}>
+        <div style={backdrop} >
           <DetailBackdrop movie={movie}/>
           <Synopsis movie={movie}/>
-          <RelatedCard movie={movie} clicker={getMovieDetail}/>
-          <DetailCard movie={movie} getMovieDetail={getMovieDetail}/>
+          <RelatedCard movie={movie} clicker={this.onClick}/>
         </div>
       )
   }

@@ -1,6 +1,7 @@
 import React from "react"
-import DetailInfo from "./DetailInfo";
+// import DetailInfo from "./DetailInfo";
 import "../css/detailcard.css"
+import RelatedCard from "./RelatedCard";
 
 class DetailCard extends React.Component {
 
@@ -9,7 +10,7 @@ class DetailCard extends React.Component {
 
     const detailCard = movie[1].results.slice(1, 6).map((movie, index) => {
       return (
-        <DetailInfo
+        <RelatedCard
           key={movie.id}
           title={movie.original_title}
           poster={movie.poster_path}
