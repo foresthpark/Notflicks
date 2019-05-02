@@ -29,8 +29,8 @@ class NowPlaying extends React.Component {
           {moviesCard}
         </div>
       </div>
-    );
-  }
+      )
+    }
 }
 
 export default NowPlaying

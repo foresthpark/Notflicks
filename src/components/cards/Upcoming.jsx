@@ -29,7 +29,7 @@ class Upcoming extends React.Component {
           {moviesCard}
         </div>
       </div>
-    );
+    )
   }
 }
 

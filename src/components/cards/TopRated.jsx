@@ -29,7 +29,7 @@ class TopRated extends React.Component {
           {moviesCard}
         </div>
       </div>
-    );
+    )
   }
 }
 

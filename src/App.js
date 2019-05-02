@@ -7,6 +7,7 @@ import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
 import NowPlaying from "./components/cards/NowPlaying";
 import TopRated from "./components/cards/TopRated"
 import Upcoming from "./components/cards/Upcoming"
+import Popular from './components/cards/Popular'
 import Loading from './components/loading/Loading'
 import Scroll from "./components/navigation/Scroll"
 import "./components/css/moviecard.css"
@@ -68,18 +69,15 @@ class App extends Component {
             {renderPage === 'popular' &&
             <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
             }
-            {renderDetail === true &&
-            <MovieDetails
-              movieId={movieId}
-              getMovieDetail={onGetMovieDetail}
-            />
-            }
           </Scroll>
           }
           {renderDetail === true &&
-          <MovieDetails
-            movieId={movieId}
-          />
+          <Scroll>
+            <MovieDetails
+              movieId = {movieId}
+              getMovieDetail={onGetMovieDetail}
+            />
+          </Scroll>
           }
         </div>
       )
