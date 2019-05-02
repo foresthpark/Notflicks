@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import NavBar from "./components/navigation/NavBar"
-import MovieDetails from './components/detailed/MovieDetails'
+import NavBar from "../components/navigation/NavBar"
+import MovieDetails from '../components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail} from './actions'
-import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
-import NowPlaying from "./components/cards/NowPlaying";
-import TopRated from "./components/cards/TopRated"
-import Upcoming from "./components/cards/Upcoming"
-import Popular from './components/cards/Popular'
-import SearchResults from './components/cards/SearchResults'
-import Loading from './components/loading/Loading'
-import Scroll from "./components/navigation/Scroll"
-import "./components/css/moviecard.css"
+import MaterialUiCarousel from "../components/carousel/MaterialUiCarousel"
+import NowPlaying from "../components/cards/NowPlaying";
+import TopRated from "../components/cards/TopRated"
+import Upcoming from "../components/cards/Upcoming"
+import Popular from '../components/cards/Popular'
+import SearchResults from '../components/cards/SearchResults'
+import Loading from '../components/loading/Loading'
+import Scroll from "../components/navigation/Scroll"
+import "../components/css/moviecard.css"
 import "./App.css"
 // import { searchDetail } from './reducers';
 
@@ -55,9 +55,9 @@ class App extends Component {
     return isPending ? <Loading/> :
       (
         <div className="App">
-          <NavBar 
-            renderPage={onRenderPage} 
-            searchInput={this.props.onSearchInput} 
+          <NavBar
+            renderPage={onRenderPage}
+            searchInput={this.props.onSearchInput}
             searchDetail={this.props.onSearchDetail}
             searchInputField={this.props.searchInputField}
           />
@@ -74,19 +74,19 @@ class App extends Component {
             </div>
             }
             {renderPage === 'toprated' &&
-              <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
+            <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
             }
             {renderPage === 'upcoming' &&
-              <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
             }
             {renderPage === 'nowplaying' &&
-              <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+            <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
             }
             {renderPage === 'popular' &&
-              <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
+            <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
             }
             {renderPage === 'search' &&
-              <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
+            <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
           </Scroll>
           }

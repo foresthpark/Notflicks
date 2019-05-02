@@ -6,7 +6,7 @@ import DetailBackdrop from "./DetailBackdrop"
 import Synopsis from "./Synopsis";
 import RelatedCard from "../cards/RelatedCard";
 import DetailCard from "../cards/DetailCard";
-import {getMovieDetail} from "../../actions";
+import {getMovieDetail} from "../../containers/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -32,7 +32,7 @@ class MovieDetails extends React.Component {
   }
 
   render() {
-    const { movie, isPending } = this.props
+    const {movie, isPending} = this.props
     const backdrop = {
       width: "100%",
       height: "100%"
@@ -40,7 +40,7 @@ class MovieDetails extends React.Component {
 
     return isPending ? <Loading/> :
       (
-        <div style={backdrop} >
+        <div style={backdrop}>
           <DetailBackdrop movie={movie}/>
           <Synopsis movie={movie}/>
           <RelatedCard movie={movie} clicker={this.onClick}/>
