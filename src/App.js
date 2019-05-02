@@ -2,17 +2,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavBar from "./components/navigation/NavBar"
 import MovieDetails from './components/detailed/MovieDetails'
-import {requestMovies, getMovieDetail, renderPage} from './actions'
+import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail} from './actions'
 import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
 import NowPlaying from "./components/cards/NowPlaying";
 import TopRated from "./components/cards/TopRated"
 import Upcoming from "./components/cards/Upcoming"
 import Popular from './components/cards/Popular'
+import SearchResults from './components/cards/SearchResults'
 import Loading from './components/loading/Loading'
 import Scroll from "./components/navigation/Scroll"
 import "./components/css/moviecard.css"
 import "./App.css"
-import MovieGridList from "./components/carousel/MovieGridList";
+// import { searchDetail } from './reducers';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +23,11 @@ const mapStateToProps = (state) => {
     error: state.requestMovies.error,
     movieId: state.getMovieDetail.movieId,
     renderDetail: state.getMovieDetail.renderDetail,
-    renderPage: state.getMovieDetail.renderPage
+    renderPage: state.getMovieDetail.renderPage,
+    searchInputField: state.getMovieDetail.searchInputField,
+    isPending2: state.getMovieDetail.isPending2,
+    movie2: state.getMovieDetail.movie2,
+    error2: state.getMovieDetail.error2,
   }
 }
 
@@ -30,6 +36,8 @@ const mapDispatchToProps = (dispatch) => {
     onRequestMovies: () => dispatch(requestMovies()),
     onGetMovieDetail: (event) => dispatch(getMovieDetail(event.currentTarget.id)),
     onRenderPage: (event) => dispatch(renderPage(event.target.id)),
+    onSearchInput: (event) => dispatch(searchInput(event.target.value)),
+    onSearchDetail: (a) => dispatch(searchDetail(a))
   }
 }
 
@@ -42,12 +50,17 @@ class App extends Component {
 
   render() {
     console.log('app render', this.props.renderPage)
-    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage} = this.props
+    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
 
     return isPending ? <Loading/> :
       (
         <div className="App">
-          <NavBar renderPage={onRenderPage}/>
+          <NavBar 
+            renderPage={onRenderPage} 
+            searchInput={this.props.onSearchInput} 
+            searchDetail={this.props.onSearchDetail}
+            searchInputField={this.props.searchInputField}
+          />
           {renderDetail === false &&
           <Scroll>
             {renderPage === 'notflicks' &&
@@ -61,16 +74,19 @@ class App extends Component {
             </div>
             }
             {renderPage === 'toprated' &&
-            <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
+              <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
             }
             {renderPage === 'upcoming' &&
-            <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+              <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
             }
             {renderPage === 'nowplaying' &&
-            <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+              <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
             }
             {renderPage === 'popular' &&
-            <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
+              <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
+            }
+            {renderPage === 'search' &&
+              <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
           </Scroll>
           }

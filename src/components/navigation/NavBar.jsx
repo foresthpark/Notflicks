@@ -187,11 +187,20 @@ class SearchAppBar extends React.Component {
                 <SearchIcon/>
               </div>
               <InputBase
+                type='text'
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                onChange={this.props.searchInput}
+                // onKeyPress={
+                //   (event) => { if (event.key === 'Enter') { console.log(this.props.searchInputField) } }
+                //   }
+                onKeyPress={
+                  (event) => { if (event.key === 'Enter') { this.props.searchDetail(this.props.searchInputField) } }
+                  }
+                value={this.props.searchInputField}
               />
             </div>
           </Toolbar>

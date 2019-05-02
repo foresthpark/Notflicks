@@ -8,7 +8,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { requestMovies, getMovieDetail, } from './reducers'
+import { requestMovies, getMovieDetail, searchInput} from './reducers'
 import { requestDetail } from './components/detailed/reducers'
 
 const logger = createLogger()

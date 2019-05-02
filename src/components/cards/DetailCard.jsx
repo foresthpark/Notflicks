@@ -1,5 +1,4 @@
 import React from "react"
-
 import "../css/detailcard.css"
 import RelatedCard from "./RelatedCard";
 
