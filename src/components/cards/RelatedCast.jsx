@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import LinesEllipsis from 'react-lines-ellipsis'
+import ProfileImage from "../images/profile.png"
 import "../css/moviecard.css"
 
 const styles = {
@@ -22,6 +23,13 @@ function RelateCast(props) {
   const {classes, poster, character, name, clicker, index} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
+  
+  let fullURL;
+  if (poster !== null) {
+    fullURL = `${imgURL}${poster}${lazyLoad}`
+  } else {
+    fullURL = "https://i.imgur.com/8ccF0wO.png"
+  }
 
   return (
     <div className="innnercard" id={index}>
@@ -30,10 +38,10 @@ function RelateCast(props) {
           <div id={index} onClick={clicker}>
             <CardMedia
               component="img"
-              alt="a movie poster"
+              alt={name}
               className={classes.media}
               height="200"
-              image={`${imgURL}${poster}${lazyLoad}`}
+              image={fullURL}
             />
           </div>
           <CardContent>

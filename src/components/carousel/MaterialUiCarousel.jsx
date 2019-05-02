@@ -25,6 +25,7 @@ const styles = theme => ({
     alignItems: 'center',
     flexDirection: "column",
     cursor: "pointer",
+    overflow: "hidden"
   },
   footer: {
     display: 'flex',
@@ -70,9 +71,10 @@ class MaterialUiCarousel extends React.Component {
   };
 
   render() {
-    const {classes, theme, movies, head} = this.props;
+    const {classes, theme, movies, head, getMovieDetail, renderPage, id} = this.props;
     const {activeStep} = this.state;
-    const maxSteps = movies.results.slice(1, 11).length;
+    const movieArray = movies.results.slice(0, 10)
+    const maxSteps = movieArray.length;
     const imgURL = "https://image.tmdb.org/t/p/original";
     const lazyLoad = "?tr=w-1,h-1"
 
@@ -82,7 +84,7 @@ class MaterialUiCarousel extends React.Component {
         <Paper square elevation={0} className={classes.title}>
 
           <Typography gutterBottom variant="title">
-            <div className="carouseltitle">{head}</div>
+            <div className="carouseltitle" onClick={renderPage} id={id}>{head}</div>
           </Typography>
         </Paper>
 
@@ -92,7 +94,7 @@ class MaterialUiCarousel extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {movies.results.slice(1, 11).map((movie, index) => (
+          {movieArray.map((movie, index) => (
             <div key={movie.title} className={classes.image} id={movie.id} onClick={this.props.getMovieDetail}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>

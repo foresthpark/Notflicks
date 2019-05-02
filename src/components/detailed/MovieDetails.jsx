@@ -6,7 +6,7 @@ import DetailBackdrop from "./DetailBackdrop"
 import Synopsis from "./Synopsis";
 import RelatedCard from "../cards/RelatedCard";
 import DetailCard from "../cards/DetailCard";
-import { getMovieDetail } from "../../actions";
+import {getMovieDetail} from "../../actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -44,7 +44,6 @@ class MovieDetails extends React.Component {
           <DetailBackdrop movie={movie}/>
           <Synopsis movie={movie}/>
           <RelatedCard movie={movie} clicker={getMovieDetail}/>
-          <DetailCard movie={movie} getMovieDetail={getMovieDetail}/>
         </div>
       )
   }

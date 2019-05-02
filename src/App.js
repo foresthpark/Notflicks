@@ -12,7 +12,7 @@ import Loading from './components/loading/Loading'
 import Scroll from "./components/navigation/Scroll"
 import "./components/css/moviecard.css"
 import "./App.css"
-import Popular from "./components/cards/Popular";
+import MovieGridList from "./components/carousel/MovieGridList";
 
 const mapStateToProps = (state) => {
   return {
@@ -52,9 +52,12 @@ class App extends Component {
           <Scroll>
             {renderPage === 'notflicks' &&
             <div className="mainpagecarousel">
-              <MaterialUiCarousel movies={movies[0]} head={"Top Rated Movies"} getMovieDetail={onGetMovieDetail}/>
-              <MaterialUiCarousel movies={movies[1]} head={"Upcoming Movies"} getMovieDetail={onGetMovieDetail}/>
-              <MaterialUiCarousel movies={movies[2]} head={"Movies Now Playing"} getMovieDetail={onGetMovieDetail}/>
+              <MaterialUiCarousel movies={movies[0]} head={"Top Rated Movies"} getMovieDetail={onGetMovieDetail}
+                                  renderPage={onRenderPage} id={"toprated"}/>
+              <MaterialUiCarousel movies={movies[1]} head={"Movies Now Playing"} getMovieDetail={onGetMovieDetail}
+                                  renderPage={onRenderPage} id={"nowplaying"}/>
+              <MaterialUiCarousel movies={movies[2]} head={"Upcoming Movies"} getMovieDetail={onGetMovieDetail}
+                                  renderPage={onRenderPage} id={"upoming"}/>
             </div>
             }
             {renderPage === 'toprated' &&
@@ -74,7 +77,7 @@ class App extends Component {
           {renderDetail === true &&
           <Scroll>
             <MovieDetails
-              movieId = {movieId}
+              movieId={movieId}
               getMovieDetail={onGetMovieDetail}
             />
           </Scroll>

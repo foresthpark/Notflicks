@@ -13,9 +13,10 @@ class DetailBackdrop extends React.Component {
         backgroundImage: `url(${imgURL}${movie[0].backdrop_path})`,
         backgroundSize: "100%",
         width: "100%",
-        height: "100%",
+        height: "100vh",
         opacity: "0.4",
         position: "absolute",
+        backgroundRepeat: "no-repeat",
         zIndex: -1,
         top: 0,
         bottom: 0,
@@ -35,7 +36,7 @@ class DetailBackdrop extends React.Component {
             {movie[0].tagline}
           </div>
           <div className="rating">
-            &#11088; {movie[0].vote_average}
+            <span>&#11088;</span> {movie[0].vote_average}
           </div>
         </div>
       </div>
