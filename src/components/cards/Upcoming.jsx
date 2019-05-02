@@ -1,43 +1,32 @@
 import React from "react"
 import MovieCard from "./MovieCard";
-import Loading from "../loading/Loading"
 import "../css/moviecard.css"
 
 class Upcoming extends React.Component {
-  _renderMovies = () => {
-    const {movies} = this.props
-    const moviesArray = movies.results.map((movie, index) =>
-      <MovieCard
-        title={movie.original_title}
-        poster={movie.poster_path}
-        synopsis={movie.overview}
-        release={movie.release_date}
-        movieid={movie.id}
-        rating={movie.vote_average}
-        index={index}
-        key={index}
-        clicker={this.clickHandler}
-      />
-    );
-    return moviesArray
-  }
-
-  clickHandler = (event) => {
-    this.setState({
-      detailspage: true,
-      selectedmovie: event.currentTarget.id
-    }, () => console.log(this.state.selectedmovie))
-  }
-
   render() {
-    const {head, movies} = this.props
+    const {movies, getMovieDetail, head} = this.props
+    const moviesCard = movies.results.map((movie, index) => {
+      return (
+        <MovieCard
+          key={movie.id}
+          title={movie.original_title}
+          poster={movie.poster_path}
+          synopsis={movie.overview}
+          release={movie.release_date}
+          movieid={movie.id}
+          rating={movie.vote_average}
+          index={index}
+          clicker={getMovieDetail}
+        />
+      )
+    })
     return (
-      <div classname="cardcontainer">
+      <div className="cardcontainer">
         <div className="cardhead">
           {head}
         </div>
         <div className="moviecard">
-          {movies ? this._renderMovies() : <Loading/>}
+          {moviesCard}
         </div>
       </div>
     );

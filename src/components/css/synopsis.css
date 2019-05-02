@@ -12,7 +12,6 @@
     url('../fonts/opensans-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 .header {
@@ -27,5 +26,6 @@
     font-family: "open_sansregular";
     font-size: 2em;
     padding-left: 20px;
+    padding-right: 5px;
 
 }

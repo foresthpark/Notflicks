@@ -16,7 +16,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: 300,
     flexGrow: 1,
     padding: 20
   },
@@ -24,6 +24,7 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     flexDirection: "column",
+    cursor: "pointer",
   },
   footer: {
     display: 'flex',
@@ -36,7 +37,6 @@ const styles = theme => ({
     display: 'flex',
     textAlign: 'center',
     height: 40,
-    // paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default,
   },
   img: {
@@ -72,7 +72,7 @@ class MaterialUiCarousel extends React.Component {
   render() {
     const {classes, theme, movies, head} = this.props;
     const {activeStep} = this.state;
-    const maxSteps = movies.results.length;
+    const maxSteps = movies.results.slice(1, 11).length;
     const imgURL = "https://image.tmdb.org/t/p/original";
     const lazyLoad = "?tr=w-1,h-1"
 
@@ -92,8 +92,8 @@ class MaterialUiCarousel extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {movies.results.map((movie, index) => (
-            <div key={movie.title} className={classes.image} id={movie.id} onClick = {this.props.getMovieDetail}>
+          {movies.results.slice(1, 11).map((movie, index) => (
+            <div key={movie.title} className={classes.image} id={movie.id} onClick={this.props.getMovieDetail}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
               ) : null}
@@ -103,7 +103,6 @@ class MaterialUiCarousel extends React.Component {
                     <LinesEllipsis
                       text={movie.title}
                       maxLine='2'
-                      // lineHeight='20'
                       ellipsis=' ...'
                       trimRight
                       basedOn='letters'

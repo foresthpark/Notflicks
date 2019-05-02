@@ -103,13 +103,13 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes, renderPage } = this.props;
+    const {classes, renderPage} = this.props;
 
     const sideList = (
       <div className={classes.list}>
         <List>
           <ListItem>
-            <div className="listitemstitle" onClick= { renderPage } id='notflicks'>
+            <div className="listitemstitle" onClick={renderPage} id='notflicks'>
               NotFlicks
             </div>
           </ListItem>
@@ -118,26 +118,26 @@ class SearchAppBar extends React.Component {
         <Divider/>
 
         <List>
-          <ListItem button={true}>
-            <div className="listitems" onClick= { renderPage } id='toprated'>
+          <ListItem button={true} onClick={renderPage} id='toprated'>
+            <div className="listitems" onClick={renderPage} id='toprated'>
               Top rated
             </div>
           </ListItem>
 
-          <ListItem button={true}>
-            <div className="listitems" onClick= { renderPage } id='nowplaying'>
+          <ListItem button={true} onClick={renderPage} id='nowplaying'>
+            <div className="listitems" onClick={renderPage} id='nowplaying'>
               Now Playing
             </div>
           </ListItem>
 
-          <ListItem button={true}>
-            <div className="listitems" onClick= { renderPage } id='upcoming'>
+          <ListItem button={true} onClick={renderPage} id='upcoming'>
+            <div className="listitems" onClick={renderPage} id='upcoming'>
               Upcoming
             </div>
           </ListItem>
 
-          <ListItem button={true}>
-            <div className="listitems">
+          <ListItem button={true} onClick={renderPage} id='popular'>
+            <div className="listitems" onClick={renderPage} id='popular'>
               Popular
             </div>
           </ListItem>
@@ -146,7 +146,7 @@ class SearchAppBar extends React.Component {
         <Divider/>
         <List>
           <ListItem button={true}>
-            <a className="menulinks" href="https://google.com">
+            <a className="menulinks" href="https://youtu.be/dQw4w9WgXcQ">
               <div className="listitems">
                 Search
               </div>
@@ -178,8 +178,8 @@ class SearchAppBar extends React.Component {
                 {sideList}
               </div>
             </Drawer>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              <div className="app_title" id='notflicks' onClick={ this.props.renderPage } >NotFlicks</div>
+            <Typography className={classes.title} variant="h5" color="inherit" noWrap>
+              <div className="app_title" id='notflicks' onClick={this.props.renderPage}>NotFlicks</div>
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>

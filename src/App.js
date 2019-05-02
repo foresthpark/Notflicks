@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavBar from "./components/navigation/NavBar"
 import MovieDetails from './components/detailed/MovieDetails'
-import {requestMovies, getMovieDetail, renderPage } from './actions'
+import {requestMovies, getMovieDetail, renderPage} from './actions'
 import MaterialUiCarousel from "./components/carousel/MaterialUiCarousel"
 import NowPlaying from "./components/cards/NowPlaying";
 import TopRated from "./components/cards/TopRated"
@@ -11,6 +11,7 @@ import Loading from './components/loading/Loading'
 import Scroll from "./components/navigation/Scroll"
 import "./components/css/moviecard.css"
 import "./App.css"
+import Popular from "./components/cards/Popular";
 
 const mapStateToProps = (state) => {
   return {
@@ -45,36 +46,40 @@ class App extends Component {
     return isPending ? <Loading/> :
       (
         <div className="App">
-          <NavBar renderPage = {onRenderPage} />
+          <NavBar renderPage={onRenderPage}/>
           {renderDetail === false &&
           <Scroll>
             {renderPage === 'notflicks' &&
-              <div className="mainpagecarousel">
-                <MaterialUiCarousel movies={movies[0]} head={"Hello?"} getMovieDetail={onGetMovieDetail}/>
-                <MaterialUiCarousel movies={movies[1]} head={"Is it me..."} getMovieDetail={onGetMovieDetail}/>
-                <MaterialUiCarousel movies={movies[2]} head={"You're looking for??"} getMovieDetail={onGetMovieDetail}/>
-              </div>
+            <div className="mainpagecarousel">
+              <MaterialUiCarousel movies={movies[0]} head={"Top Rated Movies"} getMovieDetail={onGetMovieDetail}/>
+              <MaterialUiCarousel movies={movies[1]} head={"Upcoming Movies"} getMovieDetail={onGetMovieDetail}/>
+              <MaterialUiCarousel movies={movies[2]} head={"Movies Now Playing"} getMovieDetail={onGetMovieDetail}/>
+            </div>
             }
             {renderPage === 'toprated' &&
-              <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"} />
+            <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
             }
             {renderPage === 'upcoming' &&
-              <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
             }
             {renderPage === 'nowplaying' &&
-              <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+            <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+            }
+            {renderPage === 'popular' &&
+            <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
             }
             {renderDetail === true &&
             <MovieDetails
               movieId={movieId}
+              getMovieDetail={onGetMovieDetail}
             />
             }
           </Scroll>
           }
           {renderDetail === true &&
-            <MovieDetails
-              movieId = {movieId}
-            />
+          <MovieDetails
+            movieId={movieId}
+          />
           }
         </div>
       )

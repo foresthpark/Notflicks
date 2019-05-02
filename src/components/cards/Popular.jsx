@@ -2,7 +2,7 @@ import React from "react"
 import MovieCard from "./MovieCard";
 import "../css/moviecard.css"
 
-class NowPlaying extends React.Component {
+class Popular extends React.Component {
   render() {
     const {movies, getMovieDetail, head} = this.props
     const moviesCard = movies.results.map((movie, index) => {
@@ -33,4 +33,4 @@ class NowPlaying extends React.Component {
   }
 }
 
-export default NowPlaying
+export default Popular

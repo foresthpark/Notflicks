@@ -4,7 +4,7 @@ import {requestDetail} from './actions'
 import Loading from "../loading/Loading";
 import DetailBackdrop from "./DetailBackdrop"
 import Synopsis from "./Synopsis";
-import DetailCard from "../cards/DetailCard";
+import RelatedCard from "../cards/RelatedCard";
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +27,7 @@ class MovieDetails extends React.Component {
 
 
   render() {
-    const {movie} = this.props
+    const {movie, getMovieDetail} = this.props
 
     console.log('movieDetail', this.props.movie)
 
@@ -41,7 +41,7 @@ class MovieDetails extends React.Component {
         <div style={backdrop}>
           <DetailBackdrop movie={movie}/>
           <Synopsis movie={movie}/>
-          <DetailCard movie={movie}/>
+          <RelatedCard movie={movie} clicker={getMovieDetail}/>
         </div>
       )
   }

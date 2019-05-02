@@ -5,8 +5,8 @@ class DetailBackdrop extends React.Component {
 
   render() {
     const {movie} = this.props
+    // Base URL for all images in API
     const imgURL = "https://image.tmdb.org/t/p/original"
-
 
     const styles = {
       backdrop: {
@@ -22,20 +22,21 @@ class DetailBackdrop extends React.Component {
         left: 0,
         right: 0,
       },
-
     };
 
     return (
       <div className="container">
         <div style={styles.backdrop}></div>
-        <div className="movieheader">
-          {movie[0].title}
-        </div>
-        <div className="tagline">
-          {movie[0].tagline}
-        </div>
-        <div className="rating">
-          &#11088;{movie[0].vote_average}
+        <div className="stickydiv">
+          <div className="movieheader">
+            {movie[0].title}
+          </div>
+          <div className="tagline">
+            {movie[0].tagline}
+          </div>
+          <div className="rating">
+            &#11088; {movie[0].vote_average}
+          </div>
         </div>
       </div>
     );

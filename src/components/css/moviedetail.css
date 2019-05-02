@@ -15,6 +15,11 @@
     vertical-align: text-bottom;
 }
 
+.stickydiv {
+    position: sticky;
+    top: 0;
+}
+
 .movieheader {
     font-family: "bebas_neueregular";
     /*font-size: 7em;*/
@@ -22,6 +27,8 @@
     text-shadow: 2px 2px grey;
     padding-left: 20px;
     padding-top: 40px;
+    position: sticky;
+    top: 0;
 }
 
 .tagline {
