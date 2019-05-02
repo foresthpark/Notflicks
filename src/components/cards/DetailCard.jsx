@@ -5,7 +5,7 @@ import "../css/detailcard.css"
 class DetailCard extends React.Component {
 
   render() {
-    const {movie} = this.props
+    const {movie, getMovieDetail} = this.props
 
     const detailCard = movie[1].results.slice(1, 6).map((movie, index) => {
       return (
@@ -18,7 +18,7 @@ class DetailCard extends React.Component {
           movieid={movie.id}
           rating={movie.vote_average}
           index={index}
-          // MUST ADD CLICKER HERE
+          clicker={getMovieDetail}
         />
       )
     });

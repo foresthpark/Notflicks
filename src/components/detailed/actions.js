@@ -11,7 +11,13 @@ export const requestDetail = (text) => async (dispatch) => {
     //movie detail API
     `https://api.themoviedb.org/3/movie/${text}?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US`,
     //get recommended API
-    `https://api.themoviedb.org/3/movie/${text}/recommendations?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1`
+		`https://api.themoviedb.org/3/movie/${text}/recommendations?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1`,
+		//get videos API
+		`https://api.themoviedb.org/3/movie/${text}/videos?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US`,
+		//get credits API
+		`https://api.themoviedb.org/3/movie/${text}/credits?api_key=5abdca519fcfe51f18cec09aefcec6b4`,
+		//get reviews API
+		`https://api.themoviedb.org/3/movie/${text}/reviews?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1`
   ]
 	try{
 		dispatch({ type: REQUEST_DETAIL_PENDING})

@@ -4,7 +4,7 @@ import "../css/moviecard.css"
 
 class TopRated extends React.Component {
   render() {
-    const {movies, getMovieDetail} = this.props
+    const {movies, getMovieDetail, head} = this.props
     const moviesCard = movies.results.map((movie, index) => {
       return (
         <MovieCard
@@ -21,10 +21,15 @@ class TopRated extends React.Component {
       )
     })
     return (
+      <div classname="cardcontainer">
+      <div className="cardhead">
+        {head}
+      </div>
       <div className="moviecard">
         {moviesCard}
       </div>
-    );
+    </div>
+    )
   }
 }
 

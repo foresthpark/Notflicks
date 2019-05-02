@@ -137,7 +137,7 @@ class SearchAppBar extends React.Component {
           </ListItem>
 
           <ListItem button={true}>
-            <div className="listitems">
+            <div className="listitems" onClick= { renderPage } id='popular' >
               Popular
             </div>
           </ListItem>
