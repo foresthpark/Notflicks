@@ -1,8 +1,9 @@
 .mainpagecarousel {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
-    padding: 20px;
+
 }
 
 .App {

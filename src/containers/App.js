@@ -13,6 +13,7 @@ import Loading from '../components/loading/Loading'
 import Scroll from "../components/navigation/Scroll"
 import "../components/css/moviecard.css"
 import "./App.css"
+import CarouselCard from "../components/cards/CarouselCard";
 // import { searchDetail } from './reducers';
 
 
@@ -64,13 +65,8 @@ class App extends Component {
           {renderDetail === false &&
           <Scroll>
             {renderPage === 'notflicks' &&
-            <div className="mainpagecarousel">
-              <MaterialUiCarousel movies={movies[0]} head={"Top Rated Movies"} getMovieDetail={onGetMovieDetail}
-                                  renderPage={onRenderPage} id={"toprated"}/>
-              <MaterialUiCarousel movies={movies[1]} head={"Movies Now Playing"} getMovieDetail={onGetMovieDetail}
-                                  renderPage={onRenderPage} id={"nowplaying"}/>
-              <MaterialUiCarousel movies={movies[2]} head={"Upcoming Movies"} getMovieDetail={onGetMovieDetail}
-                                  renderPage={onRenderPage} id={"upoming"}/>
+            <div>
+              <CarouselCard movies={movies} getMovieDetail={onGetMovieDetail} renderPage={onRenderPage}/>
             </div>
             }
             {renderPage === 'toprated' &&
