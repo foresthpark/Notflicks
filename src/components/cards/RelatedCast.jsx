@@ -23,7 +23,7 @@ function RelateCast(props) {
   const {classes, poster, character, name, clicker, index} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
-  
+
   let fullURL;
   if (poster !== null) {
     fullURL = `${imgURL}${poster}${lazyLoad}`
@@ -59,7 +59,9 @@ function RelateCast(props) {
               </div>
             </Typography>
             <Typography gutterBottom variant="title">
-              <div className="actorname">{name}</div>
+              <div className="actorname">
+                <div>{name}</div>
+              </div>
             </Typography>
           </CardContent>
         </CardActionArea>

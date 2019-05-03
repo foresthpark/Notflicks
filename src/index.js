@@ -7,6 +7,7 @@ import thunkMiddleware from 'redux-thunk'
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 import {requestMovies, getMovieDetail, searchInput} from './containers/reducers'
 import {requestDetail} from './components/detailed/reducers'
@@ -17,8 +18,11 @@ const rootReducer = combineReducers({requestMovies, getMovieDetail, requestDetai
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
 
 ReactDOM.render(<Provider store={store}>
-  <App/>
-</Provider>, document.getElementById('root'))
+    <Router>
+      <App/>
+    </Router>
+  </Provider>
+  , document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

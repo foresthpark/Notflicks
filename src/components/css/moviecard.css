@@ -42,12 +42,18 @@
 
 .charactername {
     font-family: 'open_sansregular';
+    font-size: 0.8em;
     text-align: center;
 }
 
 .actorname {
     font-family: "bebas_neueregular";
     text-shadow: 2px 2px #BCC1C4;
-    font-size: 0.9em;
+    font-size: 1em;
     text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

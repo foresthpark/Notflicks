@@ -5,15 +5,17 @@ import "./loading.css"
 const Loading = () => {
   return (
     <div className="loading">
-      <ActivityIndicator
-        number={4}
-        diameter={40}
-        duration={100}
-        activeColor="#02A7CE"
-        borderColor="white"
-        borderWidth={5}
-        borderRadius="50%"
-      />
+      <div>
+        <ActivityIndicator
+          number={4}
+          diameter={40}
+          duration={100}
+          activeColor="#02A7CE"
+          borderColor="white"
+          borderWidth={5}
+          borderRadius="50%"
+        />
+      </div>
       {/*<h1 className="roboheader">Loading</h1>*/}
     </div>
   );

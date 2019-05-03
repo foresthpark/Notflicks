@@ -1,5 +1,7 @@
 import React from "react"
 import MovieCard from "./MovieCard";
+import {BrowserRouter as Router, Route, Switch, Link, withRouter, Redirect} from "react-router-dom";
+
 import "../css/moviecard.css"
 
 class TopRated extends React.Component {

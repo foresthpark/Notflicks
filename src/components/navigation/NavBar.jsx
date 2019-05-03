@@ -13,10 +13,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
 import "../css/leftmenu.css"
 import "../css/navbar.css"
 
@@ -106,106 +103,125 @@ class SearchAppBar extends React.Component {
     const {classes, renderPage} = this.props;
 
     const sideList = (
-      <div className={classes.list}>
-        <List>
-          <ListItem>
-            <div className="listitemstitle" onClick={renderPage} id='notflicks'>
-              NotFlicks
-            </div>
-          </ListItem>
-        </List>
+      <Router>
+        <div className={classes.list}>
+          <List>
+            <ListItem>
+              <NavLink to={'/'}>
+                <div className="listitemstitle" onClick={renderPage} id='notflicks'>
+                  NotFlicks
+                </div>
+              </NavLink>
+            </ListItem>
+          </List>
 
-        <Divider/>
+          <Divider/>
 
-        <List>
-          <ListItem button={true} onClick={renderPage} id='toprated'>
-            <div className="listitems" onClick={renderPage} id='toprated'>
-              Top rated
-            </div>
-          </ListItem>
+          <List>
+            <ListItem button={true} onClick={renderPage} id='toprated'>
+              <NavLink to='/toprated'>
+                <div className="listitems" onClick={renderPage} id='toprated'>
+                  Top rated
+                </div>
+              </NavLink>
+            </ListItem>
 
-          <ListItem button={true} onClick={renderPage} id='nowplaying'>
-            <div className="listitems" onClick={renderPage} id='nowplaying'>
-              Now Playing
-            </div>
-          </ListItem>
+            <ListItem button={true} onClick={renderPage} id='nowplaying'>
+              <Link to={'/nowplaying'}>
+                <div className="listitems" onClick={renderPage} id='nowplaying'>
+                  Now Playing
+                </div>
+              </Link>
+            </ListItem>
 
-          <ListItem button={true} onClick={renderPage} id='upcoming'>
-            <div className="listitems" onClick={renderPage} id='upcoming'>
-              Upcoming
-            </div>
-          </ListItem>
+            <ListItem button={true} onClick={renderPage} id='upcoming'>
+              <Link to={'/upcoming'}>
+                <div className="listitems" onClick={renderPage} id='upcoming'>
+                  Upcoming
+                </div>
+              </Link>
+            </ListItem>
 
-          <ListItem button={true} onClick={renderPage} id='popular'>
-            <div className="listitems" onClick={renderPage} id='popular'>
-              Popular
-            </div>
-          </ListItem>
-
-        </List>
-        <Divider/>
-        <List>
-          <ListItem button={true}>
-            <a className="menulinks" href="https://youtu.be/dQw4w9WgXcQ">
-              <div className="listitems">
-                Search
-              </div>
-            </a>
-          </ListItem>
-        </List>
-      </div>
+            <ListItem button={true} onClick={renderPage} id='popular'>
+              <Link to={'/popular'}>
+                <div className="listitems" onClick={renderPage} id='popular'>
+                  Popular
+                </div>
+              </Link>
+            </ListItem>
+          </List>
+          <Divider/>
+          <List>
+            <ListItem button={true}>
+              <a className="menulinks" href="https://youtu.be/dQw4w9WgXcQ">
+                <div className="listitems">
+                  Search
+                </div>
+              </a>
+            </ListItem>
+          </List>
+        </div>
+      </Router>
     )
 
     return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar style={{backgroundColor: "#40BDDB"}}>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.toggleDrawer('left', true)}>
-              <MenuIcon/>
-            </IconButton>
-            <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
-              <div
-                tabIndex={0}
-                role="button"
-                onClick={this.toggleDrawer('left', false)}
-                onKeyDown={this.toggleDrawer('left', false)}
-                className={classes.list}
-              >
-                {sideList}
-              </div>
-            </Drawer>
-            <Typography className={classes.title} variant="h5" color="inherit" noWrap>
-              <div className="app_title" id='notflicks' onClick={this.props.renderPage}>NotFlicks</div>
-            </Typography>
-            <div className={classes.grow}/>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon/>
-              </div>
-              <InputBase
-                type='text'
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                onChange={this.props.searchInput}
-                // onKeyPress={
-                //   (event) => { if (event.key === 'Enter') { console.log(this.props.searchInputField) } }
-                //   }
-                onKeyPress={
-                  (event) => { if (event.key === 'Enter') { this.props.searchDetail(this.props.searchInputField) } }
+      <Router>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Toolbar style={{backgroundColor: "#40BDDB"}}>
+              <IconButton
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.toggleDrawer('left', true)}>
+                <MenuIcon/>
+              </IconButton>
+              <Drawer open={this.state.left} onClose={this.toggleDrawer('left', false)}>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  onClick={this.toggleDrawer('left', false)}
+                  onKeyDown={this.toggleDrawer('left', false)}
+                  className={classes.list}
+                >
+                  {sideList}
+                </div>
+              </Drawer>
+              <Typography className={classes.title} variant="h5" color="inherit" noWrap>
+                <Link to={'/'}>
+                  <div className="app_title" id='notflicks' onClick={this.props.renderPage}>NotFlicks</div>
+                </Link>
+              </Typography>
+              <div className={classes.grow}/>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon/>
+                </div>
+                <InputBase
+                  type='text'
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  onChange={this.props.searchInput}
+                  // onKeyPress={
+                  //   (event) => { if (event.key === 'Enter') { console.log(this.props.searchInputField) } }
+                  //   }
+                  onKeyPress={
+                    (event) => {
+                      if (event.key === 'Enter') {
+                        this.props.searchDetail(this.props.searchInputField)
+                      }
+                    }
                   }
-                value={this.props.searchInputField}
-              />
-            </div>
-          </Toolbar>
-        </AppBar>
-      </div>
+                  value={this.props.searchInputField}
+                />
+              </div>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </Router>
     )
   }
 }

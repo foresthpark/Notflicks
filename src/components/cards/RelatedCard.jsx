@@ -30,7 +30,7 @@ class RelatedCard extends React.Component {
         )
       });
     } else {
-      relatedMoviesCard = <div>There are no movies related to this movie</div>
+      relatedMoviesCard = <div>Sorry, there are no movies related to this movie</div>
     }
 
     const castCard = movie[2].cast.slice(0, 5).map((movie, index) => {
@@ -58,7 +58,7 @@ class RelatedCard extends React.Component {
         )
       })
     } else {
-      reviewsCard = <div>There are no reviews for this movie</div>
+      reviewsCard = <div>Sorry, there are no reviews for this movie</div>
     }
 
     let movieTrailer;

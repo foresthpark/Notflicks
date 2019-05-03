@@ -22,6 +22,14 @@ function MovieCard(props) {
   const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
+  let fullURL;
+
+  if (poster !== null) {
+    fullURL = `${imgURL}${poster}${lazyLoad}`
+  } else {
+    fullURL = "https://i.imgur.com/t3F3WQp.jpg"
+  }
+
 
   return (
     <div className="innnercard" id={index}>
@@ -33,7 +41,7 @@ function MovieCard(props) {
               alt="a movie poster"
               className={classes.media}
               height="468"
-              image={`${imgURL}${poster}${lazyLoad}`}
+              image={fullURL}
               title={title}
               movieid={movieid}
             />
