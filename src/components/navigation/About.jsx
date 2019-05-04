@@ -24,15 +24,6 @@ class About extends React.Component {
       }
     ]
 
-    const styles = {
-      card: {
-        maxWidth: 210,
-      },
-      media: {
-        objectFit: 'cover',
-      },
-    };
-
     const notMembers = members.map(({name, email, github, image, story}, index) => {
       return (
         <AboutCard
