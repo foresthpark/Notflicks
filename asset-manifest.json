@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/foresthpark/Notflicks/static/css/main.ec128bc3.chunk.css",
-    "main.js": "/foresthpark/Notflicks/static/js/main.dad1b5a3.chunk.js",
-    "main.js.map": "/foresthpark/Notflicks/static/js/main.dad1b5a3.chunk.js.map",
-    "runtime~main.js": "/foresthpark/Notflicks/static/js/runtime~main.86b190b1.js",
-    "runtime~main.js.map": "/foresthpark/Notflicks/static/js/runtime~main.86b190b1.js.map",
-    "static/js/2.59563a64.chunk.js": "/foresthpark/Notflicks/static/js/2.59563a64.chunk.js",
-    "static/js/2.59563a64.chunk.js.map": "/foresthpark/Notflicks/static/js/2.59563a64.chunk.js.map",
-    "index.html": "/foresthpark/Notflicks/index.html",
-    "precache-manifest.c19983f8dcdf0b275a8e44518b1f5ecb.js": "/foresthpark/Notflicks/precache-manifest.c19983f8dcdf0b275a8e44518b1f5ecb.js",
-    "service-worker.js": "/foresthpark/Notflicks/service-worker.js",
-    "static/css/main.ec128bc3.chunk.css.map": "/foresthpark/Notflicks/static/css/main.ec128bc3.chunk.css.map",
-    "static/media/about.css": "/foresthpark/Notflicks/static/media/bebasneue-regular-webfont.96ea7779.woff2",
-    "static/media/detailcard.css": "/foresthpark/Notflicks/static/media/opensans-regular-webfont.39c35d94.woff2",
-    "static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg": "/foresthpark/Notflicks/static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.02a9430b.svg"
+    "main.css": "/Notflicks/static/css/main.8509feeb.chunk.css",
+    "main.js": "/Notflicks/static/js/main.0ca4e025.chunk.js",
+    "main.js.map": "/Notflicks/static/js/main.0ca4e025.chunk.js.map",
+    "runtime~main.js": "/Notflicks/static/js/runtime~main.06e79e30.js",
+    "runtime~main.js.map": "/Notflicks/static/js/runtime~main.06e79e30.js.map",
+    "static/js/2.59563a64.chunk.js": "/Notflicks/static/js/2.59563a64.chunk.js",
+    "static/js/2.59563a64.chunk.js.map": "/Notflicks/static/js/2.59563a64.chunk.js.map",
+    "index.html": "/Notflicks/index.html",
+    "precache-manifest.531f6acec67275c8f616bbd2e4fc730e.js": "/Notflicks/precache-manifest.531f6acec67275c8f616bbd2e4fc730e.js",
+    "service-worker.js": "/Notflicks/service-worker.js",
+    "static/css/main.8509feeb.chunk.css.map": "/Notflicks/static/css/main.8509feeb.chunk.css.map",
+    "static/media/about.css": "/Notflicks/static/media/bebasneue-regular-webfont.96ea7779.woff2",
+    "static/media/detailcard.css": "/Notflicks/static/media/opensans-regular-webfont.39c35d94.woff2",
+    "static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg": "/Notflicks/static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.02a9430b.svg"
   }
 }
