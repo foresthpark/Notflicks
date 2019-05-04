@@ -57,35 +57,3 @@ export const getMovieDetail = (state=intialStateDetail, action={}) => {
 			return state
 	}
 }
-
-// const initialSearchState = {
-// 	searchInputField: ''
-// }
-
-// export const searchInput = (state=initialSearchState, action={}) => {
-// 	switch (action.type) {
-// 		case GET_SEARCH_INPUT:
-// 			return {...state, searchInputField: action.payload}
-// 		default:
-// 			return state
-// 	}
-// }
-
-// const initialSearchDetailState ={
-// 	isPending2: true,
-// 	movie2: [],
-// 	error2: ''
-// }
-
-// export const searchDetail = (state=initialSearchDetailState, action={}) => {
-// 	switch (action.type) {
-// 		case REQUEST_SEARCH_PENDING:
-// 			return {...state, isPending2: true }
-// 		case REQUEST_SEARCH_SUCCESS:
-// 			return {...state, movie2: action.payload, isPending2: false}
-// 		case REQUEST_SEARCH_FAILED:
-// 			return {...state, error2: action.payload, isPending2: false}
-// 		default:
-// 			return state
-// 	}
-// }
