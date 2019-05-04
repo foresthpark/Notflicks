@@ -84,19 +84,27 @@ class Home extends React.Component {
 
             <Route exact={true} path={'/toprated'}
                    render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
+                                                renderPage={onRenderPage}
                                                 head={"Top Rated"} isAuthed={true}/>}/>
 
             <Route exact={true} path={'/nowplaying'}
                    render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
+                                                  renderPage={onRenderPage}
                                                   head={"Now Playing"} isAuthed={true}/>}/>
 
             <Route exact={true} path={'/upcoming'}
                    render={(props) => <Upcoming {...props} movies={movies[2]} getMovieDetail={onGetMovieDetail}
+                                                renderPage={onRenderPage}
                                                 head={"Upcoming"} isAuthed={true}/>}/>
 
             <Route exact={true} path={'/popular'}
                    render={(props) => <Popular {...props} movies={movies[3]} getMovieDetail={onGetMovieDetail}
                                                head={"Popular"} isAuthed={true}/>}/>
+
+            <Route exact={true} path={'/carousel'}
+                   render={(props) => <CarouselCard {...props} movies={movies} getMovieDetail={onGetMovieDetail}
+                                                    head={"Popular"} isAuthed={true}/>}/>
+
             <Route exact={true} path={'/'} component={TestRouter}/>
             <Route exact={true} path={'/test2'} component={TestRouter2}/>
 
