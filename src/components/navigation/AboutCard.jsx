@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -35,19 +34,18 @@ function AboutCard(props) {
             title={name}
           />
         </div>
-        {/*<CardActionArea>*/}
         <CardContent>
           <Typography gutterBottom variant="title">
             <div className="moviecardtitle">{name}</div>
           </Typography>
           <Typography gutterBottom variant="subtitle1">
             <div className="githublink">
-              <b>Email: </b><a href={`mailto:${email}`}>{email}</a>
+              <b>Email: </b><a href={`mailto:${email}`} rel="noopener">{email}</a>
             </div>
           </Typography>
           <Typography gutterBottom variant="subtitle1">
             <div className="githublink">
-              <b>Github: </b><a href={github} target="_blank">{github}</a>
+              <b>Github: </b><a href={github} rel="noreferrer noopener" target="_blank">{github}</a>
             </div>
           </Typography>
           <Typography component="p">
@@ -60,7 +58,6 @@ function AboutCard(props) {
             />
           </Typography>
         </CardContent>
-        {/*</CardActionArea>*/}
       </Card>
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react"
 import ReactPlayer from "react-player";
-import NoInfo from "./NoInfo";
 import "../css/videoplayer.css"
 
 class MovieTrailer extends React.Component {

@@ -6,7 +6,6 @@ import tmdb
 
 class About extends React.Component {
   render() {
-    const {classes} = this.props
     const members = [
       {
         name: "Forest Park",
@@ -49,8 +48,8 @@ class About extends React.Component {
           This site was made using The Movie Databse API
         </div>
         <div className="image">
-          <a href="https://www.themoviedb.org/documentation/api" target="_blank">
-            <img src={tmdb} width="200" height="100"></img>
+          <a href="https://www.themoviedb.org/documentation/api" target="_blank" rel="noreferrer noopener">
+            <img src={tmdb} width="200" height="100" alt="tmbd"></img>
           </a>
         </div>
       </div>
