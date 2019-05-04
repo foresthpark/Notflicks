@@ -118,17 +118,17 @@ class SearchAppBar extends React.Component {
           <Divider/>
 
           <List>
-            <ListItem button={true} onClick={renderPage} id='toprated'>
+            <ListItem button={true} id='toprated'>
               <NavLink to='/toprated'>
-                <div className="listitems" onClick={renderPage} id='toprated'>
+                <div className="listitems" id='toprated'>
                   Top rated
                 </div>
               </NavLink>
             </ListItem>
 
-            <ListItem button={true} onClick={renderPage} id='nowplaying'>
+            <ListItem button={true} id='nowplaying'>
               <Link to={'/nowplaying'}>
-                <div className="listitems" onClick={renderPage} id='nowplaying'>
+                <div className="listitems" id='nowplaying'>
                   Now Playing
                 </div>
               </Link>

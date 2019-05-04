@@ -16,8 +16,40 @@ import "../components/css/moviecard.css"
 import "./App.css"
 import CarouselCard from "../components/carousel/CarouselCard";
 import TestRouter from "../components/test/TestRouter"
+import App from '../containers/App'
+import TestRouter2 from "../components/test/TestRouter2";
+
+const mapStateToProps = (state) => {
+  return {
+    isPending: state.requestMovies.isPending,
+    movies: state.requestMovies.movies,
+    error: state.requestMovies.error,
+    movieId: state.getMovieDetail.movieId,
+    renderDetail: state.getMovieDetail.renderDetail,
+    renderPage: state.getMovieDetail.renderPage,
+    searchInputField: state.getMovieDetail.searchInputField,
+    isPending2: state.getMovieDetail.isPending2,
+    movie2: state.getMovieDetail.movie2,
+    error2: state.getMovieDetail.error2,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRequestMovies: () => dispatch(requestMovies()),
+    onGetMovieDetail: (event) => dispatch(getMovieDetail(event.currentTarget.id)),
+    onRenderPage: (event) => dispatch(renderPage(event.target.id)),
+    onSearchInput: (event) => dispatch(searchInput(event.target.value)),
+    onSearchDetail: (a) => dispatch(searchDetail(a))
+  }
+}
 
 class Home extends React.Component {
+
+
+  componentDidMount() {
+    this.props.onRequestMovies()
+  }
 
   render() {
     console.log('app render', this.props.renderPage)
@@ -26,58 +58,35 @@ class Home extends React.Component {
     return (
 
       <div className="App">
+        <NavBar
+          renderPage={onRenderPage}
+          searchInput={this.props.onSearchInput}
+          searchDetail={this.props.onSearchDetail}
+          searchInputField={this.props.searchInputField}
+        />
         <Switch>
-          <Route exact={true} path={'/'}
-                 render={(props) => <CarouselCard {...props} movies={movies} getMovieDetail={onGetMovieDetail}
-                                                  renderPage={onRenderPage} isAuthed={true} head={"Top Rated"}/>}/>
+          {/*<Route exact={true} path={'/'}*/}
+          {/*render={() => <App movies={movies} renderDetail={renderDetail} movieId={movieId} isPending={isPending}*/}
+          {/*renderPage={renderPage}*/}
+          {/*getMovieDetail={onGetMovieDetail}*/}
+          {/*renderPage={onRenderPage} isAuthed={true} head={"Top Rated"} children={true}/>}/>*/}
 
           <Route exact={true} path={'/toprated'}
                  render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
                                               head={"Top Rated"} isAuthed={true}/>}/>
 
+          <Route exact={true} path={'/nowplaying'}
+                 render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
+                                                head={"Now Playing"} isAuthed={true}/>}/>
+
+          <Route exact={true} path={'/'} component={TestRouter}/>
+          <Route exact={true} path={'/test2'} component={TestRouter2}/>
+
+
           {/*<Route exact={true} path={'/test'} component={TestRouter}/>*/}
 
 
         </Switch>
-
-        {/*{renderDetail === false &&*/}
-        {/*<Scroll>*/}
-        {/*{renderPage === 'notflicks' &&*/}
-        {/*<CarouselCard movies={movies} getMovieDetail={onGetMovieDetail}*/}
-        {/*renderPage={onRenderPage} id={"toprated"}/>*/}
-        {/*}*/}
-
-        {/*{renderPage === 'toprated' &&*/}
-        {/*<TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>*/}
-        {/*}*/}
-
-        {/*{renderPage === 'upcoming' &&*/}
-        {/*<Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>*/}
-        {/*}*/}
-
-        {/*{renderPage === 'nowplaying' &&*/}
-        {/*<NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>*/}
-        {/*}*/}
-
-        {/*{renderPage === 'popular' &&*/}
-        {/*<Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>*/}
-        {/*}*/}
-
-        {/*{renderPage === 'search' &&*/}
-        {/*<SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>*/}
-        {/*}*/}
-
-        {/*</Scroll>*/}
-        {/*}*/}
-
-        {/*{renderDetail === true &&*/}
-        {/*<Scroll>*/}
-        {/*<MovieDetails*/}
-        {/*movieId={movieId}*/}
-        {/*getMovieDetail={onGetMovieDetail}*/}
-        {/*/>*/}
-        {/*</Scroll>*/}
-        {/*}*/}
 
 
       </div>
@@ -86,4 +95,4 @@ class Home extends React.Component {
   }
 }
 
-export default withRouter(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
