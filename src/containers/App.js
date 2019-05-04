@@ -33,8 +33,9 @@ class App extends Component {
 
       <div className="App">
         <Scroll>
+
           <CarouselCard movies={movies} getMovieDetail={onGetMovieDetail}
-                        renderPage={onRenderPage} id={"toprated"}/>
+                        renderPage={onRenderPage}/>
         </Scroll>
 
       </div>

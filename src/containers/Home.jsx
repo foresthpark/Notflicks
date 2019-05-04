@@ -53,66 +53,59 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log('app render', this.props.renderPage)
+    console.log('app render', this.props.movies)
     const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
 
     return (
 
       <div className="App">
         <Router>
-          <NavBar
-            movies={movies}
-            onGetMovieDetail={onGetMovieDetail}
-            renderPage={onRenderPage}
-            searchInput={this.props.onSearchInput}
-            searchDetail={this.props.onSearchDetail}
-            searchInputField={this.props.searchInputField}
-          />
 
-          {/*<Route exact={true} path={'/'}*/}
-          {/*render={() => <App movies={movies} renderDetail={renderDetail} movieId={movieId} isPending={isPending}*/}
-          {/*renderPage={renderPage}*/}
-          {/*getMovieDetail={onGetMovieDetail}*/}
-          {/*renderPage={onRenderPage} isAuthed={true} head={"Top Rated"} children={true}/>}/>*/}
-          <Switch>
+          <Route path={'/'} render={(props) =>
+            <NavBar
+              movies={movies}
+              onGetMovieDetail={onGetMovieDetail}
+              renderPage={onRenderPage}
+              searchInput={this.props.onSearchInput}
+              searchDetail={this.props.onSearchDetail}
+              searchInputField={this.props.searchInputField}
+            />}/>
+          <Route path={'/'} component={TestRouter}/>
 
-            {/*<Route exact={true} path={'/'}*/}
-            {/*render={(props) => <CarouselCard {...props} movies={movies}*/}
-            {/*getMovieDetail={onGetMovieDetail}*/}
-            {/*renderPage={onRenderPage}*/}
-            {/*head={"Popular"} isAuthed={true}/>}/>*/}
+          <Route exact={true} path={'/'} component={() => <App movies={movies}
+                                                               getMovieDetail={onGetMovieDetail}
+                                                               nRenderPage={onRenderPage}/>}/>
 
-            <Route exact={true} path={'/toprated'}
-                   render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
+          <Route exact={true} path={'/toprated'}
+                 render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
+                                              renderPage={onRenderPage}
+                                              head={"Top Rated"} isAuthed={true}/>}/>
+
+          <Route exact={true} path={'/nowplaying'}
+                 render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
                                                 renderPage={onRenderPage}
-                                                head={"Top Rated"} isAuthed={true}/>}/>
+                                                head={"Now Playing"} isAuthed={true}/>}/>
 
-            <Route exact={true} path={'/nowplaying'}
-                   render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
-                                                  renderPage={onRenderPage}
-                                                  head={"Now Playing"} isAuthed={true}/>}/>
-
-            <Route exact={true} path={'/upcoming'}
-                   render={(props) => <Upcoming {...props} movies={movies[2]} getMovieDetail={onGetMovieDetail}
-                                                renderPage={onRenderPage}
-                                                head={"Upcoming"} isAuthed={true}/>}/>
-
-            <Route exact={true} path={'/popular'}
-                   render={(props) => <Popular {...props} movies={movies[3]} getMovieDetail={onGetMovieDetail}
-                                               head={"Popular"} isAuthed={true}/>}/>
-
-            <Route exact={true} path={'/carousel'}
-                   render={(props) => <CarouselCard {...props} movies={movies} getMovieDetail={onGetMovieDetail}
-                                                    head={"Popular"} isAuthed={true}/>}/>
-
-            <Route exact={true} path={'/'} component={TestRouter}/>
-            <Route exact={true} path={'/test2'} component={TestRouter2}/>
+          <Route exact={true} path={'/upcoming'}
+                 render={(props) => <Upcoming {...props} movies={movies[2]} getMovieDetail={onGetMovieDetail}
+                                              renderPage={onRenderPage}
+                                              head={"Upcoming"} isAuthed={true}/>}/>
+          <Route exact={true} path={'/popular'}
+                 render={(props) => <Popular {...props} movies={movies[3]} getMovieDetail={onGetMovieDetail}
+                                             head={"Popular"} isAuthed={true}/>}/>
 
 
-            {/*<Route exact={true} path={'/test'} component={TestRouter}/>*/}
+          <Route exact={true} path={'/app'}
+                 render={(props) => <App {...props} movies={movies} getMovieDetail={onGetMovieDetail}
+                                         head={"Popular"} isAuthed={true}/>}/>
+
+          <Route exact={true} path={'/test2'} component={TestRouter2}/>
 
 
-          </Switch>
+          <Route exact={true} path={'/test'} component={TestRouter}/>
+
+
+          {/*</Switch>*/}
 
         </Router>
       </div>
@@ -121,4 +114,4 @@ class Home extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home))

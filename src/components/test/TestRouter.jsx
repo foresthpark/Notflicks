@@ -27,9 +27,15 @@ class TestRouter extends React.Component {
         <Link to={'/popular'}>
           Go to POPULAR
         </Link>
+        <br/>
         <Link to={'/carousel'}>
           Go to CAROUSEL
         </Link>
+        <br/>
+        <Link to={'/app'}>
+          Go to APP
+        </Link>
+
 
       </div>
     );
