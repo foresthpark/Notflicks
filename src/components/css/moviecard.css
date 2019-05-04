@@ -51,3 +51,19 @@
     font-size: 0.9em;
     text-align: center;
 }
+
+.githublink a:link {
+    color: black;
+}
+
+.githublink a:visited {
+    color: black;
+}
+
+.githublink a:hover {
+    color: black;
+}
+
+.githublink a:active {
+    color: black;
+}

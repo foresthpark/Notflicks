@@ -141,16 +141,13 @@ class SearchAppBar extends React.Component {
               Popular
             </div>
           </ListItem>
-
         </List>
         <Divider/>
         <List>
-          <ListItem button={true}>
-            <a className="menulinks" href="https://youtu.be/dQw4w9WgXcQ">
-              <div className="listitems">
-                Search
-              </div>
-            </a>
+          <ListItem button={true} onClick={renderPage} id='about'>
+            <div className="listitems" onClick={renderPage} id='about'>
+              About
+            </div>
           </ListItem>
         </List>
       </div>
@@ -178,8 +175,10 @@ class SearchAppBar extends React.Component {
                 {sideList}
               </div>
             </Drawer>
-            <Typography className={classes.title} variant="h5" color="inherit" noWrap>
-              <div className="app_title" id='notflicks' onClick={this.props.renderPage}>NotFlicks</div>
+            <Typography className={classes.title} variant="h5" color="inherit">
+              <div className="app_title" id='notflicks' onClick={this.props.renderPage}>
+                NotFlicks
+              </div>
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>
@@ -194,12 +193,13 @@ class SearchAppBar extends React.Component {
                   input: classes.inputInput,
                 }}
                 onChange={this.props.searchInput}
-                // onKeyPress={
-                //   (event) => { if (event.key === 'Enter') { console.log(this.props.searchInputField) } }
-                //   }
                 onKeyPress={
-                  (event) => { if (event.key === 'Enter') { this.props.searchDetail(this.props.searchInputField) } }
+                  (event) => {
+                    if (event.key === 'Enter') {
+                      this.props.searchDetail(this.props.searchInputField)
+                    }
                   }
+                }
                 value={this.props.searchInputField}
               />
             </div>

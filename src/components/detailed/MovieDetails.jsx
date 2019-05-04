@@ -3,10 +3,7 @@ import {connect} from 'react-redux'
 import {requestDetail} from './actions'
 import Loading from "../loading/Loading";
 import DetailBackdrop from "./DetailBackdrop"
-import Synopsis from "./Synopsis";
 import RelatedCard from "../cards/RelatedCard";
-import DetailCard from "../cards/DetailCard";
-import {getMovieDetail} from "../../containers/actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -14,13 +11,13 @@ const mapStateToProps = (state) => {
     movie: state.requestDetail.movie,
     error: state.requestDetail.error
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onRequestDetail: (id) => dispatch(requestDetail(id)),
   }
-}
+};
 
 class MovieDetails extends React.Component {
   componentDidMount() {
@@ -29,20 +26,19 @@ class MovieDetails extends React.Component {
 
   onClick = (event) => {
     this.props.onRequestDetail(event.currentTarget.id)
-  }
+  };
 
   render() {
-    const {movie, isPending} = this.props
+    const {movie, isPending} = this.props;
     const backdrop = {
       width: "100%",
       height: "100%"
-    }
+    };
 
     return isPending ? <Loading/> :
       (
         <div style={backdrop}>
           <DetailBackdrop movie={movie}/>
-          <Synopsis movie={movie}/>
           <RelatedCard movie={movie} clicker={this.onClick}/>
         </div>
       )

@@ -5,7 +5,8 @@ import "../css/moviecard.css"
 class SearchResults extends React.Component {
   render() {
     const {movies, getMovieDetail, head} = this.props
-    const moviesCard = movies.results.map((movie, index) => {
+    const moviesArray = movies.results
+    const moviesCard = moviesArray.map((movie, index) => {
       return (
         <MovieCard
           key={movie.id}

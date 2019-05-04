@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar"
 import MovieDetails from '../components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail} from './actions'
-import MaterialUiCarousel from "../components/carousel/MaterialUiCarousel"
 import NowPlaying from "../components/cards/NowPlaying";
 import TopRated from "../components/cards/TopRated"
 import Upcoming from "../components/cards/Upcoming"
@@ -14,7 +13,8 @@ import Scroll from "../components/navigation/Scroll"
 import "../components/css/moviecard.css"
 import "./App.css"
 import CarouselCard from "../components/cards/CarouselCard";
-// import { searchDetail } from './reducers';
+import AboutCard from "../components/navigation/AboutCard";
+import About from "../components/navigation/About";
 
 
 const mapStateToProps = (state) => {
@@ -80,6 +80,9 @@ class App extends Component {
             }
             {renderPage === 'popular' &&
             <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
+            }
+            {renderPage === 'about' &&
+            <About/>
             }
             {renderPage === 'search' &&
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>

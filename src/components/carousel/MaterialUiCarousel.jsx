@@ -74,7 +74,7 @@ class MaterialUiCarousel extends React.Component {
     const {classes, theme, movies, head, getMovieDetail, renderPage, id} = this.props;
     const {activeStep} = this.state;
     const movieArray = movies.results.slice(0, 10)
-    const maxSteps = movieArray.length;
+    const maxDots = movieArray.length;
     const imgURL = "https://image.tmdb.org/t/p/original";
     const lazyLoad = "?tr=w-1,h-1"
 
@@ -116,12 +116,12 @@ class MaterialUiCarousel extends React.Component {
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper
-          steps={maxSteps}
+          steps={maxDots}
           position="static"
           activeStep={activeStep}
           className={classes.mobileStepper}
           nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
+            <Button size="small" onClick={this.handleNext} disabled={activeStep === maxDots - 1}>
               <div className="backnextbutton">
                 Next
               </div>

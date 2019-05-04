@@ -6,8 +6,8 @@ class DetailCard extends React.Component {
 
   render() {
     const {movie, getMovieDetail} = this.props
-
-    const detailCard = movie[1].results.slice(1, 6).map((movie, index) => {
+    const moviesArray = movie[1].results.slice(0, 5)
+    const detailCard = moviesArray.map((movie, index) => {
       return (
         <RelatedCard
           key={movie.id}

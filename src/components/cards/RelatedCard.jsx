@@ -12,11 +12,13 @@ class RelatedCard extends React.Component {
   render() {
     const {movie, clicker} = this.props
 
+    // Related Movies
+    const relatedArray = movie[1].results.slice(0, 5)
     let relatedMoviesCard;
-    if (movie[1].results.length > 0) {
-      relatedMoviesCard = movie[1].results.slice(0, 5).map((movie, index) => {
+    if (relatedArray.length > 0) {
+      relatedMoviesCard = relatedArray.map((movie, index) => {
         return (
-          <div><RelatedMovies
+          <RelatedMovies
             key={movie.id}
             title={movie.original_title}
             poster={movie.poster_path}
@@ -26,29 +28,37 @@ class RelatedCard extends React.Component {
             rating={movie.vote_average}
             index={index}
             clicker={clicker}
-          /></div>
+          />
         )
       });
     } else {
       relatedMoviesCard = <div>There are no movies related to this movie</div>
     }
 
-    const castCard = movie[2].cast.slice(0, 5).map((movie, index) => {
-      return (
-        <RelatedCast
-          key={index}
-          index={movie.id}
-          poster={movie.profile_path ? movie.profile_path : null}
-          character={movie.character}
-          name={movie.name}
-        />
-      )
-    });
+    // Related movie cast members
+    const castArray = movie[2].cast.slice(0, 5) // Grab up to only 5 cast members
+    let castCard;
+    if (castArray.length > 0) { // Check if a trailer object exists
+      castCard = castArray.map((movie, index) => {
+        return (
+          <RelatedCast
+            key={index}
+            index={movie.id}
+            poster={movie.profile_path ? movie.profile_path : null}
+            character={movie.character}
+            name={movie.name}
+          />
+        )
+      });
+    } else { // if now trailers exist:
+      castCard = <div>Sorry, there is no cast info for this movie</div>
+    }
 
-    const reviewsArray = movie[4].results
+    // Reviews for the movie
+    const reviewsArray = movie[4].results.slice(0, 5) // Grab only 5 reviews
     let reviewsCard;
-    if (reviewsArray.length > 0) {
-      reviewsCard = movie[4].results.slice(0.5).map((review, index) => {
+    if (reviewsArray.length > 0) { // Check if a review object exists
+      reviewsCard = reviewsArray.map((review, index) => {
         return (
           <ReviewCard
             key={index}
@@ -57,21 +67,31 @@ class RelatedCard extends React.Component {
           />
         )
       })
-    } else {
+    } else { // if now reviews exist:
       reviewsCard = <div>There are no reviews for this movie</div>
     }
 
+    // Movie Trailers - You only see one trailer
+    const trailersArray = movie[3].results
     let movieTrailer;
-    if (movie[3].results.length > 0) {
+    if (trailersArray.length > 0) { // Check if a trailer object exists
       movieTrailer = <MovieTrailer movie={movie}/>
-    } else {
+    } else { // if now trailers exist:
       movieTrailer = <div>Sorry, there are no trailers for this movie</div>
     }
 
     return (
       <div className="detailcardcontainer">
 
-        {/*Trailers will show here*/}
+
+        <div className="relatedheader">
+          Synopsis
+        </div>
+        <div className="synopsis">
+          {movie[0].overview}
+        </div>
+
+        {/*Trailers will display here*/}
         <div className="relatedheader">
           <div>Trailer</div>
         </div>
@@ -79,7 +99,7 @@ class RelatedCard extends React.Component {
           {movieTrailer}
         </div>
 
-        {/*Related Movies show here*/}
+        {/*Related Movies display here*/}
         <div className="relatedheader">
           <div>Related</div>
         </div>
@@ -87,7 +107,7 @@ class RelatedCard extends React.Component {
           {relatedMoviesCard}
         </div>
 
-        {/*Movie Cast shows here*/}
+        {/*Movie Cast display here*/}
         <div className="relatedheader">
           <div>Cast</div>
         </div>
@@ -95,7 +115,7 @@ class RelatedCard extends React.Component {
           {castCard}
         </div>
 
-        {/*Movie Reviews shows here*/}
+        {/*Movie Reviews display here*/}
         <div className="relatedheader">
           <div>Reviews</div>
         </div>

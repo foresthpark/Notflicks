@@ -1,10 +1,10 @@
 import React from "react"
 import "../css/synopsis.css"
 
-class Synopsis extends React.Component {
+class SynopsisCard extends React.Component {
 
   render() {
-    const {movie} = this.props
+    const {movie} = this.props;
     return (
       <div>
         <div className="header">
@@ -18,4 +18,4 @@ class Synopsis extends React.Component {
   }
 }
 
-export default Synopsis
+export default SynopsisCard
