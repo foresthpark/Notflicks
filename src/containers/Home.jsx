@@ -18,6 +18,7 @@ import CarouselCard from "../components/carousel/CarouselCard";
 import TestRouter from "../components/test/TestRouter"
 import App from '../containers/App'
 import TestRouter2 from "../components/test/TestRouter2";
+import HomeCarouselCard from "../components/navigation/HomeCarouselCard";
 
 const mapStateToProps = (state) => {
   return {
@@ -58,37 +59,54 @@ class Home extends React.Component {
     return (
 
       <div className="App">
-        <NavBar
-          renderPage={onRenderPage}
-          searchInput={this.props.onSearchInput}
-          searchDetail={this.props.onSearchDetail}
-          searchInputField={this.props.searchInputField}
-        />
-        <Switch>
+        <Router>
+          <NavBar
+            movies={movies}
+            onGetMovieDetail={onGetMovieDetail}
+            renderPage={onRenderPage}
+            searchInput={this.props.onSearchInput}
+            searchDetail={this.props.onSearchDetail}
+            searchInputField={this.props.searchInputField}
+          />
+
           {/*<Route exact={true} path={'/'}*/}
           {/*render={() => <App movies={movies} renderDetail={renderDetail} movieId={movieId} isPending={isPending}*/}
           {/*renderPage={renderPage}*/}
           {/*getMovieDetail={onGetMovieDetail}*/}
           {/*renderPage={onRenderPage} isAuthed={true} head={"Top Rated"} children={true}/>}/>*/}
+          <Switch>
 
-          <Route exact={true} path={'/toprated'}
-                 render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
-                                              head={"Top Rated"} isAuthed={true}/>}/>
+            {/*<Route exact={true} path={'/'}*/}
+            {/*render={(props) => <CarouselCard {...props} movies={movies}*/}
+            {/*getMovieDetail={onGetMovieDetail}*/}
+            {/*renderPage={onRenderPage}*/}
+            {/*head={"Popular"} isAuthed={true}/>}/>*/}
 
-          <Route exact={true} path={'/nowplaying'}
-                 render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
-                                                head={"Now Playing"} isAuthed={true}/>}/>
+            <Route exact={true} path={'/toprated'}
+                   render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
+                                                head={"Top Rated"} isAuthed={true}/>}/>
 
-          <Route exact={true} path={'/'} component={TestRouter}/>
-          <Route exact={true} path={'/test2'} component={TestRouter2}/>
+            <Route exact={true} path={'/nowplaying'}
+                   render={(props) => <NowPlaying {...props} movies={movies[1]} getMovieDetail={onGetMovieDetail}
+                                                  head={"Now Playing"} isAuthed={true}/>}/>
+
+            <Route exact={true} path={'/upcoming'}
+                   render={(props) => <Upcoming {...props} movies={movies[2]} getMovieDetail={onGetMovieDetail}
+                                                head={"Upcoming"} isAuthed={true}/>}/>
+
+            <Route exact={true} path={'/popular'}
+                   render={(props) => <Popular {...props} movies={movies[3]} getMovieDetail={onGetMovieDetail}
+                                               head={"Popular"} isAuthed={true}/>}/>
+            <Route exact={true} path={'/'} component={TestRouter}/>
+            <Route exact={true} path={'/test2'} component={TestRouter2}/>
 
 
-          {/*<Route exact={true} path={'/test'} component={TestRouter}/>*/}
+            {/*<Route exact={true} path={'/test'} component={TestRouter}/>*/}
 
 
-        </Switch>
+          </Switch>
 
-
+        </Router>
       </div>
 
     )

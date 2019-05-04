@@ -13,9 +13,11 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-router-dom";
 import "../css/leftmenu.css"
 import "../css/navbar.css"
+import TopRated from "../cards/TopRated";
+import NowPlaying from "../cards/NowPlaying"
 
 const styles = theme => ({
   list: {
@@ -100,7 +102,7 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes, renderPage} = this.props;
+    const {classes, renderPage, onGetMovieDetail, movies} = this.props;
 
     const sideList = (
       <Router>
@@ -119,11 +121,11 @@ class SearchAppBar extends React.Component {
 
           <List>
             <ListItem button={true} id='toprated'>
-              <NavLink to='/toprated'>
+              <Link to='/toprated'>
                 <div className="listitems" id='toprated'>
                   Top rated
                 </div>
-              </NavLink>
+              </Link>
             </ListItem>
 
             <ListItem button={true} id='nowplaying'>

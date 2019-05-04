@@ -19,6 +19,14 @@ class TestRouter extends React.Component {
         <Link to={'/nowplaying'}>
           Go to NOWPLAYING
         </Link>
+        <br/>
+        <Link to={'/upcoming'}>
+          Go to Upcoming
+        </Link>
+        <br/>
+        <Link to={'/popular'}>
+          Go to POPULAR
+        </Link>
       </div>
     );
   }
