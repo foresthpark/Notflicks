@@ -47,7 +47,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class Home extends React.Component {
 
-
   componentDidMount() {
     this.props.onRequestMovies()
   }
@@ -72,9 +71,9 @@ class Home extends React.Component {
             />}/>
           <Route path={'/'} component={TestRouter}/>
 
-          <Route exact={true} path={'/'} component={() => <App movies={movies}
-                                                               getMovieDetail={onGetMovieDetail}
-                                                               nRenderPage={onRenderPage}/>}/>
+          <Route exact={true} path={'/'} component={(props) => <App {...props} movies={movies}
+                                                                    getMovieDetail={onGetMovieDetail}
+                                                                    nRenderPage={onRenderPage}/>}/>
 
           <Route exact={true} path={'/toprated'}
                  render={(props) => <TopRated {...props} movies={movies[0]} getMovieDetail={onGetMovieDetail}
