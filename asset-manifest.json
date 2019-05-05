@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Notflicks/static/css/main.c236e0b6.chunk.css",
+    "main.css": "/Notflicks/static/css/main.7dabb3c1.chunk.css",
     "main.js": "/Notflicks/static/js/main.669b43fa.chunk.js",
     "main.js.map": "/Notflicks/static/js/main.669b43fa.chunk.js.map",
     "runtime~main.js": "/Notflicks/static/js/runtime~main.06e79e30.js",
@@ -8,9 +8,9 @@
     "static/js/2.59563a64.chunk.js": "/Notflicks/static/js/2.59563a64.chunk.js",
     "static/js/2.59563a64.chunk.js.map": "/Notflicks/static/js/2.59563a64.chunk.js.map",
     "index.html": "/Notflicks/index.html",
-    "precache-manifest.70e5810c01c5fc851bc7e4f61cb25052.js": "/Notflicks/precache-manifest.70e5810c01c5fc851bc7e4f61cb25052.js",
+    "precache-manifest.37a9fe426a7210bc12fd98a291c32794.js": "/Notflicks/precache-manifest.37a9fe426a7210bc12fd98a291c32794.js",
     "service-worker.js": "/Notflicks/service-worker.js",
-    "static/css/main.c236e0b6.chunk.css.map": "/Notflicks/static/css/main.c236e0b6.chunk.css.map",
+    "static/css/main.7dabb3c1.chunk.css.map": "/Notflicks/static/css/main.7dabb3c1.chunk.css.map",
     "static/media/about.css": "/Notflicks/static/media/bebasneue-regular-webfont.96ea7779.woff2",
     "static/media/detailcard.css": "/Notflicks/static/media/opensans-regular-webfont.39c35d94.woff2",
     "static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg": "/Notflicks/static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.02a9430b.svg"
