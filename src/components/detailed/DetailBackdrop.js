@@ -11,9 +11,10 @@ class DetailBackdrop extends React.Component {
     const styles = {
       backdrop: {
         backgroundImage: `url(${imgURL}${movie[0].backdrop_path})`,
-        backgroundSize: "100%",
-        width: "100%",
-        height: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        // width: "100vh",
+        // height: "100vh",
         opacity: "0.4",
         position: "absolute",
         backgroundRepeat: "no-repeat",

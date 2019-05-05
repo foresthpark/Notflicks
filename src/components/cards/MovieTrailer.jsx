@@ -14,7 +14,7 @@ class MovieTrailer extends React.Component {
     return (
       <div className="videoplayer">
         {/*{videoKey ? <ReactPlayer url={fullURL}/> : <NoInfo/>}*/}
-        <ReactPlayer url={fullURL}/>
+        <ReactPlayer url={fullURL} width={370} height={208}/>
       </div>
     );
   }

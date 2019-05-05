@@ -24,7 +24,7 @@
 .movieheader {
     font-family: "bebas_neueregular";
     /*font-size: 7em;*/
-    font-size: 7em;
+    font-size: 7vh;
     text-shadow: 2px 2px grey;
     padding-left: 20px;
     padding-top: 40px;
@@ -35,7 +35,7 @@
 .tagline {
     font-family: "bebas_neueregular";
     /*font-size: 3em;*/
-    font-size: 3em;
+    font-size: 3vh;
     text-shadow: 2px 2px grey;
 
     padding-left: 20px;
@@ -44,7 +44,7 @@
 .rating {
     font-family: "bebas_neueregular";
     /*font-size: 2em;*/
-    font-size: 3em;
+    font-size: 3vh;
     text-shadow: 2px 2px grey;
 
     padding-left: 20px;
