@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aabab707c75d3177f99af8f0d90b844d",
+    "revision": "27e2a28725671d2d161e9c9144986419",
     "url": "/Notflicks/index.html"
   },
   {
-    "revision": "dd22d5f44e44edf0e06e",
-    "url": "/Notflicks/static/css/main.c89b449b.chunk.css"
+    "revision": "88e55edeebb48916849a",
+    "url": "/Notflicks/static/css/main.4f9dc5a3.chunk.css"
   },
   {
     "revision": "cf6b320cbd943d4c1bbb",
     "url": "/Notflicks/static/js/2.59563a64.chunk.js"
   },
   {
-    "revision": "dd22d5f44e44edf0e06e",
-    "url": "/Notflicks/static/js/main.0ca4e025.chunk.js"
+    "revision": "88e55edeebb48916849a",
+    "url": "/Notflicks/static/js/main.a8cc1ba3.chunk.js"
   },
   {
     "revision": "3a937be80320aed10189",
