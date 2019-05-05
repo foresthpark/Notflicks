@@ -15,6 +15,7 @@ class DetailBackdrop extends React.Component {
         backgroundPosition: "center",
         // width: "100vh",
         // height: "100vh",
+        minHeight: "100%",
         opacity: "0.4",
         position: "absolute",
         backgroundRepeat: "no-repeat",
