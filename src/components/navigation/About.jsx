@@ -12,7 +12,7 @@ class About extends React.Component {
         email: "foresthpark@gmail.com",
         github: "https://github.com/foresthpark",
         image: "https://i.imgur.com/20Up2aL.jpg",
-        story: "Always looking our for tech that can change the future. Passionate about solving problems and helping others solve other problems."
+        story: "Always looking out for tech that can change the future. Passionate about solving problems and helping others solve other problems."
       },
       {
         name: "Dustin Joynt",
