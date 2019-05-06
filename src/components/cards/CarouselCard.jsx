@@ -4,7 +4,7 @@ import "../css/carouselcard.css"
 
 class CarouselCard extends React.Component {
   render() {
-    const {movies, isPending, getMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
+    const {movies, getMovieDetail, renderPage} = this.props
 
     return (
       <div className="carouselcard">

@@ -23,28 +23,25 @@
 
 .movieheader {
     font-family: "bebas_neueregular";
-    /*font-size: 7em;*/
-    font-size: 7em;
+    font-size: 8vh;
     text-shadow: 2px 2px grey;
     padding-left: 20px;
     padding-top: 40px;
-    /*position: sticky;*/
+
     top: 0;
 }
 
 .tagline {
     font-family: "bebas_neueregular";
     /*font-size: 3em;*/
-    font-size: 3em;
+    font-size: 4.2vh;
     text-shadow: 2px 2px grey;
-
     padding-left: 20px;
 }
 
 .rating {
     font-family: "bebas_neueregular";
-    /*font-size: 2em;*/
-    font-size: 3em;
+    font-size: 4vh;
     text-shadow: 2px 2px grey;
 
     padding-left: 20px;

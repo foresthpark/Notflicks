@@ -5,7 +5,7 @@ import "../css/moviecard.css"
 class TopRated extends React.Component {
   render() {
     const {movies, getMovieDetail, head} = this.props
-    const moviesArray = movies.results
+    const moviesArray = movies.results.slice(1, 11)
     const moviesCard = moviesArray.map((movie, index) => {
       return (
         <MovieCard

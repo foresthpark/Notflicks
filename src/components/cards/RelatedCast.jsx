@@ -7,7 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import LinesEllipsis from 'react-lines-ellipsis'
-import ProfileImage from "../images/profile.png"
 import "../css/moviecard.css"
 
 const styles = {
@@ -23,7 +22,7 @@ function RelateCast(props) {
   const {classes, poster, character, name, clicker, index} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
-  
+
   let fullURL;
   if (poster !== null) {
     fullURL = `${imgURL}${poster}${lazyLoad}`

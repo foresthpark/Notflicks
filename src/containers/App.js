@@ -13,7 +13,6 @@ import Scroll from "../components/navigation/Scroll"
 import "../components/css/moviecard.css"
 import "./App.css"
 import CarouselCard from "../components/cards/CarouselCard";
-import AboutCard from "../components/navigation/AboutCard";
 import About from "../components/navigation/About";
 
 

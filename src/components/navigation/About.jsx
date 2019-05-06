@@ -6,14 +6,13 @@ import tmdb
 
 class About extends React.Component {
   render() {
-    const {classes} = this.props
     const members = [
       {
         name: "Forest Park",
         email: "foresthpark@gmail.com",
         github: "https://github.com/foresthpark",
         image: "https://i.imgur.com/20Up2aL.jpg",
-        story: "Always looking our for tech that can change the future. Passionate about solving problems and helping others solve other problems."
+        story: "Always looking out for tech that can change the future. Passionate about solving problems and helping others solve other problems."
       },
       {
         name: "Dustin Joynt",
@@ -23,15 +22,6 @@ class About extends React.Component {
         story: "Full stack developer student, passionate about front end development and creating unique customer experiences."
       }
     ]
-
-    const styles = {
-      card: {
-        maxWidth: 210,
-      },
-      media: {
-        objectFit: 'cover',
-      },
-    };
 
     const notMembers = members.map(({name, email, github, image, story}, index) => {
       return (
@@ -58,8 +48,8 @@ class About extends React.Component {
           This site was made using The Movie Databse API
         </div>
         <div className="image">
-          <a href="https://www.themoviedb.org/documentation/api" target="_blank">
-            <img src={tmdb} width="200" height="100"></img>
+          <a href="https://www.themoviedb.org/documentation/api" target="_blank" rel="noreferrer noopener">
+            <img src={tmdb} width="200" height="100" alt="tmbd"></img>
           </a>
         </div>
       </div>

@@ -37,15 +37,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-bottom: 40px;
+    padding: 20px 10px;
     font-family: "bebas_neueregular";
     text-shadow: 2px 2px #BCC1C4;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .synopsis {
     font-family: "open_sansregular";
-    font-size: 2em;
+    font-size: 3vh;
     padding-left: 20px;
     padding-right: 5px;
 }

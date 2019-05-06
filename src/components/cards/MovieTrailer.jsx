@@ -1,6 +1,5 @@
 import React from "react"
 import ReactPlayer from "react-player";
-import NoInfo from "./NoInfo";
 import "../css/videoplayer.css"
 
 class MovieTrailer extends React.Component {
@@ -15,7 +14,7 @@ class MovieTrailer extends React.Component {
     return (
       <div className="videoplayer">
         {/*{videoKey ? <ReactPlayer url={fullURL}/> : <NoInfo/>}*/}
-        <ReactPlayer url={fullURL}/>
+        <ReactPlayer url={fullURL} width={348} height={196}/>
       </div>
     );
   }

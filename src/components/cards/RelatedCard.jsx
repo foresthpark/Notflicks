@@ -1,10 +1,8 @@
 import React from "react"
 import RelatedMovies from "./RelatedMovies";
 import RelatedCast from "../cards/RelatedCast"
-import ProfileImage from "../images/profile.png"
 import MovieTrailer from "./MovieTrailer";
 import "../css/detailcard.css"
-import NoInfo from "./NoInfo";
 import ReviewCard from "./ReviewCard";
 
 class RelatedCard extends React.Component {
