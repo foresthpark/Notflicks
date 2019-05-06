@@ -4,6 +4,7 @@ import {
   REQUEST_DETAIL_FAILED,
 } from './constants'
 
+//get detail movie data from API
 
 export const requestDetail = (text) => async (dispatch) => {
   const urls = [

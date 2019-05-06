@@ -10,6 +10,8 @@ import {
   REQUEST_SEARCH_FAILED,
 } from './constants'
 
+//set state with data from intial API call
+
 const intialStateMovies = {
 	isPending: true,
 	movies: [],
@@ -28,6 +30,8 @@ export const requestMovies = (state=intialStateMovies, action={}) => {
 			return state
 	}
 }
+
+//set state with detailed movie data, set state for render and search input 
 
 const intialStateDetail = {
 	movieId: null,
