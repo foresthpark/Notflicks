@@ -39,33 +39,3 @@ describe('actions', () => {
     expect(actions.searchInput(text)).toEqual(expectedAction)
   })
 })
-
-// const middlewares = [thunk]
-// const mockStore = configureMockStore(middlewares)
-
-// describe('async actions', () => {
-//   afterEach(() => {
-//     fetchMock.restore()
-//   })
-
-  
-
-//   it('creates REQUEST_MOVIES_SUCCESS when fetching movies has been done', () => {
-//     fetchMock.getOnce('https://api.themoviedb.org/3/movie/top_rated?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1', {
-//       body: {movies: 'hello'},
-//       headers: { 'content-type': 'application/json' }
-//       // { movies: ['movie name'] }
-//   })
-
-//     const expectedActions = [
-//       { type: types.REQUEST_MOVIES_PENDING},
-//       { type: types.REQUEST_MOVIES_SUCCESS, payload: [{movies:'hello'}] }
-//     ]
-//     const store = mockStore({ movies: [],  })
-
-//     return store.dispatch(actions.requestMovies()).then(() => {
-//       // return of async actions
-//       expect(store.getActions()).toEqual(expectedActions)
-//     })
-//   })
-// })
