@@ -10,13 +10,15 @@ import {
   REQUEST_SEARCH_FAILED,
 } from './constants'
 
-//get movie details to load main pages
+// Your API Key
+const API_KEY = '5abdca519fcfe51f18cec09aefcec6b4'
 
+//get movie details to load main pages
 const urls = [
-  'https://api.themoviedb.org/3/movie/top_rated?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1',
-  'https://api.themoviedb.org/3/movie/now_playing?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1',
-  'https://api.themoviedb.org/3/movie/upcoming?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1',
-  'https://api.themoviedb.org/3/movie/popular?api_key=5abdca519fcfe51f18cec09aefcec6b4&language=en-US&page=1'
+  `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
+  `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`,
+  `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`,
+  `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
 ]
 
 export const requestMovies = () => async (dispatch) => {
