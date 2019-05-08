@@ -20,10 +20,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -61,7 +58,17 @@ git clone https://github.com/foresthpark/Notflicks.git
 ```sh
 npm install
 ```
-3. Enter your API in `/src/containers/action.js` and `src/components/details/action.js
+3. Enter your API in `/src/containers/action.js` and `src/components/details/action.js`
 ```JS
 const API_KEY = 'ENTER YOUR API';
 ```
+
+<!-- CONTACT -->
+## Contact
+
+Forest Park - [LinkedIn](https://linkedin.com/in/forestpark) - forestpworking@gmail.com
+
+Dustin Joynt - [LinkedIn](https://www.linkedin.com/in/dustin-joynt/) - dustinjoynt@gmail.com
+
+
+Project Link: [https://github.com/foresthpark/Notflicks](https://github.com/foresthpark/Notflicks)
