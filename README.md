@@ -33,3 +33,8 @@
   </a>
 <p>
 This single-page React application that utilizes The Movie Database API to display a vriety of movie data including now playing and upcoming movies in theatres, trending, top-rated movies, and movie trailers.
+  
+### Built With
+* [The Movie DB (API)](https://developers.themoviedb.org/3)
+* [React](https://reactjs.org/docs/getting-started.html)
+* [Material UI](https://material-ui.com/)
