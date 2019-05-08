@@ -33,8 +33,6 @@
   </a>
 <p>
   
-  [![Movie Flex Screen Shot][product-screenshot]](https://foresthpark.github.io/Notflicks)
-  
   
 This single-page React application that utilizes The Movie Database API to display a vriety of movie data including now playing and upcoming movies in theatres, trending, top-rated movies, and movie trailers.
   
@@ -42,3 +40,28 @@ This single-page React application that utilizes The Movie Database API to displ
 * [The Movie DB (API)](https://developers.themoviedb.org/3)
 * [React](https://reactjs.org/docs/getting-started.html)
 * [Material UI](https://material-ui.com/)
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+1. Get a free API Key at [The Movie Database (TMDB)](https://www.themoviedb.org)
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/foresthpark/Notflicks.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Enter your API in `/src/containers/action.js` and `src/components/details/action.js
+```JS
+const API_KEY = 'ENTER YOUR API';
+```
