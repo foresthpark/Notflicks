@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a47bc88bd7116fa198edf91cf8c85cf4",
+    "revision": "44cf2c1d179e931472b3b984db5089db",
     "url": "/Notflicks/index.html"
   },
   {
-    "revision": "4016b7ab8651c0bb64a6",
+    "revision": "1f56d36a38f99895c7fd",
     "url": "/Notflicks/static/css/main.90784a7c.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Notflicks/static/js/2.59563a64.chunk.js"
   },
   {
-    "revision": "4016b7ab8651c0bb64a6",
-    "url": "/Notflicks/static/js/main.ef102cfa.chunk.js"
+    "revision": "1f56d36a38f99895c7fd",
+    "url": "/Notflicks/static/js/main.b0d74220.chunk.js"
   },
   {
     "revision": "3a937be80320aed10189",
