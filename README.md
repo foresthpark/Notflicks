@@ -28,7 +28,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <a href="https://foresthpark.github.io/Notflicks">
-    <img src="./src/components/images/notflicks_screenshot.png" alt="Logo" width="286" height="90">
+    <img src="./src/components/images/notflicks_screenshot.png" alt="Logo" width="800" height="450">
   </a>
 
 This single-page React application that utilizes The Movie Database API to display a vriety of movie data including now playing and upcoming movies in theatres, trending, top-rated movies, and movie trailers.
