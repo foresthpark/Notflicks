@@ -19,7 +19,7 @@ class About extends React.Component {
         email: "dustinjoynt@gmail.com",
         github: "https://github.com/dustinjoynt",
         image: "https://i.imgur.com/PAQQHdL.jpg",
-        story: "Full stack developer student, passionate about front end development and creating unique customer experiences."
+        story: "Junior full stack developer, passionate about web development and creating unique customer experiences."
       }
     ]
 
