@@ -11,3 +11,23 @@
     <br />
     <a href="https://foresthpark.github.io/Notflicks">View Demo</a>
   </p>
+  
+<!-- TOC -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Notflicks Screenshot][product-screenshot]](https://foresthpark.github.io/Notflicks)
+
+This single-page React application that utilizes The Movie Database API to display a vriety of movie data including now playing and upcoming movies in theatres, trending, top-rated movies, and movie trailers.
