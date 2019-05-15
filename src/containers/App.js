@@ -14,6 +14,7 @@ import "../components/css/moviecard.css"
 import "./App.css"
 import CarouselCard from "../components/cards/CarouselCard";
 import About from "../components/navigation/About";
+import SignIn from "../components/signin/signin"
 
 
 const mapStateToProps = (state) => {
@@ -42,6 +43,61 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      user: {
+        id: '',
+        name: '',
+        email: ''
+      },
+      loggedIn: false,
+      userMovies: {
+        id: '',
+        movie_id: '',
+        movies_detail: ''
+      }
+    }
+  }
+
+  onUserLogin = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email
+      }
+    })
+    if (data) { this.setState({ loggedIn: true }) }
+  }
+
+  onUserLogout = (data) => {
+    this.setState({
+      user: {
+        id: '',
+        name: '',
+        email: ''
+      }
+    })
+    if (data) { this.setState({ loggedIn: false }) }
+  }
+
+  onUserSave = (data) => {
+    console.log('yeet yeet', data)
+    console.log('TITLE MOFO', data.title)
+    console.log('user', this.state.user.id)
+    fetch('http://localhost:3002/movies', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.state.user.id,
+        movie_id: data.id,
+        movies_data: data
+      })
+    })
+    .then(res => console.log(res))
+
+  }
 
   componentDidMount() {
     this.props.onRequestMovies()
@@ -59,6 +115,9 @@ class App extends Component {
             searchInput={this.props.onSearchInput}
             searchDetail={this.props.onSearchDetail}
             searchInputField={this.props.searchInputField}
+            loggedIn={this.state.loggedIn}
+            user={this.state.user}
+            onUserLogout={this.onUserLogout}
           />
           {renderDetail === false &&
           <Scroll>
@@ -68,7 +127,13 @@ class App extends Component {
             </div>
             }
             {renderPage === 'toprated' &&
-            <TopRated movies={movies[0]} getMovieDetail={onGetMovieDetail} head={"Top Rated"}/>
+            <TopRated 
+              movies={movies[0]} 
+              getMovieDetail={onGetMovieDetail} 
+              head={"Top Rated"} 
+              loggedIn={this.state.loggedIn} 
+              onUserSave={this.onUserSave}
+              />
             }
             {renderPage === 'upcoming' &&
             <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
@@ -84,6 +149,12 @@ class App extends Component {
             }
             {renderPage === 'search' &&
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
+            }
+            {renderPage === 'signin' && this.state.loggedIn === false &&
+            <SignIn onUserLogin={this.onUserLogin} head={'Sign In'} />
+            }
+            {this.state.loggedIn === true &&
+            <h1>hello world</h1>
             }
           </Scroll>
           }

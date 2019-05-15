@@ -99,7 +99,7 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes, renderPage} = this.props;
+    const {classes, renderPage, loggedIn, user} = this.props;
 
     const sideList = (
       <div className={classes.list}>
@@ -145,6 +145,26 @@ class SearchAppBar extends React.Component {
               About
             </div>
           </ListItem>
+          <ListItem button={true} onClick={renderPage} id='signin'>
+            {loggedIn === false &&
+              <div className="listitems" onClick={renderPage} id='signin'>
+              Log In
+            </div>
+            }
+            {loggedIn === true &&
+              <div className="listitems" onClick={renderPage} id='userDetail'>
+              Welcome {user.name} !
+            </div> 
+            }
+          </ListItem>
+          {loggedIn === true && 
+            <ListItem button={true} onClick={this.props.onUserLogout} onClick={renderPage} id='notflicks'>
+            <div className="listitems" onClick= {this.props.onUserLogout} onClick={renderPage} id='notflicks'>
+              Cheese
+            </div>
+          </ListItem>
+          
+          }
         </List>
       </div>
     )

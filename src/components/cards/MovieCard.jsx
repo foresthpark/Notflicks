@@ -67,6 +67,11 @@ function MovieCard(props) {
           </CardContent>
         </CardActionArea>
       </Card>
+      {props.loggedIn === true &&
+        <button onClick={()=> props.onUserSave(props.movie)} >
+        Save
+        </button>
+      }
     </div>
   );
 }
