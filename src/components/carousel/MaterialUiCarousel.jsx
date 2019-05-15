@@ -102,13 +102,14 @@ class MaterialUiCarousel extends React.Component {
               <Paper square elevation={0} className={classes.footer}>
                 <Typography gutterBottom variant="title">
                   <div className="carouseltitle">
-                    <LinesEllipsis
-                      text={movie.title}
-                      maxLine='2'
-                      ellipsis=' ...'
-                      trimRight
-                      basedOn='letters'
-                    />
+                    {`${movie.title.substring(0, 27)}`}
+                    {/*<LinesEllipsis*/}
+                    {/*text={movie.title}*/}
+                    {/*maxLine='2'*/}
+                    {/*ellipsis=' ...'*/}
+                    {/*trimRight*/}
+                    {/*basedOn='letters'*/}
+                    {/*/>*/}
                   </div>
                 </Typography>
               </Paper>

@@ -42,9 +42,21 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 class App extends Component {
+  state = {
+    movieData: []
+  }
 
   componentDidMount() {
     this.props.onRequestMovies()
+    const json = localStorage.getItem('movies')
+    const movieData = JSON.parse(json)
+    this.setState({movieData: movieData})
+    console.log('Hello from state', this.state.movieData)
+  }
+
+  componentDidUpdate = (prevProps, prevState, snapshot) => {
+    const movies = JSON.stringify(this.props.movies)
+    localStorage.setItem('movies', movies)
   }
 
 

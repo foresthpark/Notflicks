@@ -13,6 +13,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import {Link} from 'react-router-dom'
 import "../css/leftmenu.css"
 import "../css/navbar.css"
 
@@ -116,7 +117,9 @@ class SearchAppBar extends React.Component {
         <List>
           <ListItem button={true} onClick={renderPage} id='toprated'>
             <div className="listitems" onClick={renderPage} id='toprated'>
-              Top rated
+              <Link to="/toprated">
+                Top rated
+              </Link>
             </div>
           </ListItem>
 
