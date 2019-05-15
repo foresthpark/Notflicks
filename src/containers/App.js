@@ -61,7 +61,6 @@ class App extends Component {
 
 
   render() {
-    console.log('app render', this.props.renderPage)
     const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
 
     return isPending ? <Loading/> :
