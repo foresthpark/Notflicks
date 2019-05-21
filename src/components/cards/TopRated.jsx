@@ -6,6 +6,7 @@ class TopRated extends React.Component {
   render() {
     const {movies, getMovieDetail, head} = this.props
     const moviesArray = movies.results.slice(1, 11)
+    console.log('tr', moviesArray)
     const moviesCard = moviesArray.map((movie, index) => {
       return (
         <MovieCard

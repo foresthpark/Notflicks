@@ -15,6 +15,7 @@ import "./App.css"
 import CarouselCard from "../components/cards/CarouselCard";
 import About from "../components/navigation/About";
 import SignIn from "../components/signin/signin"
+import UserDetail from '../components/userdetail/UserDetail'
 
 
 const mapStateToProps = (state) => {
@@ -154,7 +155,14 @@ class App extends Component {
             <SignIn onUserLogin={this.onUserLogin} head={'Sign In'} />
             }
             {this.state.loggedIn === true &&
-            <h1>hello world</h1>
+            <UserDetail 
+              userId={this.state.user.id} 
+              getMovieDetail={onGetMovieDetail} 
+              head={"Top Rated"} 
+              loggedIn={this.state.loggedIn} 
+              onUserSave={this.onUserSave}
+              userName={this.state.user.name}
+            />
             }
           </Scroll>
           }

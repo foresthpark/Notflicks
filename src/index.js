@@ -10,10 +10,11 @@ import * as serviceWorker from './serviceWorker';
 
 import {requestMovies, getMovieDetail, searchInput} from './containers/reducers'
 import {requestDetail} from './components/detailed/reducers'
+import {requestUser} from './components/userdetail/reducers'
 
 const logger = createLogger()
 
-const rootReducer = combineReducers({requestMovies, getMovieDetail, requestDetail})
+const rootReducer = combineReducers({requestMovies, getMovieDetail, requestDetail, requestUser})
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
 
 ReactDOM.render(<Provider store={store}>
