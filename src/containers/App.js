@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar"
 import MovieDetails from '../components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail} from './actions'
+import {requestUser} from './userActions'
 import NowPlaying from "../components/cards/NowPlaying";
 import TopRated from "../components/cards/TopRated"
 import Upcoming from "../components/cards/Upcoming"
@@ -30,6 +31,9 @@ const mapStateToProps = (state) => {
     isPending2: state.getMovieDetail.isPending2,
     movie2: state.getMovieDetail.movie2,
     error2: state.getMovieDetail.error2,
+    isPendingUser: state.requestUser.isPendingUser,
+    userMovies: state.requestUser.userMovies,
+    userError: state.requestUser.userError
   }
 }
 
@@ -39,7 +43,8 @@ const mapDispatchToProps = (dispatch) => {
     onGetMovieDetail: (event) => dispatch(getMovieDetail(event.currentTarget.id)),
     onRenderPage: (event) => dispatch(renderPage(event.target.id)),
     onSearchInput: (event) => dispatch(searchInput(event.target.value)),
-    onSearchDetail: (a) => dispatch(searchDetail(a))
+    onSearchDetail: (a) => dispatch(searchDetail(a)),
+    onRequestUser: (id) => dispatch(requestUser(id)),
   }
 }
 
@@ -53,11 +58,11 @@ class App extends Component {
         email: ''
       },
       loggedIn: false,
-      userMovies: {
-        id: '',
-        movie_id: '',
-        movies_detail: ''
-      }
+      // userMovies: {
+      //   id: '',
+      //   movie_id: '',
+      //   movies_detail: ''
+      // }
     }
   }
 
@@ -87,7 +92,7 @@ class App extends Component {
     console.log('yeet yeet', data)
     console.log('TITLE MOFO', data.title)
     console.log('user', this.state.user.id)
-    fetch('http://localhost:3002/movies', {
+    fetch('http://localhost:4000/movies', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -162,6 +167,9 @@ class App extends Component {
               loggedIn={this.state.loggedIn} 
               onUserSave={this.onUserSave}
               userName={this.state.user.name}
+              onRequestUser={this.props.onRequestUser}
+              userMovies={this.props.userMovies}
+              isPendingUser={this.props.isPendingUser}
             />
             }
           </Scroll>

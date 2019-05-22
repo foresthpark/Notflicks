@@ -7,6 +7,9 @@ class UserMovies extends React.Component {
 render(){
   console.log('userMoves', this.props.userMovies)
   const movieArray = []
+  if (this.props.userMovies[0] === 'Not found') {
+    return (<h1>No saved movies</h1>)
+  }else{
   this.props.userMovies[0].map((movie) => {
     return( 
       movieArray.push(JSON.parse(movie.movies_data))
@@ -41,6 +44,7 @@ render(){
         </div>
       )
     }
+  }
 }
 
 export default UserMovies

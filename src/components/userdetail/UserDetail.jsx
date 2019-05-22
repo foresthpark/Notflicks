@@ -1,33 +1,31 @@
 import React from "react"
-import {connect} from 'react-redux'
-import {requestUser} from './actions'
+// import {connect} from 'react-redux'
+// import {requestUser} from './userActions'
 import Loading from "../loading/Loading";
 import UserMovies from "../cards/UserMovies";
 import "../css/moviecard.css"
 
-const mapStateToProps = (state) => {
-  return {
-    isPendingUser: state.requestUser.isPendingUser,
-    userMovies: state.requestUser.userMovies,
-    error: state.requestUser.error
-  }
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     isPendingUser: state.requestUser.isPendingUser,
+//     userMovies: state.requestUser.userMovies,
+//     userError: state.requestUser.userError
+//   }
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onRequestUser: (id) => dispatch(requestUser(id)),
-  }
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onRequestUser: (id) => dispatch(requestUser(id)),
+//   }
+// };
 
 class UserDetail extends React.Component {
 
   componentDidMount() {
     this.props.onRequestUser(this.props.userId)
   }
-    
 
   render(){
-
     return this.props.isPendingUser ? <Loading/> :
     (
       <UserMovies 
@@ -39,4 +37,4 @@ class UserDetail extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserDetail)
+export default UserDetail

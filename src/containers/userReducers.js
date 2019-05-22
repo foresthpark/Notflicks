@@ -7,7 +7,7 @@ import {
 const initialStateUser = {
 	isPendingUser: true,
 	userMovies: [],
-	error: ''
+	userError: ''
 }
 
 export const requestUser = (state=initialStateUser, action={}) => {
@@ -17,7 +17,7 @@ export const requestUser = (state=initialStateUser, action={}) => {
 		case REQUEST_USER_SUCCESS:
 			return {...state, userMovies: action.payload, isPendingUser: false}
 		case REQUEST_USER_FAILED:
-			return {...state, error: action.payload, isPendingUser: false}
+			return {...state, userError: action.payload, isPendingUser: false}
 		default:
 			return state
 	}

@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 
 import {requestMovies, getMovieDetail, searchInput} from './containers/reducers'
 import {requestDetail} from './components/detailed/reducers'
-import {requestUser} from './components/userdetail/reducers'
+import {requestUser} from './containers/userReducers'
 
 const logger = createLogger()
 
