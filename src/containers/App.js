@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
-  onUserSave = (data) => {
+  dbUserSave = (data) => {
     fetch('http://localhost:4000/movies', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -71,7 +71,6 @@ class App extends Component {
   componentDidMount() {
     this.props.onRequestMovies()
   }
-
 
   render() {
     const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
@@ -101,14 +100,14 @@ class App extends Component {
               getMovieDetail={onGetMovieDetail} 
               head={"Top Rated"} 
               loggedIn={this.props.loggedIn} 
-              onUserSave={this.onUserSave}
+              onUserSave={this.dbUserSave}
               />
             }
             {renderPage === 'upcoming' &&
-            <Upcoming movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            <Upcoming movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
             }
             {renderPage === 'nowplaying' &&
-            <NowPlaying movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+            <NowPlaying movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
             }
             {renderPage === 'popular' &&
             <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
