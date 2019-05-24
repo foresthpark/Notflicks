@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar"
 import MovieDetails from '../components/detailed/MovieDetails'
-import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail} from './actions'
-import {requestUser} from './userActions'
+import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout } from './actions'
+import {requestUser, userSave} from './userActions'
 import NowPlaying from "../components/cards/NowPlaying";
 import TopRated from "../components/cards/TopRated"
 import Upcoming from "../components/cards/Upcoming"
@@ -33,7 +33,9 @@ const mapStateToProps = (state) => {
     error2: state.getMovieDetail.error2,
     isPendingUser: state.requestUser.isPendingUser,
     userMovies: state.requestUser.userMovies,
-    userError: state.requestUser.userError
+    userError: state.requestUser.userError,
+    loggedIn: state.getMovieDetail.loggedIn,
+    user: state.getMovieDetail.user
   }
 }
 
@@ -45,64 +47,25 @@ const mapDispatchToProps = (dispatch) => {
     onSearchInput: (event) => dispatch(searchInput(event.target.value)),
     onSearchDetail: (a) => dispatch(searchDetail(a)),
     onRequestUser: (id) => dispatch(requestUser(id)),
+    onUserLogin: (user) => dispatch(userLogin(user)),
+    onUserLogout: () => dispatch(userLogout()),
+    onUserSave: (id, data) => dispatch(userSave(id, data))
   }
 }
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      user: {
-        id: '',
-        name: '',
-        email: ''
-      },
-      loggedIn: false,
-      // userMovies: {
-      //   id: '',
-      //   movie_id: '',
-      //   movies_detail: ''
-      // }
-    }
-  }
-
-  onUserLogin = (data) => {
-    this.setState({
-      user: {
-        id: data.id,
-        name: data.name,
-        email: data.email
-      }
-    })
-    if (data) { this.setState({ loggedIn: true }) }
-  }
-
-  onUserLogout = (data) => {
-    this.setState({
-      user: {
-        id: '',
-        name: '',
-        email: ''
-      }
-    })
-    if (data) { this.setState({ loggedIn: false }) }
-  }
 
   onUserSave = (data) => {
-    // console.log('yeet yeet', data)
-    // console.log('TITLE MOFO', data.title)
-    // console.log('user', this.state.user.id)
     fetch('http://localhost:4000/movies', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        id: this.state.user.id,
+        id: this.props.user.id,
         movie_id: data.id,
         movies_data: data
       })
     })
-    .then(res => console.log(res))
-
+    .then( res => {if (res.movie_id) { this.props.onUserSave(this.props.user.id, data)} })
   }
 
   componentDidMount() {
@@ -121,9 +84,9 @@ class App extends Component {
             searchInput={this.props.onSearchInput}
             searchDetail={this.props.onSearchDetail}
             searchInputField={this.props.searchInputField}
-            loggedIn={this.state.loggedIn}
-            user={this.state.user}
-            onUserLogout={this.onUserLogout}
+            loggedIn={this.props.loggedIn}
+            user={this.props.user}
+            onUserLogout={this.props.onUserLogout}
           />
           {renderDetail === false &&
           <Scroll>
@@ -137,7 +100,7 @@ class App extends Component {
               movies={movies[0]} 
               getMovieDetail={onGetMovieDetail} 
               head={"Top Rated"} 
-              loggedIn={this.state.loggedIn} 
+              loggedIn={this.props.loggedIn} 
               onUserSave={this.onUserSave}
               />
             }
@@ -156,16 +119,16 @@ class App extends Component {
             {renderPage === 'search' &&
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
-            {renderPage === 'signin' && this.state.loggedIn === false &&
-            <SignIn renderPage={onRenderPage} onUserLogin={this.onUserLogin} head={'Sign In'} />
+            {renderPage === 'signin' && this.props.loggedIn === false &&
+            <SignIn renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'} />
             }
-            {this.state.loggedIn === true && renderPage === 'userDetail' &&
+            {this.props.loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail 
-              userId={this.state.user.id} 
+              userId={this.props.user.id} 
               getMovieDetail={onGetMovieDetail} 
               // loggedIn={this.state.loggedIn} 
               // onUserSave={this.onUserSave}
-              userName={this.state.user.name}
+              userName={this.props.user.name}
               onRequestUser={this.props.onRequestUser}
               userMovies={this.props.userMovies}
               isPendingUser={this.props.isPendingUser}

@@ -32,3 +32,9 @@ export const saveUserMovie = (text) => async (dispatch) => {
     dispatch({type: REQUEST_USER_FAILED, payload: err})
   }
 }
+
+export const userSave = (userId, data) => ({
+  type: SAVE_USER_MOVIE,
+  payload: data,
+  id: userId
+})

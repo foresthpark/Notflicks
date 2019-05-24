@@ -7,7 +7,9 @@ import {
 	GET_SEARCH_INPUT,
 	REQUEST_SEARCH_PENDING,
   REQUEST_SEARCH_SUCCESS,
-  REQUEST_SEARCH_FAILED,
+	REQUEST_SEARCH_FAILED,
+	USER_LOGIN,
+	USER_LOGOUT
 } from './constants'
 
 //set state with data from intial API call
@@ -40,7 +42,13 @@ const intialStateDetail = {
 	isPending2: true,
 	movie2: [],
 	error2: '',
-	searchInputField: ''
+	searchInputField: '',
+	loggedIn: false,
+	user: {
+		id: '',
+		name: '',
+		email: ''
+	}
 }
 
 export const getMovieDetail = (state=intialStateDetail, action={}) => {
@@ -57,6 +65,10 @@ export const getMovieDetail = (state=intialStateDetail, action={}) => {
 			return {...state, error2: action.payload, isPending2: false}
 		case GET_SEARCH_INPUT:
 			return {...state, searchInputField: action.payload}
+		case USER_LOGIN:
+			return {...state, renderPage: 'userDetail', loggedIn: true, user: {id: action.payload.id, name: action.payload.name, email: action.payload.email}}
+		case USER_LOGOUT:
+			return {...state, renderPage: 'notflicks', loggedIn: false, user: {id:'', name:'', email:''}}
 		default:
 			return state
 	}

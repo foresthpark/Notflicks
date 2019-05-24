@@ -8,6 +8,8 @@ import {
   REQUEST_SEARCH_PENDING,
   REQUEST_SEARCH_SUCCESS,
   REQUEST_SEARCH_FAILED,
+  USER_LOGIN,
+  USER_LOGOUT
 } from './constants'
 
 // Your API Key
@@ -74,3 +76,13 @@ export const searchDetail = (text) => async (dispatch) => {
     dispatch({type: REQUEST_SEARCH_FAILED, payload: err})
   }
 }
+
+
+export const userLogin = (user) => ({
+  type: USER_LOGIN,
+  payload: user
+})
+
+export const userLogout = () => ({
+  type: USER_LOGOUT
+})
