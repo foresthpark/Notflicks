@@ -89,9 +89,9 @@ class App extends Component {
   }
 
   onUserSave = (data) => {
-    console.log('yeet yeet', data)
-    console.log('TITLE MOFO', data.title)
-    console.log('user', this.state.user.id)
+    // console.log('yeet yeet', data)
+    // console.log('TITLE MOFO', data.title)
+    // console.log('user', this.state.user.id)
     fetch('http://localhost:4000/movies', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -157,15 +157,14 @@ class App extends Component {
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
             {renderPage === 'signin' && this.state.loggedIn === false &&
-            <SignIn onUserLogin={this.onUserLogin} head={'Sign In'} />
+            <SignIn renderPage={onRenderPage} onUserLogin={this.onUserLogin} head={'Sign In'} />
             }
-            {this.state.loggedIn === true &&
+            {this.state.loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail 
               userId={this.state.user.id} 
               getMovieDetail={onGetMovieDetail} 
-              head={"Top Rated"} 
-              loggedIn={this.state.loggedIn} 
-              onUserSave={this.onUserSave}
+              // loggedIn={this.state.loggedIn} 
+              // onUserSave={this.onUserSave}
               userName={this.state.user.name}
               onRequestUser={this.props.onRequestUser}
               userMovies={this.props.userMovies}

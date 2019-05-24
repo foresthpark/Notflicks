@@ -8,7 +8,14 @@ render(){
   console.log('userMoves', this.props.userMovies)
   const movieArray = []
   if (this.props.userMovies[0] === 'Not found') {
-    return (<h1>No saved movies</h1>)
+    return (
+      <div className="cardcontainer">
+        <div className="cardhead">
+          {`${this.props.userName}'s Movies`}
+        </div>
+        <h1>No saved movies</h1>
+    </div>
+    )
   }else{
   this.props.userMovies[0].map((movie) => {
     return( 
