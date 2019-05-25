@@ -18,7 +18,6 @@ import About from "../components/navigation/About";
 import SignIn from "../components/signin/signin"
 import UserDetail from '../components/userdetail/UserDetail'
 
-
 const mapStateToProps = (state) => {
   return {
     isPending: state.requestMovies.isPending,
@@ -104,13 +103,31 @@ class App extends Component {
               />
             }
             {renderPage === 'upcoming' &&
-            <Upcoming movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
+            <Upcoming 
+              movies={movies[2]} 
+              getMovieDetail={onGetMovieDetail} 
+              head={"Upcoming"}
+              loggedIn={this.props.loggedIn} 
+              onUserSave={this.dbUserSave} 
+              />
             }
             {renderPage === 'nowplaying' &&
-            <NowPlaying movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
+            <NowPlaying 
+              movies={movies[1]} 
+              getMovieDetail={onGetMovieDetail} 
+              head={"Now Playing"}
+              loggedIn={this.props.loggedIn} 
+              onUserSave={this.dbUserSave}
+              />
             }
             {renderPage === 'popular' &&
-            <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
+            <Popular 
+              movies={movies[3]} 
+              getMovieDetail={onGetMovieDetail} 
+              head={"Popular"}
+              loggedIn={this.props.loggedIn} 
+              onUserSave={this.dbUserSave}
+              />
             }
             {renderPage === 'about' &&
             <About/>
@@ -125,8 +142,6 @@ class App extends Component {
             <UserDetail 
               userId={this.props.user.id} 
               getMovieDetail={onGetMovieDetail} 
-              // loggedIn={this.state.loggedIn} 
-              // onUserSave={this.onUserSave}
               userName={this.props.user.name}
               onRequestUser={this.props.onRequestUser}
               userMovies={this.props.userMovies}
