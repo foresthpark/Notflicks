@@ -75,6 +75,7 @@ class SignIn extends Component {
     .then(user => {
       if (user.id) {
         this.props.onUserLogin(user)
+        this.props.onRequestUser(user.id)
       }
     })
   }

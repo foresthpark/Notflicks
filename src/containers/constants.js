@@ -18,5 +18,5 @@ export const SAVE_USER_MOVIE = 'SAVE_USER_MOVIE'
 
 export const USER_LOGIN = 'USER_LOGIN'
 export const USER_LOGOUT = 'USER_LOGOUT'
-
+export const REMOVE_USER_MOVIE = 'REMOVE_USER_MOVIE'
 

@@ -72,6 +72,11 @@ function MovieCard(props) {
         Save
         </button>
       }
+      {props.renderPage === 'userDetail' &&
+        <button onClick={()=>{props.dbUserRemove(props.movie)}}>
+        Remove
+        </button>
+      }
     </div>
   );
 }

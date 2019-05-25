@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar"
 import MovieDetails from '../components/detailed/MovieDetails'
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout } from './actions'
-import {requestUser, userSave} from './userActions'
+import {requestUser, userSave, userRemove} from './userActions'
 import NowPlaying from "../components/cards/NowPlaying";
 import TopRated from "../components/cards/TopRated"
 import Upcoming from "../components/cards/Upcoming"
@@ -48,7 +48,8 @@ const mapDispatchToProps = (dispatch) => {
     onRequestUser: (id) => dispatch(requestUser(id)),
     onUserLogin: (user) => dispatch(userLogin(user)),
     onUserLogout: () => dispatch(userLogout()),
-    onUserSave: (id, data) => dispatch(userSave(id, data))
+    onUserSave: (id, data) => dispatch(userSave(id, data)),
+    onUserRemove: (data) => dispatch(userRemove(data))
   }
 }
 
@@ -64,7 +65,19 @@ class App extends Component {
         movies_data: data
       })
     })
-    .then( res => {if (res.movie_id) { this.props.onUserSave(this.props.user.id, data)} })
+    .then(this.props.onUserSave(this.props.user.id, data))
+  }
+
+  dbUserRemove = (data) => {
+    fetch('http://localhost:4000/remove', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.props.user.id,
+        movie_id: data.id
+      })
+    })
+    .then(this.props.onUserRemove(JSON.stringify(data.id)))
   }
 
   componentDidMount() {
@@ -136,7 +149,7 @@ class App extends Component {
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
             {renderPage === 'signin' && this.props.loggedIn === false &&
-            <SignIn renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'} />
+            <SignIn onRequestUser={this.props.onRequestUser} renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'} />
             }
             {this.props.loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail 
@@ -146,6 +159,8 @@ class App extends Component {
               onRequestUser={this.props.onRequestUser}
               userMovies={this.props.userMovies}
               isPendingUser={this.props.isPendingUser}
+              renderPage={renderPage}
+              dbUserRemove={this.dbUserRemove}
             />
             }
           </Scroll>

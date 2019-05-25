@@ -5,7 +5,7 @@ import "../css/moviecard.css"
 class UserMovies extends React.Component {
 
 render(){
-  console.log('userMoves', this.props.userMovies)
+  console.log('userMovies', this.props.userMovies)
   const movieArray = []
   if (this.props.userMovies[0] === 'Not found') {
     return (
@@ -37,6 +37,8 @@ render(){
             loggedIn={this.props.loggedIn}
             onUserSave={this.props.onUserSave}
             movie={movie}
+            renderPage={this.props.renderPage}
+            dbUserRemove={this.props.dbUserRemove}
           />
         )
       })
