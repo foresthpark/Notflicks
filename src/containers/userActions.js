@@ -20,20 +20,6 @@ export const requestUser = (text) => async (dispatch) => {
   }
 }
 
-// export const saveUserMovie = (text) => async (dispatch) => {
-//   const urls = [`http://localhost:4000/user/${text}`]
-//   try {
-//     dispatch({type: REQUEST_USER_PENDING})
-//     const data = await Promise.all(urls.map(async function (url) {
-//       const response = await fetch(url)
-//       return response.json()
-//     }))
-//     await dispatch({type: REQUEST_USER_SUCCESS, payload: data})
-//   } catch (err) {
-//     dispatch({type: REQUEST_USER_FAILED, payload: err})
-//   }
-// }
-
 export const userSave = (userId, data) => ({
   type: SAVE_USER_MOVIE,
   payload: data,

@@ -5,19 +5,17 @@ import "../css/moviecard.css"
 
 class UserDetail extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.onRequestUser(this.props.userId)
-  // }
-
   render(){
-    return this.props.isPendingUser ? <Loading/> :
+    const {isPendingUser, userMovies, getMovieDetail, userName, renderPage, dbUserRemove} = this.props
+   
+    return isPendingUser ? <Loading/> :
     (
       <UserMovies 
-        userMovies={this.props.userMovies}
-        clicker={this.props.getMovieDetail}
-        userName={this.props.userName}
-        renderPage={this.props.renderPage}
-        dbUserRemove={this.props.dbUserRemove}
+        userMovies={userMovies}
+        clicker={getMovieDetail}
+        userName={userName}
+        renderPage={renderPage}
+        dbUserRemove={dbUserRemove}
       />
     )
   }

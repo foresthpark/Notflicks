@@ -85,19 +85,21 @@ class App extends Component {
   }
 
   render() {
-    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
+    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2,
+      onSearchInput, onSearchDetail, searchInputField, loggedIn, user, onUserLogout, onRequestUser, 
+      onUserLogin, userMovies, isPendingUser} = this.props
 
     return isPending ? <Loading/> :
       (
         <div className="App">
           <NavBar
             renderPage={onRenderPage}
-            searchInput={this.props.onSearchInput}
-            searchDetail={this.props.onSearchDetail}
-            searchInputField={this.props.searchInputField}
-            loggedIn={this.props.loggedIn}
-            user={this.props.user}
-            onUserLogout={this.props.onUserLogout}
+            searchInput={onSearchInput}
+            searchDetail={onSearchDetail}
+            searchInputField={searchInputField}
+            loggedIn={loggedIn}
+            user={user}
+            onUserLogout={onUserLogout}
           />
           {renderDetail === false &&
           <Scroll>
@@ -111,7 +113,7 @@ class App extends Component {
               movies={movies[0]} 
               getMovieDetail={onGetMovieDetail} 
               head={"Top Rated"} 
-              loggedIn={this.props.loggedIn} 
+              loggedIn={loggedIn} 
               onUserSave={this.dbUserSave}
               />
             }
@@ -120,7 +122,7 @@ class App extends Component {
               movies={movies[2]} 
               getMovieDetail={onGetMovieDetail} 
               head={"Upcoming"}
-              loggedIn={this.props.loggedIn} 
+              loggedIn={loggedIn} 
               onUserSave={this.dbUserSave} 
               />
             }
@@ -129,7 +131,7 @@ class App extends Component {
               movies={movies[1]} 
               getMovieDetail={onGetMovieDetail} 
               head={"Now Playing"}
-              loggedIn={this.props.loggedIn} 
+              loggedIn={loggedIn} 
               onUserSave={this.dbUserSave}
               />
             }
@@ -138,7 +140,7 @@ class App extends Component {
               movies={movies[3]} 
               getMovieDetail={onGetMovieDetail} 
               head={"Popular"}
-              loggedIn={this.props.loggedIn} 
+              loggedIn={loggedIn} 
               onUserSave={this.dbUserSave}
               />
             }
@@ -148,17 +150,17 @@ class App extends Component {
             {renderPage === 'search' &&
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
-            {renderPage === 'signin' && this.props.loggedIn === false &&
-            <SignIn onRequestUser={this.props.onRequestUser} renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'} />
+            {renderPage === 'signin' && loggedIn === false &&
+            <SignIn onRequestUser={onRequestUser} renderPage={onRenderPage} onUserLogin={onUserLogin} head={'Sign In'} />
             }
-            {this.props.loggedIn === true && renderPage === 'userDetail' &&
+            {loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail 
-              userId={this.props.user.id} 
+              userId={user.id} 
               getMovieDetail={onGetMovieDetail} 
-              userName={this.props.user.name}
-              onRequestUser={this.props.onRequestUser}
-              userMovies={this.props.userMovies}
-              isPendingUser={this.props.isPendingUser}
+              userName={user.name}
+              onRequestUser={onRequestUser}
+              userMovies={userMovies}
+              isPendingUser={isPendingUser}
               renderPage={renderPage}
               dbUserRemove={this.dbUserRemove}
             />
