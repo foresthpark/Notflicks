@@ -5,9 +5,9 @@ import "../css/moviecard.css"
 class UserMovies extends React.Component {
 
 render(){
-  console.log('userMovies', this.props.userMovies)
+  console.log('userMovies', this.props.userMovies[0].length)
   const movieArray = []
-  if (this.props.userMovies[0] === 'Not found') {
+  if (this.props.userMovies[0].length === 0) {
     return (
       <div className="cardcontainer">
         <div className="cardhead">
