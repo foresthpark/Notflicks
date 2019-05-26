@@ -127,8 +127,6 @@ class SignIn extends Component {
               className={classes.submit}
               onClick={this.onSubmitSignIn}
               name='userDetail'
-              // onClick={this.props.renderPage}
-              // onClick={(event) => console.log(event.target.name)}
             >
               Sign in
             </Button>

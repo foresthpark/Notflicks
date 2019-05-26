@@ -17,6 +17,7 @@ import CarouselCard from "../components/cards/CarouselCard";
 import About from "../components/navigation/About";
 import SignIn from "../components/signin/signin"
 import UserDetail from '../components/userdetail/UserDetail'
+import Register from '../components/register/Register'
 
 const mapStateToProps = (state) => {
   return {
@@ -152,6 +153,9 @@ class App extends Component {
             }
             {renderPage === 'signin' && loggedIn === false &&
             <SignIn onRequestUser={onRequestUser} renderPage={onRenderPage} onUserLogin={onUserLogin} head={'Sign In'} />
+            }
+            {renderPage === 'register' &&
+            <Register />
             }
             {loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail 
