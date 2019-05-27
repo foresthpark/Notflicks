@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import {BrowserRouter as Router, Route, withRouter, Switch} from "react-router-dom";
 import {connect} from 'react-redux'
-import NavBar from "../components/navigation/NavBar";
 import Scroll from "../components/navigation/Scroll";
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout} from './actions'
 import {requestUser, userSave, userRemove} from "./userActions";
@@ -66,7 +65,7 @@ class App extends Component {
         movies_data: data
       })
     })
-    .then(this.props.onUserSave(this.props.user.id, data))
+      .then(this.props.onUserSave(this.props.user.id, data))
   }
 
   dbUserRemove = (data) => {
@@ -78,7 +77,7 @@ class App extends Component {
         movie_id: data.id
       })
     })
-    .then(this.props.onUserRemove(JSON.stringify(data.id)))
+      .then(this.props.onUserRemove(JSON.stringify(data.id)))
   }
 
   componentDidMount() {
@@ -104,30 +103,11 @@ class App extends Component {
           />
 
           <Scroll>
-            <Route
-              exact
-              path={'/'}
-              render={(props) => (<CarouselCard {...props}
-                                                movies={movies}
-                                                getMovieDetail={onGetMovieDetail}
-                                                renderPage={onRenderPage}
-              />)}
+            <Route exact path={'/'} render={(props) => (<CarouselCard {...props} movies={movies}
+                                                                      getMovieDetail={onGetMovieDetail}
+                                                                      renderPage={onRenderPage}/>)}
             />
 
-            {/* // {renderPage === 'register' &&
-            // <Register />
-            // }
-            // {loggedIn === true && renderPage === 'userDetail' &&
-            // <UserDetail 
-            //   userId={user.id} 
-            //   getMovieDetail={onGetMovieDetail} 
-            //   userName={user.name}
-            //   onRequestUser={onRequestUser}
-            //   userMovies={userMovies}
-            //   isPendingUser={isPendingUser}
-            //   renderPage={renderPage}
-            //   dbUserRemove={this.dbUserRemove}
-            // /> */}
 
             <Route
               exact
@@ -196,16 +176,34 @@ class App extends Component {
             <Route
               exact
               path={'/results/search=:results'}
-              component={(props) => <SearchResultsPage {...props}
-                                                       getMovieDetail={onGetMovieDetail}
-                                                       searchDetail={this.props.onSearchDetail}
-                                                       searchInput={this.props.onSearchInput}
-                                                       searchInputField={this.props.searchInputField}
-                                                       movies={movie2}
-                                                       isPending2={this.props.isPending2}
-                                                       head={'Search Results'}
+              render={(props) => <SearchResultsPage {...props}
+                                                    getMovieDetail={onGetMovieDetail}
+                                                    searchDetail={this.props.onSearchDetail}
+                                                    searchInput={this.props.onSearchInput}
+                                                    searchInputField={this.props.searchInputField}
+                                                    movies={movie2}
+                                                    isPending2={this.props.isPending2}
+                                                    head={'Search Results'}
               />}/>
-            {/*<Route exact path={'/results/search=:results'} component={Test}*/}
+
+            <Route
+              exact
+              path={'/register'}
+              render={(props) => <Register {...props}
+
+              />}/>
+
+            {/*// {loggedIn === true && renderPage === 'userDetail' &&*/}
+            {/*// <UserDetail */}
+            {/*//   userId={user.id} */}
+            {/*//   getMovieDetail={onGetMovieDetail} */}
+            {/*//   userName={user.name}*/}
+            {/*//   onRequestUser={onRequestUser}*/}
+            {/*//   userMovies={userMovies}*/}
+            {/*//   isPendingUser={isPendingUser}*/}
+            {/*//   renderPage={renderPage}*/}
+            {/*//   dbUserRemove={this.dbUserRemove}*/}
+            {/*// />*/}
 
           </Scroll>
         </Router>

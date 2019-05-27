@@ -159,36 +159,42 @@ class SearchAppBar extends React.Component {
               </div>
             </ListItem>
           </Link>
-          <ListItem button={true} onClick={renderPage} id='signin'>
-            {loggedIn === false &&
-            <Link to={'/signin'}>
+          <Divider/>
+          {loggedIn === false &&
+          <Link to={'/signin'}>
+            <ListItem button={true} onClick={renderPage} id='signin'>
               <div className="listitems" onClick={renderPage} id='signin'>
                 Log In
               </div>
-            </Link>
-            }
-            {loggedIn === true &&
-            <div className="listitems" onClick={renderPage} id='userDetail'>
-              Welcome {user.name} !
-            </div>
-            }
-          </ListItem>
-          {loggedIn === true &&
-          <ListItem button={true} onClick={this.props.onUserLogout} id='notflicks'>
-            <div className="listitems" onClick={this.props.onUserLogout} id='notflicks'>
- 
-          {/* {loggedIn === false &&
+            </ListItem>
+          </Link>
+          }
+          {loggedIn === false &&
+          <Link to={'/register'}>
             <ListItem button={true} onClick={renderPage} id='register'>
               <div className="listitems" onClick={renderPage} id='register'>
                 Register
               </div>
             </ListItem>
-          } */}
-          
-              Log Out
-            </div>
-          </ListItem>
-
+          </Link>
+          }
+          {loggedIn === true &&
+          <Link to={'/user'}>
+            <ListItem button={true} onClick={renderPage} id='signin'>
+              <div className="listitems" onClick={renderPage} id='userDetail'>
+                Welcome {user.name} !
+              </div>
+            </ListItem>
+          </Link>
+          }
+          {loggedIn === true &&
+          <Link to={'/'}>
+            <ListItem button={true} onClick={this.props.onUserLogout} id='notflicks'>
+              <div className="listitems" onClick={this.props.onUserLogout} id='notflicks'>
+                Log Out
+              </div>
+            </ListItem>
+          </Link>
           }
         </List>
       </div>
