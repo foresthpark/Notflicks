@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -53,6 +53,24 @@ const useStyles = makeStyles(theme => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('') 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const registerUser = () => {
+    fetch('http://localhost:4000/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          name:`${firstName} ${lastName}`
+        })
+      })
+      .then( res => console.log(res))
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -75,6 +93,7 @@ export default function SignIn() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={e => setFirstName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -86,6 +105,7 @@ export default function SignIn() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={e => setLastName(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -97,6 +117,7 @@ export default function SignIn() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -109,6 +130,7 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
             {/* <Grid item xs={12}>
@@ -119,11 +141,12 @@ export default function SignIn() {
             </Grid> */}
           </Grid>
           <Button
-            type="submit"
+            // type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={registerUser}
           >
             Sign Up
           </Button>

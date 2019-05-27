@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
     userMovies: state.requestUser.userMovies,
     userError: state.requestUser.userError,
     loggedIn: state.getMovieDetail.loggedIn,
-    user: state.getMovieDetail.user
+    user: state.getMovieDetail.user,
   }
 }
 
