@@ -18,6 +18,7 @@ import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
+import SignIn2 from '../components/signin/SignIn2'
 
 const mapStateToProps = (state) => {
   return {
@@ -66,7 +67,12 @@ class App extends Component {
         movies_data: data
       })
     })
-      .then(this.props.onUserSave(this.props.user.id, data))
+    .then(res => res.json())
+    .then(movie => {
+      if (movie.movie_id) {
+        this.props.onUserSave(this.props.user.id, data)
+      }
+    })
   }
 
   dbUserRemove = (data) => {
@@ -162,7 +168,7 @@ class App extends Component {
             <Route
               exact
               path={'/signin'}
-              render={(props) => <SignIn {...props}
+              render={(props) => <SignIn2 {...props}
                                          onUserLogin={this.props.onUserLogin}
                                          head={'Sign In'}
                                          onRequestUser={this.props.onRequestUser}

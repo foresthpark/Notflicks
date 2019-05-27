@@ -7,12 +7,18 @@ class UserMovies extends React.Component {
 render(){
   const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
   const movieArray = []
+
+  let user 
+    if (userName[userName.length - 1] === 's'){
+     user = `${userName}' Movies`
+    }else{
+    user = `${userName}'s Movies`}
   
   if (userMovies[0].length === 0) {
     return (
       <div className="cardcontainer">
         <div className="cardhead">
-          {`${userName}'s Movies`}
+          {user}
         </div>
         <h1>No saved movies</h1>
     </div>
@@ -46,7 +52,7 @@ render(){
       return (
         <div className="cardcontainer">
           <div className="cardhead">
-            {`${userName}'s Movies`}
+            {user}
           </div>
           <div className="moviecard">
             {moviesCard}

@@ -182,7 +182,7 @@ class SearchAppBar extends React.Component {
           <Link to={`/user/${userId}`}>
             <ListItem button={true} onClick={renderPage} id='signin'>
               <div className="listitems" onClick={renderPage} id='userDetail'>
-                Welcome {user.name} !
+                {user.name} 
               </div>
             </ListItem>
           </Link>
