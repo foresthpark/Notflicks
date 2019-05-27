@@ -4,6 +4,7 @@ import {requestDetail} from './actions'
 import Loading from "../loading/Loading";
 import DetailBackdrop from "./DetailBackdrop"
 import RelatedCard from "../cards/RelatedCard";
+import {withRouter} from 'react-router-dom'
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class MovieDetails extends React.Component {
   componentDidMount() {
-    this.props.onRequestDetail(this.props.movieId)
+    this.props.onRequestDetail(Number(this.props.match.params.movieId))
   }
 
   onClick = (event) => {
@@ -30,6 +31,12 @@ class MovieDetails extends React.Component {
 
   render() {
     const {movie, isPending} = this.props;
+
+    console.log('hello from match', this.props.match.params.movieId)
+    console.log('hello from history', this.props.history)
+    console.log('hello from location', this.props.location)
+
+
     const backdrop = {
       width: "100%",
       height: "100%"
@@ -45,4 +52,4 @@ class MovieDetails extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieDetails))

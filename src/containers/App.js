@@ -1,23 +1,21 @@
-import React, {Component} from 'react'
+import React from "react"
+import {BrowserRouter as Router, Route, withRouter, Switch} from "react-router-dom";
 import {connect} from 'react-redux'
-import NavBar from "../components/navigation/NavBar"
-import MovieDetails from '../components/detailed/MovieDetails'
-import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout } from './actions'
-import {requestUser, userSave} from './userActions'
-import NowPlaying from "../components/cards/NowPlaying";
-import TopRated from "../components/cards/TopRated"
-import Upcoming from "../components/cards/Upcoming"
-import Popular from '../components/cards/Popular'
-import SearchResults from '../components/cards/SearchResults'
-import Loading from '../components/loading/Loading'
-import Scroll from "../components/navigation/Scroll"
-import "../components/css/moviecard.css"
-import "./App.css"
-import CarouselCard from "../components/cards/CarouselCard";
-import About from "../components/navigation/About";
-import SignIn from "../components/signin/signin"
-import UserDetail from '../components/userdetail/UserDetail'
+import NavBar from "../components/navigation/NavBar";
+import Scroll from "../components/navigation/Scroll";
 
+import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout} from './actions'
+import {requestUser, userSave} from "./userActions";
+import TopRated from "../components/cards/TopRated";
+import NowPlaying from "../components/cards/NowPlaying";
+import Upcoming from "../components/cards/Upcoming";
+import CarouselCard from "../components/cards/CarouselCard";
+import Loading from "../components/loading/Loading";
+import MovieDetails from "../components/detailed/MovieDetails";
+import About from "../components/navigation/About";
+import SignIn from "../components/signin/signin";
+import SearchResults from "../components/cards/SearchResults";
+import Test from "../components/test/Test";
 
 const mapStateToProps = (state) => {
   return {
@@ -53,20 +51,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-class App extends Component {
-
-  dbUserSave = (data) => {
-    fetch('http://localhost:4000/movies', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.user.id,
-        movie_id: data.id,
-        movies_data: data
-      })
-    })
-    .then( res => {if (res.movie_id) { this.props.onUserSave(this.props.user.id, data)} })
-  }
+class App extends React.Component {
 
   componentDidMount() {
     this.props.onRequestMovies()
@@ -74,79 +59,113 @@ class App extends Component {
 
   render() {
     const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
-
     return isPending ? <Loading/> :
       (
-        <div className="App">
-          <NavBar
-            renderPage={onRenderPage}
-            searchInput={this.props.onSearchInput}
-            searchDetail={this.props.onSearchDetail}
-            searchInputField={this.props.searchInputField}
-            loggedIn={this.props.loggedIn}
-            user={this.props.user}
-            onUserLogout={this.props.onUserLogout}
+        <Router>
+          <Route
+            path={'/'}
+            render={(props) => <NavBar {...props}
+                                       renderPage={onRenderPage}
+                                       searchInput={this.props.onSearchInput}
+                                       searchDetail={this.props.onSearchDetail}
+                                       searchInputField={this.props.searchInputField}
+                                       loggedIn={this.props.loggedIn}
+                                       user={this.props.user}
+                                       onUserLogout={this.props.onUserLogout}
+            />}
           />
-          {renderDetail === false &&
+
           <Scroll>
-            {renderPage === 'notflicks' &&
-            <div>
-              <CarouselCard movies={movies} getMovieDetail={onGetMovieDetail} renderPage={onRenderPage}/>
-            </div>
-            }
-            {renderPage === 'toprated' &&
-            <TopRated 
-              movies={movies[0]} 
-              getMovieDetail={onGetMovieDetail} 
-              head={"Top Rated"} 
-              loggedIn={this.props.loggedIn} 
-              onUserSave={this.dbUserSave}
-              />
-            }
-            {renderPage === 'upcoming' &&
-            <Upcoming movies={movies[2]} getMovieDetail={onGetMovieDetail} head={"Upcoming"}/>
-            }
-            {renderPage === 'nowplaying' &&
-            <NowPlaying movies={movies[1]} getMovieDetail={onGetMovieDetail} head={"Now Playing"}/>
-            }
-            {renderPage === 'popular' &&
-            <Popular movies={movies[3]} getMovieDetail={onGetMovieDetail} head={"Popular"}/>
-            }
-            {renderPage === 'about' &&
-            <About/>
-            }
-            {renderPage === 'search' &&
-            <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
-            }
-            {renderPage === 'signin' && this.props.loggedIn === false &&
-            <SignIn renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'} />
-            }
-            {this.props.loggedIn === true && renderPage === 'userDetail' &&
-            <UserDetail 
-              userId={this.props.user.id} 
-              getMovieDetail={onGetMovieDetail} 
-              // loggedIn={this.state.loggedIn} 
-              // onUserSave={this.onUserSave}
-              userName={this.props.user.name}
-              onRequestUser={this.props.onRequestUser}
-              userMovies={this.props.userMovies}
-              isPendingUser={this.props.isPendingUser}
+            <Route
+              exact
+              path={'/'}
+              render={(props) => (<CarouselCard {...props}
+                                                movies={movies}
+                                                getMovieDetail={onGetMovieDetail}
+                                                renderPage={onRenderPage}
+              />)}
             />
-            }
-          </Scroll>
-          }
-          {renderDetail === true &&
-          <Scroll>
-            <MovieDetails
-              movieId={movieId}
-              getMovieDetail={onGetMovieDetail}
+
+            <Route
+              exact
+              path={'/toprated'}
+              render={(props) => <TopRated {...props}
+                                           movies={movies[0]}
+                                           getMovieDetail={onGetMovieDetail}
+                                           head={"Top Rated"}
+                                           loggedIn={this.props.loggedIn}
+                                           onUserSave={this.dbUserSave}
+              />}
             />
+
+            <Route
+              exact
+              path={'/nowplaying'}
+              render={(props) => <NowPlaying {...props}
+                                             movies={movies[1]}
+                                             getMovieDetail={onGetMovieDetail}
+                                             head={"Now Playing"}
+                                             loggedIn={this.props.loggedIn}
+                                             onUserSave={this.dbUserSave}
+              />}
+            />
+
+            <Route
+              exact
+              path={'/upcoming'}
+              render={(props) => <Upcoming {...props}
+                                           movies={movies[2]}
+                                           getMovieDetail={onGetMovieDetail}
+                                           head={"Upcoming"}
+                                           loggedIn={this.props.loggedIn}
+                                           onUserSave={this.dbUserSave}
+              />}
+            />
+
+            <Route
+              exact
+              path={'/popular'}
+              render={(props) => <Upcoming {...props}
+                                           movies={movies[3]}
+                                           getMovieDetail={onGetMovieDetail}
+                                           head={"Popular"}
+                                           loggedIn={this.props.loggedIn}
+                                           onUserSave={this.dbUserSave}
+              />}
+            />
+
+            <Route
+              exact
+              path={'/signin'}
+              render={(props) => <SignIn {...props}
+                                         onUserLogin={this.props.onUserLogin}
+                                         head={'Sign In'}
+              />}
+            />
+
+            <Route exact path={'/about'} component={About}/>
+
+            <Route exact
+                   path={'/details/:movieId'}
+                   component={(props) => <MovieDetails {...props}
+                                                       location={this.props.location}
+                   />}/>
+
+            <Route
+              exact
+              path={'/results/search=:results'}
+              component={(props) => <SearchResults {...props}
+                                                   getMovieDetail={onGetMovieDetail}
+                                                   searchDetail={this.props.onSearchDetail}
+                                                   movies={movie2}
+                                                   head={'Search Results'}
+              />}/>
+            {/*<Route exact path={'/results/search=:results'} component={Test}*/}
+
           </Scroll>
-          }
-        </div>
-      )
+        </Router>
+      );
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

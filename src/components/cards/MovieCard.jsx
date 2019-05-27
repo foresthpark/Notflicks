@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import LinesEllipsis from 'react-lines-ellipsis'
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import {Link} from "react-router-dom";
 import "../css/moviecard.css"
 
 const styles = {
@@ -34,43 +35,45 @@ function MovieCard(props) {
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={movieid} onClick={clicker}>
-            <CardMedia
-              component="img"
-              alt="a movie poster"
-              className={classes.media}
-              height="468"
-              image={fullURL}
-              title={title}
-              movieid={movieid}
-            />
-          </div>
-          <CardContent>
-            <Typography gutterBottom variant="title">
-              <div className="moviecardtitle">{title}</div>
-            </Typography>
-            <Typography gutterBottom variant="subtitle1">
-              <b>Release: </b>{release}
-            </Typography>
-            <Typography gutterBottom variant="subtitle1">
-              <b>Rating: </b>{rating}
-            </Typography>
-            <Typography component="p">
-              <LinesEllipsis
-                text={synopsis}
-                maxLine='3'
-                ellipsis=' ...'
-                trimRight
-                basedOn='letters'
+          <Link to={`/details/${movieid}`}>
+            <div id={movieid} onClick={clicker}>
+              <CardMedia
+                component="img"
+                alt="a movie poster"
+                className={classes.media}
+                height="468"
+                image={fullURL}
+                title={title}
+                movieid={movieid}
               />
-            </Typography>
-          </CardContent>
+            </div>
+          </Link>
         </CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="title">
+            <div className="moviecardtitle">{title}</div>
+          </Typography>
+          <Typography gutterBottom variant="subtitle1">
+            <b>Release: </b>{release}
+          </Typography>
+          <Typography gutterBottom variant="subtitle1">
+            <b>Rating: </b>{rating}
+          </Typography>
+          <Typography component="p">
+            <LinesEllipsis
+              text={synopsis}
+              maxLine='3'
+              ellipsis=' ...'
+              trimRight
+              basedOn='letters'
+            />
+          </Typography>
+        </CardContent>
       </Card>
       {props.loggedIn === true &&
-        <button onClick={()=> props.onUserSave(props.movie)} >
+      <button onClick={() => props.onUserSave(props.movie)}>
         Save
-        </button>
+      </button>
       }
     </div>
   );

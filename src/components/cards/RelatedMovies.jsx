@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import "../css/moviecard.css"
+import {Link} from "react-router-dom";
 
 const styles = {
   card: {
@@ -25,17 +26,19 @@ function RelatedMovies(props) {
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={movieid} onClick={clicker}>
-            <CardMedia
-              component="img"
-              alt="a movie poster"
-              className={classes.media}
-              height="300"
-              image={fullImage}
-              title={title}
-              movieid={movieid}
-            />
-          </div>
+          <Link to={`/details/${movieid}`}>
+            <div id={movieid} onClick={clicker}>
+              <CardMedia
+                component="img"
+                alt="a movie poster"
+                className={classes.media}
+                height="300"
+                image={fullImage}
+                title={title}
+                movieid={movieid}
+              />
+            </div>
+          </Link>
         </CardActionArea>
       </Card>
     </div>

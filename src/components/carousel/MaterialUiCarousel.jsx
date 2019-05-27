@@ -11,6 +11,7 @@ import SwipeableViews from 'react-swipeable-views';
 import {autoPlay} from 'react-swipeable-views-utils';
 import "../css/materialcarousel.css"
 import LinesEllipsis from 'react-lines-ellipsis'
+import {Link} from "react-router-dom";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -95,24 +96,27 @@ class MaterialUiCarousel extends React.Component {
           enableMouseEvents
         >
           {movieArray.map((movie, index) => (
-            <div key={movie.title} className={classes.image} id={movie.id} onClick={getMovieDetail}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
-              ) : null}
-              <Paper square elevation={0} className={classes.footer}>
-                <Typography gutterBottom variant="title">
-                  <div className="carouseltitle">
-                    <LinesEllipsis
-                      text={movie.title}
-                      maxLine='2'
-                      ellipsis=' ...'
-                      trimRight
-                      basedOn='letters'
-                    />
-                  </div>
-                </Typography>
-              </Paper>
-            </div>
+            <Link to={`/details/${movie.id}`} key={index}>
+              <div key={movie.title} className={classes.image} id={movie.id} onClick={getMovieDetail}>
+                {Math.abs(activeStep - index) <= 2 ? (
+                  <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
+                ) : null}
+                <Paper square elevation={0} className={classes.footer} key={index}>
+                  <Typography gutterBottom variant="title" key={index}>
+                    <div key={index} className="carouseltitle" key={index}>
+                      <LinesEllipsis
+                        text={movie.title}
+                        maxLine='2'
+                        ellipsis=' ...'
+                        trimRight
+                        basedOn='letters'
+                        key={index}
+                      />
+                    </div>
+                  </Typography>
+                </Paper>
+              </div>
+            </Link>
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper

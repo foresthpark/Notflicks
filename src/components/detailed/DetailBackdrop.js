@@ -38,7 +38,7 @@ class DetailBackdrop extends React.Component {
             {movie[0].tagline}
           </div>
           <div className="rating">
-            <span role="img">&#11088;</span> {movie[0].vote_average}
+            <span role="img" aria-label='label'>&#11088;</span> {movie[0].vote_average}
           </div>
         </div>
       </div>

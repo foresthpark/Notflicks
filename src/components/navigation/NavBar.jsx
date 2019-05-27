@@ -15,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import "../css/leftmenu.css"
 import "../css/navbar.css"
+import {Link, Redirect, withRouter} from "react-router-dom";
 
 const styles = theme => ({
   list: {
@@ -104,66 +105,81 @@ class SearchAppBar extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          <ListItem>
-            <div className="listitemstitle" onClick={renderPage} id='notflicks'>
-              NotFlicks
-            </div>
-          </ListItem>
+          <Link to={'/'}>
+            <ListItem>
+              <div className="listitemstitle" onClick={renderPage} id='notflicks'>
+                NotFlicks
+              </div>
+            </ListItem>
+          </Link>
         </List>
 
         <Divider/>
 
         <List>
-          <ListItem button={true} onClick={renderPage} id='toprated'>
-            <div className="listitems" onClick={renderPage} id='toprated'>
-              Top rated
-            </div>
-          </ListItem>
+          <Link to={'/toprated'}>
+            <ListItem button={true} id='toprated'>
+              <div className="listitems" id='toprated'>
+                Top rated
+              </div>
+            </ListItem>
+          </Link>
 
-          <ListItem button={true} onClick={renderPage} id='nowplaying'>
-            <div className="listitems" onClick={renderPage} id='nowplaying'>
-              Now Playing
-            </div>
-          </ListItem>
+          <Link to={'/nowplaying'}>
+            <ListItem button={true} id='nowplaying'>
+              <div className="listitems" id='nowplaying'>
+                Now Playing
+              </div>
+            </ListItem>
+          </Link>
 
-          <ListItem button={true} onClick={renderPage} id='upcoming'>
-            <div className="listitems" onClick={renderPage} id='upcoming'>
-              Upcoming
-            </div>
-          </ListItem>
+          <Link to={'/upcoming'}>
+            <ListItem button={true} id='upcoming'>
+              <div className="listitems" id='upcoming'>
+                Upcoming
+              </div>
+            </ListItem>
+          </Link>
 
-          <ListItem button={true} onClick={renderPage} id='popular'>
-            <div className="listitems" onClick={renderPage} id='popular'>
-              Popular
-            </div>
-          </ListItem>
+          <Link to={'/popular'}>
+            <ListItem button={true} id='popular'>
+              <div className="listitems" id='popular'>
+                Popular
+              </div>
+            </ListItem>
+          </Link>
+
         </List>
         <Divider/>
         <List>
-          <ListItem button={true} onClick={renderPage} id='about'>
-            <div className="listitems" onClick={renderPage} id='about'>
-              About
-            </div>
-          </ListItem>
+          <Link to={'/about'}>
+            <ListItem button={true} onClick={renderPage} id='about'>
+              <div className="listitems" onClick={renderPage} id='about'>
+                About
+              </div>
+            </ListItem>
+          </Link>
           <ListItem button={true} onClick={renderPage} id='signin'>
             {loggedIn === false &&
+            <Link to={'/signin'}>
               <div className="listitems" onClick={renderPage} id='signin'>
-              Log In
-            </div>
+                Log In
+              </div>
+            </Link>
             }
             {loggedIn === true &&
-              <div className="listitems" onClick={renderPage} id='userDetail'>
+            <div className="listitems" onClick={renderPage} id='userDetail'>
               Welcome {user.name} !
-            </div> 
+            </div>
             }
           </ListItem>
-          {loggedIn === true && 
-            <ListItem button={true} onClick={this.props.onUserLogout} id='notflicks'>
-            <div className="listitems" onClick= {this.props.onUserLogout} id='notflicks'>
+          {loggedIn === true &&
+          <ListItem button={true} onClick={this.props.onUserLogout} id='notflicks'>
+            <div className="listitems" onClick={this.props.onUserLogout} id='notflicks'>
               Log Out
             </div>
           </ListItem>
-          
+
           }
         </List>
       </div>
@@ -192,9 +208,11 @@ class SearchAppBar extends React.Component {
               </div>
             </Drawer>
             <Typography className={classes.title} variant="h5" color="inherit">
-              <div className="app_title" id='notflicks' onClick={this.props.renderPage}>
-                NotFlicks
-              </div>
+              <Link to={'/'}>
+                <div className="app_title" id='notflicks'>
+                  Notflicks
+                </div>
+              </Link>
             </Typography>
             <div className={classes.grow}/>
             <div className={classes.search}>
@@ -212,6 +230,7 @@ class SearchAppBar extends React.Component {
                 onKeyPress={
                   (event) => {
                     if (event.key === 'Enter') {
+                      this.props.history.push(`/results/search=${this.props.searchInputField}`)
                       this.props.searchDetail(this.props.searchInputField)
                     }
                   }
@@ -230,4 +249,4 @@ SearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SearchAppBar);
+export default withRouter(withStyles(styles)(SearchAppBar));
