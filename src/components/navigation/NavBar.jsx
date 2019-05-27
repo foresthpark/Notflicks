@@ -100,7 +100,7 @@ class SearchAppBar extends React.Component {
   };
 
   render() {
-    const {classes, renderPage, loggedIn, user} = this.props;
+    const {classes, renderPage, loggedIn, user, userId} = this.props;
 
     const sideList = (
       <div className={classes.list}>
@@ -179,7 +179,7 @@ class SearchAppBar extends React.Component {
           </Link>
           }
           {loggedIn === true &&
-          <Link to={'/user'}>
+          <Link to={`/user/${userId}`}>
             <ListItem button={true} onClick={renderPage} id='signin'>
               <div className="listitems" onClick={renderPage} id='userDetail'>
                 Welcome {user.name} !

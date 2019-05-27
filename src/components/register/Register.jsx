@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const classes = useStyles();
 
   const [firstName, setFirstName] = useState('')
@@ -68,7 +68,15 @@ export default function SignIn() {
           name:`${firstName} ${lastName}`
         })
       })
-      .then( res => console.log(res))
+      .then( res => res.json())
+      .then(user => {
+        if (user.id) {
+          // console.log(this.props.history)
+          props.onUserLogin(user)
+          props.onRequestUser(user.id)
+          props.history.push(`/user/${user.id}`)
+        }
+      })
   }
 
   return (

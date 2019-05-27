@@ -17,6 +17,7 @@ import Test from "../components/test/Test";
 import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
+import NavBar from '../components/navigation/NavBar'
 
 const mapStateToProps = (state) => {
   return {
@@ -92,6 +93,7 @@ class App extends Component {
           <Route
             path={'/'}
             render={(props) => <NavBar {...props}
+                                       userId={this.props.user.id}
                                        renderPage={onRenderPage}
                                        searchInput={this.props.onSearchInput}
                                        searchInputField={this.props.searchInputField}
@@ -163,6 +165,7 @@ class App extends Component {
               render={(props) => <SignIn {...props}
                                          onUserLogin={this.props.onUserLogin}
                                          head={'Sign In'}
+                                         onRequestUser={this.props.onRequestUser}
               />}
             />
 
@@ -190,9 +193,24 @@ class App extends Component {
               exact
               path={'/register'}
               render={(props) => <Register {...props}
+                                            onRequestUser={this.props.onRequestUser}
+                                            onUserLogin={this.props.onUserLogin}
 
               />}/>
 
+
+            <Route
+              exact
+              path={'/user/:userid'}
+              render={(props) => <UserDetail {...props}
+                                    getMovieDetail={onGetMovieDetail}
+                                    userName={this.props.user.name}
+                                    onRequestUser={this.props.onRequestUser}
+                                    userMovies={this.props.userMovies}
+                                    isPendingUser={this.props.isPendingUser}
+                                    renderPage={this.props.renderPage}
+                                    dbUserRemove={this.dbUserRemove}
+            />}/>
             {/*// {loggedIn === true && renderPage === 'userDetail' &&*/}
             {/*// <UserDetail */}
             {/*//   userId={user.id} */}

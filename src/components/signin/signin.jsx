@@ -76,6 +76,7 @@ class SignIn extends Component {
       if (user.id) {
         this.props.onUserLogin(user)
         this.props.onRequestUser(user.id)
+        this.props.history.push(`/user/${user.id}`)
       }
     })
   }
