@@ -30,7 +30,6 @@ function MovieCard(props) {
   } else {
     fullURL = altPoster
   }
-
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>

@@ -8,10 +8,9 @@ import Loading from "../loading/Loading";
 class SearchResults extends React.Component {
 
   render() {
-    const {movies, getMovieDetail, head, isPending2, searchInputField, match} = this.props
-
+    const {movies, getMovieDetail, head, isPending2, match} = this.props
     const moviesArray = movies[0].results
-    console.log('THIS IS THE ARRAY', moviesArray)
+
     let moviesCard;
     if (moviesArray.length > 0) {
       moviesCard = moviesArray.map((movie, index) => {
