@@ -1,22 +1,24 @@
-import React from "react"
+import React, {Component} from "react"
 import {BrowserRouter as Router, Route, withRouter, Switch} from "react-router-dom";
 import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar";
 import Scroll from "../components/navigation/Scroll";
-
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout} from './actions'
 import {requestUser, userSave} from "./userActions";
 import TopRated from "../components/cards/TopRated";
+import NavBar from "../components/navigation/NavBar"
+import MovieDetails from '../components/detailed/MovieDetails'
 import NowPlaying from "../components/cards/NowPlaying";
 import Upcoming from "../components/cards/Upcoming";
 import CarouselCard from "../components/cards/CarouselCard";
 import Loading from "../components/loading/Loading";
-import MovieDetails from "../components/detailed/MovieDetails";
 import About from "../components/navigation/About";
 import SignIn from "../components/signin/signin";
 import SearchResults from "../components/cards/SearchResults";
 import Test from "../components/test/Test";
 import SearchResultsPage from "../components/cards/SearchResultsPage";
+import UserDetail from '../components/userdetail/UserDetail'
+import Register from '../components/register/Register'
 
 const mapStateToProps = (state) => {
   return {
@@ -34,7 +36,7 @@ const mapStateToProps = (state) => {
     userMovies: state.requestUser.userMovies,
     userError: state.requestUser.userError,
     loggedIn: state.getMovieDetail.loggedIn,
-    user: state.getMovieDetail.user
+    user: state.getMovieDetail.user,
   }
 }
 
@@ -48,11 +50,37 @@ const mapDispatchToProps = (dispatch) => {
     onRequestUser: (id) => dispatch(requestUser(id)),
     onUserLogin: (user) => dispatch(userLogin(user)),
     onUserLogout: () => dispatch(userLogout()),
-    onUserSave: (id, data) => dispatch(userSave(id, data))
+    onUserSave: (id, data) => dispatch(userSave(id, data)),
+    onUserRemove: (data) => dispatch(userRemove(data))
   }
 }
 
-class App extends React.Component {
+class App extends Component {
+
+  dbUserSave = (data) => {
+    fetch('http://localhost:4000/movies', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.props.user.id,
+        movie_id: data.id,
+        movies_data: data
+      })
+    })
+    .then(this.props.onUserSave(this.props.user.id, data))
+  }
+
+  dbUserRemove = (data) => {
+    fetch('http://localhost:4000/remove', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.props.user.id,
+        movie_id: data.id
+      })
+    })
+    .then(this.props.onUserRemove(JSON.stringify(data.id)))
+  }
 
   componentDidMount() {
     this.props.onRequestMovies()
@@ -85,7 +113,21 @@ class App extends React.Component {
                                                 getMovieDetail={onGetMovieDetail}
                                                 renderPage={onRenderPage}
               />)}
-            />
+
+            // {renderPage === 'register' &&
+            // <Register />
+            // }
+            // {loggedIn === true && renderPage === 'userDetail' &&
+            // <UserDetail 
+            //   userId={user.id} 
+            //   getMovieDetail={onGetMovieDetail} 
+            //   userName={user.name}
+            //   onRequestUser={onRequestUser}
+            //   userMovies={userMovies}
+            //   isPendingUser={isPendingUser}
+            //   renderPage={renderPage}
+            //   dbUserRemove={this.dbUserRemove}
+            // />
 
             <Route
               exact

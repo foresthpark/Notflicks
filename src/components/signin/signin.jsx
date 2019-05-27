@@ -75,6 +75,7 @@ class SignIn extends Component {
     .then(user => {
       if (user.id) {
         this.props.onUserLogin(user)
+        this.props.onRequestUser(user.id)
       }
     })
   }
@@ -126,8 +127,6 @@ class SignIn extends Component {
               className={classes.submit}
               onClick={this.onSubmitSignIn}
               name='userDetail'
-              // onClick={this.props.renderPage}
-              // onClick={(event) => console.log(event.target.name)}
             >
               Sign in
             </Button>

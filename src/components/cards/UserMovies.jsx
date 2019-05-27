@@ -5,22 +5,23 @@ import "../css/moviecard.css"
 class UserMovies extends React.Component {
 
 render(){
-  console.log('userMoves', this.props.userMovies)
+  const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
   const movieArray = []
-  if (this.props.userMovies[0] === 'Not found') {
+  
+  if (userMovies[0].length === 0) {
     return (
       <div className="cardcontainer">
         <div className="cardhead">
-          {`${this.props.userName}'s Movies`}
+          {`${userName}'s Movies`}
         </div>
         <h1>No saved movies</h1>
     </div>
     )
   }else{
-  this.props.userMovies[0].map((movie) => {
-    return( 
-      movieArray.push(JSON.parse(movie.movies_data))
-    )
+    userMovies[0].map((movie) => {
+      return( 
+        movieArray.push(JSON.parse(movie.movies_data))
+      )
   })
   const moviesCard = movieArray.map((movie, index) => {
         return (
@@ -33,17 +34,19 @@ render(){
             movieid={movie.id}
             rating={movie.vote_average}
             index={index}
-            clicker={this.props.clicker}
-            loggedIn={this.props.loggedIn}
-            onUserSave={this.props.onUserSave}
+            clicker={clicker}
+            loggedIn={loggedIn}
+            onUserSave={onUserSave}
             movie={movie}
+            renderPage={renderPage}
+            dbUserRemove={dbUserRemove}
           />
         )
       })
       return (
         <div className="cardcontainer">
           <div className="cardhead">
-            {`${this.props.userName}'s Movies`}
+            {`${userName}'s Movies`}
           </div>
           <div className="moviecard">
             {moviesCard}

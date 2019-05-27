@@ -18,6 +18,9 @@ class NowPlaying extends React.Component {
           rating={movie.vote_average}
           index={index}
           clicker={getMovieDetail}
+          loggedIn={this.props.loggedIn}
+          onUserSave={this.props.onUserSave}
+          movie={movie}
         />
       )
     })

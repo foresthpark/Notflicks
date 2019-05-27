@@ -9,7 +9,7 @@ import {
   REQUEST_SEARCH_SUCCESS,
 	REQUEST_SEARCH_FAILED,
 	USER_LOGIN,
-	USER_LOGOUT
+	USER_LOGOUT,
 } from './constants'
 
 //set state with data from intial API call

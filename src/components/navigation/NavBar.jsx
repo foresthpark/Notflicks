@@ -176,6 +176,15 @@ class SearchAppBar extends React.Component {
           {loggedIn === true &&
           <ListItem button={true} onClick={this.props.onUserLogout} id='notflicks'>
             <div className="listitems" onClick={this.props.onUserLogout} id='notflicks'>
+ 
+          {/* {loggedIn === false &&
+            <ListItem button={true} onClick={renderPage} id='register'>
+              <div className="listitems" onClick={renderPage} id='register'>
+                Register
+              </div>
+            </ListItem>
+          } */}
+          
               Log Out
             </div>
           </ListItem>
