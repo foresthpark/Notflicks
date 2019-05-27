@@ -1,4 +1,11 @@
 .videoplayer {
-    /*height: 300px;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 15px 0;
+}
+
+.trailer {
+    padding: 15px;
 }

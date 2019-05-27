@@ -5,18 +5,27 @@ import "../css/videoplayer.css"
 class MovieTrailer extends React.Component {
   render() {
     const {movie} = this.props
-    const moviesArray = movie[3].results[0]
-    const videoURL = "https://www.youtube.com/watch?v="
-    let videoKey = moviesArray ? moviesArray.key : null
-    const videoSuffix = "?controls=0"
-    const fullURL = `${videoURL}${videoKey}${videoSuffix}`
+    const moviesArray = movie[3].results
 
     return (
       <div className="videoplayer">
-        <ReactPlayer url={fullURL} width={348} height={196}/>
+        {moviesArray.slice(0, 3).map(trailer => {
+
+          const videoURL = "https://www.youtube.com/watch?v="
+          let videoKey = trailer ? trailer.key : null
+          const videoSuffix = "?controls=0"
+          const fullURL = `${videoURL}${videoKey}${videoSuffix}`
+
+          return (
+            <div className='trailer'>
+              <ReactPlayer url={fullURL} width={348} height={196}/>
+            </div>
+          )
+        })}
       </div>
     );
   }
 }
 
 export default MovieTrailer
+

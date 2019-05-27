@@ -16,6 +16,7 @@ import About from "../components/navigation/About";
 import SignIn from "../components/signin/signin";
 import SearchResults from "../components/cards/SearchResults";
 import Test from "../components/test/Test";
+import SearchResultsPage from "../components/cards/SearchResultsPage";
 
 const mapStateToProps = (state) => {
   return {
@@ -67,8 +68,8 @@ class App extends React.Component {
             render={(props) => <NavBar {...props}
                                        renderPage={onRenderPage}
                                        searchInput={this.props.onSearchInput}
-                                       searchDetail={this.props.onSearchDetail}
                                        searchInputField={this.props.searchInputField}
+                                       searchDetail={this.props.onSearchDetail}
                                        loggedIn={this.props.loggedIn}
                                        user={this.props.user}
                                        onUserLogout={this.props.onUserLogout}
@@ -147,18 +148,20 @@ class App extends React.Component {
 
             <Route exact
                    path={'/details/:movieId'}
-                   component={(props) => <MovieDetails {...props}
-                                                       location={this.props.location}
+                   render={(props) => <MovieDetails {...props}
                    />}/>
 
             <Route
               exact
               path={'/results/search=:results'}
-              component={(props) => <SearchResults {...props}
-                                                   getMovieDetail={onGetMovieDetail}
-                                                   searchDetail={this.props.onSearchDetail}
-                                                   movies={movie2}
-                                                   head={'Search Results'}
+              component={(props) => <SearchResultsPage {...props}
+                                                       getMovieDetail={onGetMovieDetail}
+                                                       searchDetail={this.props.onSearchDetail}
+                                                       searchInput={this.props.onSearchInput}
+                                                       searchInputField={this.props.searchInputField}
+                                                       movies={movie2}
+                                                       isPending2={this.props.isPending2}
+                                                       head={'Search Results'}
               />}/>
             {/*<Route exact path={'/results/search=:results'} component={Test}*/}
 

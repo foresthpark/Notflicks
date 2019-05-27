@@ -32,11 +32,6 @@ class MovieDetails extends React.Component {
   render() {
     const {movie, isPending} = this.props;
 
-    console.log('hello from match', this.props.match.params.movieId)
-    console.log('hello from history', this.props.history)
-    console.log('hello from location', this.props.location)
-
-
     const backdrop = {
       width: "100%",
       height: "100%"

@@ -26,6 +26,14 @@
     padding: 20px;
 }
 
+.searchquery {
+    font-family: "bebas_neueregular";
+    font-size: 2em;
+    text-shadow: 2px 2px #BCC1C4;
+    text-align: center;
+    padding-top: 30px;
+}
+
 .cardhead {
     font-family: "bebas_neueregular";
     font-size: 7em;

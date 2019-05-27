@@ -222,6 +222,7 @@ class SearchAppBar extends React.Component {
               <InputBase
                 type='text'
                 placeholder="Search…"
+                id="searchInput"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
