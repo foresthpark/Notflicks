@@ -4,9 +4,8 @@ import {connect} from 'react-redux'
 import NavBar from "../components/navigation/NavBar";
 import Scroll from "../components/navigation/Scroll";
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout} from './actions'
-import {requestUser, userSave} from "./userActions";
+import {requestUser, userSave, userRemove} from "./userActions";
 import TopRated from "../components/cards/TopRated";
-import NavBar from "../components/navigation/NavBar"
 import MovieDetails from '../components/detailed/MovieDetails'
 import NowPlaying from "../components/cards/NowPlaying";
 import Upcoming from "../components/cards/Upcoming";
@@ -113,8 +112,9 @@ class App extends Component {
                                                 getMovieDetail={onGetMovieDetail}
                                                 renderPage={onRenderPage}
               />)}
+            />
 
-            // {renderPage === 'register' &&
+            {/* // {renderPage === 'register' &&
             // <Register />
             // }
             // {loggedIn === true && renderPage === 'userDetail' &&
@@ -127,7 +127,7 @@ class App extends Component {
             //   isPendingUser={isPendingUser}
             //   renderPage={renderPage}
             //   dbUserRemove={this.dbUserRemove}
-            // />
+            // /> */}
 
             <Route
               exact
