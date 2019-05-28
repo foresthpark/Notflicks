@@ -29,7 +29,6 @@ class SearchResults extends React.Component {
             userId={userId}
             onUserSave={onUserSave}
             movie={movie}
-            loggedIn={loggedIn}
             renderPage={renderPage}
           />
         )
