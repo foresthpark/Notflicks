@@ -34,6 +34,30 @@
     padding-top: 30px;
 }
 
+.gotosaved {
+    font-family: "bebas_neueregular";
+    font-size: 0.7em;
+    text-shadow: 2px 2px #BCC1C4;
+    text-align: center;
+    color: #6e6e6e;
+}
+
+.successfullsave {
+    font-family: "bebas_neueregular";
+    font-size: 1.2em;
+    text-shadow: 2px 2px #BCC1C4;
+    text-align: center;
+    width: auto;
+}
+
+.nosavedmovies {
+    font-family: "bebas_neueregular";
+    font-size: 3em;
+    text-shadow: 2px 2px #BCC1C4;
+    text-align: center;
+    padding-top: 50px;
+}
+
 .cardhead {
     font-family: "bebas_neueregular";
     font-size: 7em;

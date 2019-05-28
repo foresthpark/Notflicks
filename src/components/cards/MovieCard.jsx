@@ -9,6 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 import "../css/moviecard.css"
+import Popup from "reactjs-popup";
 
 const styles = {
   card: {
@@ -20,7 +21,7 @@ const styles = {
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker} = props;
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
   const altPoster = `https://i.imgur.com/po9zfIz.png${lazyLoad}`
@@ -30,6 +31,11 @@ function MovieCard(props) {
   } else {
     fullURL = altPoster
   }
+
+  const handleClick = () => {
+    props.onUserSave(props.movie)
+  }
+
   return (
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
@@ -70,14 +76,27 @@ function MovieCard(props) {
         </CardContent>
       </Card>
       {props.loggedIn === true &&
-      <button onClick={() => props.onUserSave(props.movie)}>
-        Save
-      </button>
+      <div>
+        <Popup trigger={<button>Save</button>} onOpen={() => handleClick()} position="right center">
+
+          <div className='successfullsave'>
+            Successfully Saved!!
+            <Link to={`/user/${userId}`}>
+              <div className='gotosaved'>
+                [Click here to go to saved movies]
+              </div>
+            </Link>
+          </div>
+
+        </Popup>
+      </div>
       }
       {props.renderPage === 'userDetail' &&
-        <button onClick={()=>{props.dbUserRemove(props.movie)}}>
+      <button onClick={() => {
+        props.dbUserRemove(props.movie)
+      }}>
         Remove
-        </button>
+      </button>
       }
     </div>
   );

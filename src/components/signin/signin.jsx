@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+
 
 const styles = theme => ({
   main: {
@@ -46,7 +47,7 @@ const styles = theme => ({
 });
 
 class SignIn extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       signInEmail: '',
@@ -55,11 +56,11 @@ class SignIn extends Component {
   }
 
   onEmailChange = (event) => {
-    this.setState({ signInEmail: event.target.value })
+    this.setState({signInEmail: event.target.value})
   }
 
   onPasswordChange = (event) => {
-    this.setState({ signInPassword: event.target.value })
+    this.setState({signInPassword: event.target.value})
   }
 
   onSubmitSignIn = () => {
@@ -71,26 +72,26 @@ class SignIn extends Component {
         password: this.state.signInPassword
       })
     })
-    .then(res => res.json())
-    .then(user => {
-      if (user.id) {
-        this.props.onUserLogin(user)
-        this.props.onRequestUser(user.id)
-        this.props.history.push(`/user/${user.id}`)
-      }
-    })
+      .then(res => res.json())
+      .then(user => {
+        if (user.id) {
+          this.props.onUserLogin(user)
+          this.props.onRequestUser(user.id)
+          this.props.history.push(`/user/${user.id}`)
+        }
+      })
   }
 
-  render(){
+  render() {
 
-  const { classes } = this.props;
+    const {classes} = this.props;
 
     return (
       <main className={classes.main}>
-        <CssBaseline />
+        <CssBaseline/>
         <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <LockOutlinedIcon/>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -98,26 +99,26 @@ class SignIn extends Component {
           <div className={classes.form}>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input 
-                id="email" 
-                name="email" 
-                autoComplete="email" 
+              <Input
+                id="email"
+                name="email"
+                autoComplete="email"
                 autoFocus
                 onChange={this.onEmailChange}
               />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
-              <Input 
-                name="password" 
-                type="password" 
-                id="password" 
+              <Input
+                name="password"
+                type="password"
+                id="password"
                 autoComplete="current-password"
                 onChange={this.onPasswordChange}
               />
             </FormControl>
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" color="primary"/>}
               label="Remember me"
             />
             <Button

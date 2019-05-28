@@ -4,26 +4,28 @@ import "../css/moviecard.css"
 
 class UserMovies extends React.Component {
 
-render(){
-  const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
-  const movieArray = []
-  
-  if (userMovies[0].length === 0) {
-    return (
-      <div className="cardcontainer">
-        <div className="cardhead">
-          {`${userName}'s Movies`}
+  render() {
+    const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
+    const movieArray = []
+
+    if (userMovies[0].length === 0) {
+      return (
+        <div className="cardcontainer">
+          <div className="cardhead">
+            {`${userName}'s Movies`}
+          </div>
+          <div className='nosavedmovies'>
+            You have no saved movies
+          </div>
         </div>
-        <h1>No saved movies</h1>
-    </div>
-    )
-  }else{
-    userMovies[0].map((movie) => {
-      return( 
-        movieArray.push(JSON.parse(movie.movies_data))
       )
-  })
-  const moviesCard = movieArray.map((movie, index) => {
+    } else {
+      userMovies[0].map((movie) => {
+        return (
+          movieArray.push(JSON.parse(movie.movies_data))
+        )
+      })
+      const moviesCard = movieArray.map((movie, index) => {
         return (
           <MovieCard
             key={movie.id}

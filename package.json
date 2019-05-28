@@ -23,11 +23,13 @@
     "react-scripts": "3.0.0",
     "react-slick": "^0.24.0",
     "react-swipeable-views": "^0.13.1",
+    "reactjs-popup": "^1.4.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "snackbar": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

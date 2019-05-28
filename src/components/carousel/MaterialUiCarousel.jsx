@@ -74,7 +74,7 @@ class MaterialUiCarousel extends React.Component {
   render() {
     const {classes, theme, movies, head, getMovieDetail, renderPage, id} = this.props;
     const {activeStep} = this.state;
-    const movieArray = movies.results.slice(1, 11)
+    const movieArray = movies.results.slice(0, 10)
     const maxDots = movieArray.length;
     const imgURL = "https://image.tmdb.org/t/p/original";
     const lazyLoad = "?tr=w-1,h-1"

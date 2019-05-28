@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 // function MadeWithLove() {
@@ -54,21 +51,21 @@ export default function SignIn(props) {
   const classes = useStyles();
 
   const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('') 
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const registerUser = () => {
     fetch('http://localhost:4000/register', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          name:`${firstName} ${lastName}`
-        })
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        name: `${firstName} ${lastName}`
       })
-      .then( res => res.json())
+    })
+      .then(res => res.json())
       .then(user => {
         if (user.id) {
           // console.log(this.props.history)
@@ -81,10 +78,10 @@ export default function SignIn(props) {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <CssBaseline/>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <LockOutlinedIcon/>
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
@@ -161,7 +158,9 @@ export default function SignIn(props) {
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">
-                Already have an account? Sign in
+                <div className='gotosignin'>
+                  Already have an account? Sign in
+                </div>
               </Link>
             </Grid>
           </Grid>

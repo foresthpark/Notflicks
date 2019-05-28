@@ -4,11 +4,12 @@ import "../css/moviecard.css"
 
 class TopRated extends React.Component {
   render() {
-    const {movies, getMovieDetail, head} = this.props
+    const {movies, getMovieDetail, head, userId} = this.props
     const moviesArray = movies.results
     const moviesCard = moviesArray.map((movie, index) => {
       return (
         <MovieCard
+          userId={userId}
           key={movie.id}
           title={movie.original_title}
           poster={movie.poster_path}

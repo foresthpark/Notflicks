@@ -115,6 +115,7 @@ class App extends Component {
               exact
               path={'/toprated'}
               render={(props) => <TopRated {...props}
+                                           userId={this.props.user.id}
                                            movies={movies[0]}
                                            getMovieDetail={onGetMovieDetail}
                                            head={"Top Rated"}
@@ -193,8 +194,8 @@ class App extends Component {
               exact
               path={'/register'}
               render={(props) => <Register {...props}
-                                            onRequestUser={this.props.onRequestUser}
-                                            onUserLogin={this.props.onUserLogin}
+                                           onRequestUser={this.props.onRequestUser}
+                                           onUserLogin={this.props.onUserLogin}
 
               />}/>
 
@@ -203,14 +204,14 @@ class App extends Component {
               exact
               path={'/user/:userid'}
               render={(props) => <UserDetail {...props}
-                                    getMovieDetail={onGetMovieDetail}
-                                    userName={this.props.user.name}
-                                    onRequestUser={this.props.onRequestUser}
-                                    userMovies={this.props.userMovies}
-                                    isPendingUser={this.props.isPendingUser}
-                                    renderPage={this.props.renderPage}
-                                    dbUserRemove={this.dbUserRemove}
-            />}/>
+                                             getMovieDetail={onGetMovieDetail}
+                                             userName={this.props.user.name}
+                                             onRequestUser={this.props.onRequestUser}
+                                             userMovies={this.props.userMovies}
+                                             isPendingUser={this.props.isPendingUser}
+                                             renderPage={this.props.renderPage}
+                                             dbUserRemove={this.dbUserRemove}
+              />}/>
             {/*// {loggedIn === true && renderPage === 'userDetail' &&*/}
             {/*// <UserDetail */}
             {/*//   userId={user.id} */}
