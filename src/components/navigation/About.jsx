@@ -11,6 +11,7 @@ class About extends React.Component {
         name: "Forest Park",
         email: "foresthpark@gmail.com",
         github: "https://github.com/foresthpark",
+        linked: 'https://linkedin.com/in/forestpark',
         image: "https://i.imgur.com/20Up2aL.jpg",
         story: "Always looking out for tech that can change the future. Passionate about solving problems and helping others solve other problems."
       },
@@ -18,17 +19,19 @@ class About extends React.Component {
         name: "Dustin Joynt",
         email: "dustinjoynt@gmail.com",
         github: "https://github.com/dustinjoynt",
+        linked: 'https://linkedin.com/in/dustin-joynt',
         image: "https://i.imgur.com/PAQQHdL.jpg",
         story: "Junior full stack developer, passionate about web development and creating unique customer experiences."
       }
     ]
 
-    const notMembers = members.map(({name, email, github, image, story}, index) => {
+    const notMembers = members.map(({name, email, github, image, story, linked}, index) => {
       return (
         <AboutCard
           key={index}
           name={name}
           email={email}
+          linked={linked}
           github={github}
           image={image}
           story={story}

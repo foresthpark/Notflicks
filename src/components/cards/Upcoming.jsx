@@ -4,7 +4,7 @@ import "../css/moviecard.css"
 
 class Upcoming extends React.Component {
   render() {
-    const {movies, getMovieDetail, head} = this.props
+    const {movies, getMovieDetail, head, onUserSave, loggedIn} = this.props
     const moviesArray = movies.results
     const moviesCard = moviesArray.map((movie, index) => {
       return (
@@ -18,8 +18,8 @@ class Upcoming extends React.Component {
           rating={movie.vote_average}
           index={index}
           clicker={getMovieDetail}
-          loggedIn={this.props.loggedIn}
-          onUserSave={this.props.onUserSave}
+          loggedIn={loggedIn}
+          onUserSave={onUserSave}
           movie={movie}
         />
       )

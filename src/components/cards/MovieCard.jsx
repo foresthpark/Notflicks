@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 import "../css/moviecard.css"
 import Popup from "reactjs-popup";
+import Button from '@material-ui/core/Button';
+import '../css/buttons.css'
 
 const styles = {
   card: {
@@ -18,10 +20,14 @@ const styles = {
   media: {
     objectFit: 'cover',
   },
+  button: {
+    paddingLeft: '10px',
+    paddingBottom: '10px'
+  }
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId} = props;
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId, movie, onUserSave} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
   const altPoster = `https://i.imgur.com/po9zfIz.png${lazyLoad}`
@@ -33,7 +39,7 @@ function MovieCard(props) {
   }
 
   const handleClick = () => {
-    props.onUserSave(props.movie)
+    onUserSave(movie)
   }
 
   return (
@@ -55,49 +61,52 @@ function MovieCard(props) {
           </Link>
         </CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="title">
+          <Typography gutterBottom>
             <div className="moviecardtitle">{title}</div>
           </Typography>
           <Typography gutterBottom variant="subtitle1">
             <b>Release: </b>{release}
           </Typography>
           <Typography gutterBottom variant="subtitle1">
-            <b>Rating: </b>{rating}
+            <b>Rating: </b>⭐{rating}
           </Typography>
-          <Typography component="p">
-            <LinesEllipsis
-              text={synopsis}
-              maxLine='3'
-              ellipsis=' ...'
-              trimRight
-              basedOn='letters'
-            />
-          </Typography>
+          <LinesEllipsis
+            text={synopsis}
+            maxLine='3'
+            ellipsis=' ...'
+            trimRight
+            basedOn='letters'
+          />
         </CardContent>
+
+        {props.loggedIn === true &&
+        <div className='moviecardbutton'>
+          <Popup trigger={<Button variant="outlined" style={styles.button}>
+            Save
+          </Button>} onOpen={() => handleClick()} position="right center">
+
+            <div className='successfullsave'>
+              Successfully Saved!!
+              <Link to={`/user/${userId}`}>
+                <div className='gotosaved'>
+                  [Click here to go to saved movies]
+                </div>
+              </Link>
+            </div>
+
+          </Popup>
+        </div>
+        }
+        {props.renderPage === 'userDetail' &&
+        <div className='moviecardbutton'>
+          <Button variant="outlined" onClick={() => {
+            props.dbUserRemove(props.movie)
+          }}>
+            Remove
+          </Button>
+        </div>
+        }
       </Card>
-      {props.loggedIn === true &&
-      <div>
-        <Popup trigger={<button>Save</button>} onOpen={() => handleClick()} position="right center">
-
-          <div className='successfullsave'>
-            Successfully Saved!!
-            <Link to={`/user/${userId}`}>
-              <div className='gotosaved'>
-                [Click here to go to saved movies]
-              </div>
-            </Link>
-          </div>
-
-        </Popup>
-      </div>
-      }
-      {props.renderPage === 'userDetail' &&
-      <button onClick={() => {
-        props.dbUserRemove(props.movie)
-      }}>
-        Remove
-      </button>
-      }
     </div>
   );
 }

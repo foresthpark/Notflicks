@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import LinesEllipsis from 'react-lines-ellipsis'
 import "../css/moviecard.css"
 
 const styles = {
@@ -18,7 +17,7 @@ const styles = {
 };
 
 function AboutCard(props) {
-  const {classes, name, email, github, image, key, story} = props;
+  const {classes, name, email, github, image, key, story, linked} = props;
 
 
   return (
@@ -35,7 +34,7 @@ function AboutCard(props) {
           />
         </div>
         <CardContent>
-          <Typography gutterBottom variant="title">
+          <Typography gutterBottom>
             <div className="moviecardtitle">{name}</div>
           </Typography>
           <Typography gutterBottom variant="subtitle1">
@@ -45,17 +44,19 @@ function AboutCard(props) {
           </Typography>
           <Typography gutterBottom variant="subtitle1">
             <div className="githublink">
-              <b>Github: </b><a href={github} rel="noreferrer noopener" target="_blank">{github}</a>
+              <b>Github: </b><a href={github} rel="noreferrer noopener" target="_blank">{github.slice(8)}</a>
+            </div>
+          </Typography>
+          <Typography gutterBottom variant="subtitle1">
+            <div className="githublink">
+              <b>LinkedIn: </b><a href={linked} rel="noreferrer noopener" target="_blank">{linked.slice(8)}</a>
             </div>
           </Typography>
           <Typography component="p">
-            <LinesEllipsis
-              text={story}
-              maxLine='3'
-              ellipsis=' ...'
-              trimRight
-              basedOn='letters'
-            />
+
+            <div>
+              {story}
+            </div>
           </Typography>
         </CardContent>
       </Card>

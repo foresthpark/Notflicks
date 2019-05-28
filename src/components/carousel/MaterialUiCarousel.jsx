@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
@@ -72,7 +72,7 @@ class MaterialUiCarousel extends React.Component {
   };
 
   render() {
-    const {classes, theme, movies, head, getMovieDetail, renderPage, id} = this.props;
+    const {classes, theme, movies, head, getMovieDetail, id} = this.props;
     const {activeStep} = this.state;
     const movieArray = movies.results.slice(0, 10)
     const maxDots = movieArray.length;
@@ -83,10 +83,11 @@ class MaterialUiCarousel extends React.Component {
       <div className={classes.root}>
 
         <Paper square elevation={0} className={classes.title}>
-
-          <Typography gutterBottom variant="title">
-            <div className="carouseltitle" onClick={renderPage} id={id}>{head}</div>
-          </Typography>
+          <Link to={`/${id}`}>
+            <div className="carouselhead" id={id}>
+              {head}
+            </div>
+          </Link>
         </Paper>
 
         <AutoPlaySwipeableViews
@@ -102,18 +103,16 @@ class MaterialUiCarousel extends React.Component {
                   <img className={classes.img} src={`${imgURL}${movie.poster_path}${lazyLoad}`} alt={movie.label}/>
                 ) : null}
                 <Paper square elevation={0} className={classes.footer} key={index}>
-                  <Typography gutterBottom variant="title" key={index}>
-                    <div key={index} className="carouseltitle" key={index}>
-                      <LinesEllipsis
-                        text={movie.title}
-                        maxLine='2'
-                        ellipsis=' ...'
-                        trimRight
-                        basedOn='letters'
-                        key={index}
-                      />
-                    </div>
-                  </Typography>
+                  <div key={index} className="carouseltitle">
+                    <LinesEllipsis
+                      text={movie.title}
+                      maxLine='2'
+                      ellipsis=' ...'
+                      trimRight
+                      basedOn='letters'
+                      key={index}
+                    />
+                  </div>
                 </Paper>
               </div>
             </Link>

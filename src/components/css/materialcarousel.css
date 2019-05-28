@@ -6,12 +6,22 @@
     font-style: normal;
 }
 
+.carouselhead {
+    font-family: "bebas_neueregular";
+    font-size: 2em;
+    text-align: center;
+    text-shadow: 2px 2px #BCC1C4;
+    cursor: pointer;
+    color: black;
+}
+
 .carouseltitle {
     font-family: "bebas_neueregular";
     font-size: 1.4em;
     text-align: center;
     text-shadow: 2px 2px #BCC1C4;
     cursor: pointer;
+    color: black;
 }
 
 .backnextbutton {

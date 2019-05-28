@@ -9,7 +9,7 @@ class MovieTrailer extends React.Component {
 
     return (
       <div className="videoplayer">
-        {moviesArray.slice(0, 3).map(trailer => {
+        {moviesArray.slice(0, 3).map((trailer, index) => {
 
           const videoURL = "https://www.youtube.com/watch?v="
           let videoKey = trailer ? trailer.key : null
@@ -17,7 +17,7 @@ class MovieTrailer extends React.Component {
           const fullURL = `${videoURL}${videoKey}${videoSuffix}`
 
           return (
-            <div className='trailer'>
+            <div className='trailer' id={index}>
               <ReactPlayer url={fullURL} width={348} height={196}/>
             </div>
           )

@@ -9,8 +9,8 @@ import LinesEllipsis from 'react-lines-ellipsis'
 const styles = theme => ({
   root: {
     ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
 });
 
@@ -23,7 +23,7 @@ function ReviewCard(props) {
         <Typography variant="h5" component="h3">
           {author} says:
         </Typography>
-        <Typography component="p">
+        <Typography component="div">
           <LinesEllipsis
             text={content}
             maxLine='2'

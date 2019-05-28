@@ -15,7 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import "../css/leftmenu.css"
 import "../css/navbar.css"
-import {Link, Redirect, withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 const styles = theme => ({
   list: {
@@ -182,7 +182,7 @@ class SearchAppBar extends React.Component {
           <Link to={`/user/${userId}`}>
             <ListItem button={true} onClick={renderPage} id='signin'>
               <div className="listitems" onClick={renderPage} id='userDetail'>
-                {user.name} 
+                {user.name}
               </div>
             </ListItem>
           </Link>

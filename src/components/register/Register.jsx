@@ -3,31 +3,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-<<<<<<< HEAD
-import Link from '@material-ui/core/Link';
-=======
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
->>>>>>> signin2
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from "react-router-dom";
-
-// function MadeWithLove() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Built with love by the '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Material-UI
-//       </Link>
-//       {' team.'}
-//     </Typography>
-//   );
-// }
+import {Link} from "react-router-dom";
+import '../css/register.css'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -145,12 +127,6 @@ export default function SignIn(props) {
                 onChange={e => setPassword(e.target.value)}
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
           </Grid>
           <Button
             // type="submit"
@@ -163,24 +139,16 @@ export default function SignIn(props) {
             Sign Up
           </Button>
           <Grid container justify="flex-end">
-            <Grid item>
-<<<<<<< HEAD
-              <Link href="#" variant="body2">
+            <Link to={'/signin'} variant="body2">
+              <Grid item>
                 <div className='gotosignin'>
                   Already have an account? Sign in
                 </div>
-=======
-              <Link to={'/signin'} variant="body2">
-                Already have an account? Sign in
->>>>>>> signin2
-              </Link>
-            </Grid>
+              </Grid>
+            </Link>
           </Grid>
         </form>
       </div>
-      {/* <Box mt={5}>
-        <MadeWithLove />
-      </Box> */}
     </Container>
   );
 }

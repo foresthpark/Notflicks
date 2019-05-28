@@ -57,7 +57,7 @@ function RelateCast(props) {
                 </b>
               </div>
             </Typography>
-            <Typography gutterBottom variant="title">
+            <Typography gutterBottom>
               <div className="actorname">{name}</div>
             </Typography>
           </CardContent>

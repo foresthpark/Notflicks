@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {BrowserRouter as Router, Route, withRouter, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {connect} from 'react-redux'
 import Scroll from "../components/navigation/Scroll";
 import {requestMovies, getMovieDetail, renderPage, searchInput, searchDetail, userLogin, userLogout} from './actions'
@@ -11,14 +11,12 @@ import Upcoming from "../components/cards/Upcoming";
 import CarouselCard from "../components/cards/CarouselCard";
 import Loading from "../components/loading/Loading";
 import About from "../components/navigation/About";
-import SignIn from "../components/signin/signin";
-import SearchResults from "../components/cards/SearchResults";
-import Test from "../components/test/Test";
 import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
 import SignIn2 from '../components/signin/SignIn2'
+import MovieCard2 from "../components/cards/MovieCard2";
 
 const mapStateToProps = (state) => {
   return {
@@ -67,12 +65,12 @@ class App extends Component {
         movies_data: data
       })
     })
-    .then(res => res.json())
-    .then(movie => {
-      if (movie.movie_id) {
-        this.props.onUserSave(this.props.user.id, data)
-      }
-    })
+      .then(res => res.json())
+      .then(movie => {
+        if (movie.movie_id) {
+          this.props.onUserSave(this.props.user.id, data)
+        }
+      })
   }
 
   dbUserRemove = (data) => {
@@ -92,7 +90,7 @@ class App extends Component {
   }
 
   render() {
-    const {movies, isPending, onGetMovieDetail, renderDetail, movieId, onRenderPage, renderPage, movie2} = this.props
+    const {movies, isPending, onGetMovieDetail, onRenderPage, movie2} = this.props
     return isPending ? <Loading/> :
       (
         <Router>
@@ -170,9 +168,9 @@ class App extends Component {
               exact
               path={'/signin'}
               render={(props) => <SignIn2 {...props}
-                                         onUserLogin={this.props.onUserLogin}
-                                         head={'Sign In'}
-                                         onRequestUser={this.props.onRequestUser}
+                                          onUserLogin={this.props.onUserLogin}
+                                          head={'Sign In'}
+                                          onRequestUser={this.props.onRequestUser}
               />}
             />
 
@@ -194,6 +192,8 @@ class App extends Component {
                                                     movies={movie2}
                                                     isPending2={this.props.isPending2}
                                                     head={'Search Results'}
+                                                    loggedIn={this.props.loggedIn}
+                                                    onUserSave={this.dbUserSave}
               />}/>
 
             <Route
@@ -218,17 +218,8 @@ class App extends Component {
                                              renderPage={this.props.renderPage}
                                              dbUserRemove={this.dbUserRemove}
               />}/>
-            {/*// {loggedIn === true && renderPage === 'userDetail' &&*/}
-            {/*// <UserDetail */}
-            {/*//   userId={user.id} */}
-            {/*//   getMovieDetail={onGetMovieDetail} */}
-            {/*//   userName={user.name}*/}
-            {/*//   onRequestUser={onRequestUser}*/}
-            {/*//   userMovies={userMovies}*/}
-            {/*//   isPendingUser={isPendingUser}*/}
-            {/*//   renderPage={renderPage}*/}
-            {/*//   dbUserRemove={this.dbUserRemove}*/}
-            {/*// />*/}
+
+            <Route exact path={'/test'} component={MovieCard2}/>
 
           </Scroll>
         </Router>

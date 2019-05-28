@@ -1,30 +1,15 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-// function MadeWithLove() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Built with love by the '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Material-UI
-//       </Link>
-//       {' team.'}
-//     </Typography>
-//   );
-// }
+import '../css/signin.css'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -66,22 +51,22 @@ export default function SignIn(props) {
         password: password
       })
     })
-    .then(res => res.json())
-    .then(user => {
-      if (user.id) {
-        props.onUserLogin(user)
-        props.onRequestUser(user.id)
-        props.history.push(`/user/${user.id}`)
-      }
-    })
+      .then(res => res.json())
+      .then(user => {
+        if (user.id) {
+          props.onUserLogin(user)
+          props.onRequestUser(user.id)
+          props.history.push(`/user/${user.id}`)
+        }
+      })
   }
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <CssBaseline/>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <LockOutlinedIcon/>
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
@@ -131,11 +116,15 @@ export default function SignIn(props) {
                 Forgot password?
               </Link>
             </Grid> */}
-            <Grid item>
-              <Link to={'/register'} variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+
+
+            <Link to={'/register'}>
+              <div className='signin'>
+                Don't have an account? Sign Up
+              </div>
+            </Link>
+
+
           </Grid>
         </form>
       </div>
