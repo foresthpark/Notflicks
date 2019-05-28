@@ -1,29 +1,21 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
+import {Link} from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
+import {makeStyles} from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import '../css/signin.css'
+import { onSubmitSignIn } from '../../serverRequests/serverRequests'
 
-
-const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
-    marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3),
-    [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {
-      width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
     },
   },
   paper: {
@@ -31,116 +23,93 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing(8)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
   },
   avatar: {
-    margin: theme.spacing,
+    margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing,
+    marginTop: theme.spacing(1),
   },
   submit: {
-    marginTop: theme.spacing(3),
+    margin: theme.spacing(3, 0, 2),
   },
-});
+}));
 
-class SignIn extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      signInEmail: '',
-      signInPassword: ''
-    }
-  }
+export default function SignIn(props) {
+  const classes = useStyles();
 
-  onEmailChange = (event) => {
-    this.setState({signInEmail: event.target.value})
-  }
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  onPasswordChange = (event) => {
-    this.setState({signInPassword: event.target.value})
-  }
-
-  onSubmitSignIn = () => {
-    fetch('http://localhost:4000/signin', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
+  const userSignIn = () => {
+    onSubmitSignIn(email, password)
+    .then(user => {
+      if (user.id) {
+        props.onUserLogin(user)
+        props.onRequestUser(user.id)
+        props.history.push(`/user/${user.id}`)
+      }
     })
-      .then(res => res.json())
-      .then(user => {
-        if (user.id) {
-          this.props.onUserLogin(user)
-          this.props.onRequestUser(user.id)
-          this.props.history.push(`/user/${user.id}`)
-        }
-      })
   }
 
-  render() {
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline/>
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon/>
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={e => setEmail(e.target.value)}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={e => setPassword(e.target.value)}
+          />
+          <Button
+            // type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={userSignIn}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Link to={'/register'}>
+              <div className='signin'>
+                Don't have an account? Sign Up
+              </div>
+            </Link>
 
-    const {classes} = this.props;
 
-    return (
-      <main className={classes.main}>
-        <CssBaseline/>
-        <Paper className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon/>
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <div className={classes.form}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
-              <Input
-                id="email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                onChange={this.onEmailChange}
-              />
-            </FormControl>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={this.onPasswordChange}
-              />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary"/>}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={this.onSubmitSignIn}
-              name='userDetail'
-            >
-              Sign in
-            </Button>
-          </div>
-        </Paper>
-      </main>
-    );
-  }
+          </Grid>
+        </form>
+      </div>
+    </Container>
+  );
 }
-
-SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SignIn);

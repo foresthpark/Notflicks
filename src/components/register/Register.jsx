@@ -10,6 +10,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Link} from "react-router-dom";
 import '../css/register.css'
+import { registerUser } from '../../serverRequests/serverRequests'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -44,24 +45,15 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const registerUser = () => {
-    fetch('http://localhost:4000/register', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        name: `${firstName} ${lastName}`
-      })
+  const userRegister = () => {
+    registerUser(email, password, firstName, lastName)
+    .then(user => {
+      if (user.id) {
+        props.onUserLogin(user)
+        props.onRequestUser(user.id)
+        props.history.push(`/user/${user.id}`)
+      }
     })
-      .then(res => res.json())
-      .then(user => {
-        if (user.id) {
-          props.onUserLogin(user)
-          props.onRequestUser(user.id)
-          props.history.push(`/user/${user.id}`)
-        }
-      })
   }
 
   return (
@@ -133,7 +125,7 @@ export default function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={registerUser}
+            onClick={userRegister}
           >
             Sign Up
           </Button>
