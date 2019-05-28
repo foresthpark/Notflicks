@@ -3,13 +3,9 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-<<<<<<< HEAD
-import Link from '@material-ui/core/Link';
-=======
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import Link from '@material-ui/core/Link';
->>>>>>> signin2
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -164,15 +160,10 @@ export default function SignIn(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-<<<<<<< HEAD
-              <Link href="#" variant="body2">
+              <Link to={'/signin'} variant="body2">
                 <div className='gotosignin'>
                   Already have an account? Sign in
                 </div>
-=======
-              <Link to={'/signin'} variant="body2">
-                Already have an account? Sign in
->>>>>>> signin2
               </Link>
             </Grid>
           </Grid>

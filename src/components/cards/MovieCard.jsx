@@ -33,7 +33,13 @@ function MovieCard(props) {
   }
 
   const handleClick = () => {
-    props.onUserSave(props.movie)
+    console.log('now', userId)
+    props.onUserSave(props.movie, userId)
+  }
+
+  const handleClick2 = () => {
+    console.log('then', userId)
+    props.dbUserRemove(props.movie, props.userId)
   }
 
   return (
@@ -92,9 +98,7 @@ function MovieCard(props) {
       </div>
       }
       {props.renderPage === 'userDetail' &&
-      <button onClick={() => {
-        props.dbUserRemove(props.movie)
-      }}>
+      <button onClick={handleClick2}>
         Remove
       </button>
       }

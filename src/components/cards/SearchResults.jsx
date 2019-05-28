@@ -8,7 +8,7 @@ import Loading from "../loading/Loading";
 class SearchResults extends React.Component {
 
   render() {
-    const {movies, getMovieDetail, head, isPending2, match} = this.props
+    const {movies, getMovieDetail, head, isPending2, match, userId} = this.props
     const moviesArray = movies[0].results
 
     let moviesCard;
@@ -25,6 +25,7 @@ class SearchResults extends React.Component {
             rating={movie.vote_average}
             index={index}
             clicker={getMovieDetail}
+            userId={userId}
           />
         )
       })

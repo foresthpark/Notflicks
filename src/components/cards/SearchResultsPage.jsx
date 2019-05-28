@@ -13,6 +13,7 @@ const SearchResultsPage = (props) => {
         isPending2={isPending2}
         searchInputField={searchInputField}
         head={'Search Results'}
+        userId={props.userId}
       />
     );
 }

@@ -13,18 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-// function MadeWithLove() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Built with love by the '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Material-UI
-//       </Link>
-//       {' team.'}
-//     </Typography>
-//   );
-// }
+import { onSubmitSignIn } from '../../serverRequests/serverRequests'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -57,16 +46,8 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const onSubmitSignIn = () => {
-    fetch('http://localhost:4000/signin', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
-    })
-    .then(res => res.json())
+  const userSignIn = () => {
+    onSubmitSignIn(email, password)
     .then(user => {
       if (user.id) {
         props.onUserLogin(user)
@@ -121,16 +102,11 @@ export default function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSubmitSignIn}
+            onClick={userSignIn}
           >
             Sign In
           </Button>
           <Grid container>
-            {/* <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid> */}
             <Grid item>
               <Link to={'/register'} variant="body2">
                 {"Don't have an account? Sign Up"}
@@ -139,9 +115,6 @@ export default function SignIn(props) {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={5}>
-        <MadeWithLove />
-      </Box> */}
     </Container>
   );
 }

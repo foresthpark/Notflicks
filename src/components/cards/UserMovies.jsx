@@ -5,7 +5,7 @@ import "../css/moviecard.css"
 class UserMovies extends React.Component {
 
 render(){
-  const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
+  const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName, userId} = this.props
   const movieArray = []
 
   let user 
@@ -23,6 +23,7 @@ render(){
         <div className='nosavedmovies'>
           You have no saved movies
         </div>
+      </div>
       )
     } else {
       userMovies[0].map((movie) => {
@@ -47,6 +48,7 @@ render(){
             movie={movie}
             renderPage={renderPage}
             dbUserRemove={dbUserRemove}
+            userId={userId}
           />
         )
       })
