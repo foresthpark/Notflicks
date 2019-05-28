@@ -16,6 +16,7 @@ class UserDetail extends React.Component {
         userName={userName}
         renderPage={renderPage}
         dbUserRemove={dbUserRemove}
+        userId={this.props.userId}
       />
     )
   }

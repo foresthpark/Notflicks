@@ -21,6 +21,7 @@ class Upcoming extends React.Component {
           loggedIn={loggedIn}
           onUserSave={onUserSave}
           movie={movie}
+          userId={this.props.userId}
         />
       )
     })

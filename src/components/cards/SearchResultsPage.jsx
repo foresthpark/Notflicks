@@ -14,7 +14,7 @@ const SearchResultsPage = (props) => {
         searchInputField={searchInputField}
         loggedIn={loggedIn}
         head={'Search Results'}
-        onUserSave={onUserSave}
+        userId={props.userId}
       />
     );
 }

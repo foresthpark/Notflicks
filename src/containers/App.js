@@ -16,7 +16,7 @@ import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
 import SignIn2 from '../components/signin/SignIn2'
-import MovieCard2 from "../components/cards/MovieCard2";
+import { dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
 
 const mapStateToProps = (state) => {
   return {
@@ -55,34 +55,42 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
-  dbUserSave = (data) => {
-    fetch('http://localhost:4000/movies', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.user.id,
-        movie_id: data.id,
-        movies_data: data
-      })
-    })
-      .then(res => res.json())
-      .then(movie => {
-        if (movie.movie_id) {
-          this.props.onUserSave(this.props.user.id, data)
-        }
-      })
-  }
+  // dbUserSave = (data) => {
+  //   fetch('http://localhost:4000/movies', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({
+  //       id: this.props.user.id,
+  //       movie_id: data.id,
+  //       movies_data: data
+  //     })
+  //   })
+  //   .then(res => res.json())
+// userId = this.props.user.id
 
-  dbUserRemove = (data) => {
-    fetch('http://localhost:4000/remove', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.user.id,
-        movie_id: data.id
-      })
+  saveDb = (data, userId) => {
+    dbUserSave(data, userId)
+    .then(movie => {
+      if (movie.movie_id) {
+        this.props.onUserSave(userId, data)
+      }
     })
-      .then(this.props.onUserRemove(JSON.stringify(data.id)))
+  }
+    
+
+
+  // dbUserRemove = (data) => {
+  //   fetch('http://localhost:4000/remove', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({
+  //       id: this.props.user.id,
+  //       movie_id: data.id
+  //     })
+  //   })
+  removeDb = (data, userId) => {
+    dbUserRemove(data, userId)
+    .then(this.props.onUserRemove(JSON.stringify(data.id)))
   }
 
   componentDidMount() {
@@ -124,7 +132,7 @@ class App extends Component {
                                            getMovieDetail={onGetMovieDetail}
                                            head={"Top Rated"}
                                            loggedIn={this.props.loggedIn}
-                                           onUserSave={this.dbUserSave}
+                                           onUserSave={this.saveDb}
               />}
             />
 
@@ -132,11 +140,12 @@ class App extends Component {
               exact
               path={'/nowplaying'}
               render={(props) => <NowPlaying {...props}
+                                             userId={this.props.user.id}
                                              movies={movies[1]}
                                              getMovieDetail={onGetMovieDetail}
                                              head={"Now Playing"}
                                              loggedIn={this.props.loggedIn}
-                                             onUserSave={this.dbUserSave}
+                                             onUserSave={this.saveDb}
               />}
             />
 
@@ -148,7 +157,8 @@ class App extends Component {
                                            getMovieDetail={onGetMovieDetail}
                                            head={"Upcoming"}
                                            loggedIn={this.props.loggedIn}
-                                           onUserSave={this.dbUserSave}
+                                           onUserSave={this.saveDb}
+                                           userId={this.props.user.id}
               />}
             />
 
@@ -160,7 +170,8 @@ class App extends Component {
                                            getMovieDetail={onGetMovieDetail}
                                            head={"Popular"}
                                            loggedIn={this.props.loggedIn}
-                                           onUserSave={this.dbUserSave}
+                                           onUserSave={this.saveDb}
+                                           userId={this.props.user.id}
               />}
             />
 
@@ -168,9 +179,10 @@ class App extends Component {
               exact
               path={'/signin'}
               render={(props) => <SignIn2 {...props}
-                                          onUserLogin={this.props.onUserLogin}
-                                          head={'Sign In'}
-                                          onRequestUser={this.props.onRequestUser}
+                                         onUserLogin={this.props.onUserLogin}
+                                         head={'Sign In'}
+                                         onRequestUser={this.props.onRequestUser}
+                                         userId={this.props.user.id}
               />}
             />
 
@@ -193,7 +205,8 @@ class App extends Component {
                                                     isPending2={this.props.isPending2}
                                                     head={'Search Results'}
                                                     loggedIn={this.props.loggedIn}
-                                                    onUserSave={this.dbUserSave}
+                                                    userId={this.props.user.id}
+                                                    onUserSave={this.saveDb}
               />}/>
 
             <Route
@@ -216,7 +229,8 @@ class App extends Component {
                                              userMovies={this.props.userMovies}
                                              isPendingUser={this.props.isPendingUser}
                                              renderPage={this.props.renderPage}
-                                             dbUserRemove={this.dbUserRemove}
+                                             dbUserRemove={this.removeDb}
+                                             userId={this.props.user.id}
               />}/>
 
             <Route exact path={'/test'} component={MovieCard2}/>

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../css/signin.css'
+import { onSubmitSignIn } from '../../serverRequests/serverRequests'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -42,23 +43,15 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const onSubmitSignIn = () => {
-    fetch('http://localhost:4000/signin', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
+  const userSignIn = () => {
+    onSubmitSignIn(email, password)
+    .then(user => {
+      if (user.id) {
+        props.onUserLogin(user)
+        props.onRequestUser(user.id)
+        props.history.push(`/user/${user.id}`)
+      }
     })
-      .then(res => res.json())
-      .then(user => {
-        if (user.id) {
-          props.onUserLogin(user)
-          props.onRequestUser(user.id)
-          props.history.push(`/user/${user.id}`)
-        }
-      })
   }
 
   return (
@@ -106,7 +99,7 @@ export default function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSubmitSignIn}
+            onClick={userSignIn}
           >
             Sign In
           </Button>
@@ -128,9 +121,6 @@ export default function SignIn(props) {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={5}>
-        <MadeWithLove />
-      </Box> */}
     </Container>
   );
 }

@@ -21,6 +21,7 @@ class NowPlaying extends React.Component {
           loggedIn={this.props.loggedIn}
           onUserSave={this.props.onUserSave}
           movie={movie}
+          userId={this.props.userId}
         />
       )
     })
