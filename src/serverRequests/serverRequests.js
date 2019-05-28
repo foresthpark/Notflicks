@@ -1,5 +1,7 @@
+const url = 'http://localhost:4000/'
+
 export const onSubmitSignIn = (email, password) => {
-  return fetch('http://localhost:4000/signin', {
+  return fetch(`${url}signin`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -11,7 +13,7 @@ export const onSubmitSignIn = (email, password) => {
 }
 
 export const dbUserSave = (data, userId) => {
-  return fetch('http://localhost:4000/movies', {
+  return fetch(`${url}movies`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -24,7 +26,7 @@ export const dbUserSave = (data, userId) => {
 }
 
 export const dbUserRemove = (data, userId) => {
-  return fetch('http://localhost:4000/remove', {
+  return fetch(`${url}remove`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -34,3 +36,15 @@ export const dbUserRemove = (data, userId) => {
   })
 }
 
+export const registerUser = (email, password, firstName, lastName) => {
+  return fetch(`${url}register`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      email: email,
+      password: password,
+      name: `${firstName} ${lastName}`
+    })
+  })
+    .then(res => res.json())
+}

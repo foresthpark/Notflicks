@@ -15,7 +15,7 @@ import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
-import SignIn2 from '../components/signin/SignIn2'
+import SignIn from '../components/signin/SignIn'
 import { dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
 
 const mapStateToProps = (state) => {
@@ -55,19 +55,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends Component {
 
-  // dbUserSave = (data) => {
-  //   fetch('http://localhost:4000/movies', {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({
-  //       id: this.props.user.id,
-  //       movie_id: data.id,
-  //       movies_data: data
-  //     })
-  //   })
-  //   .then(res => res.json())
-// userId = this.props.user.id
-
   saveDb = (data, userId) => {
     dbUserSave(data, userId)
     .then(movie => {
@@ -77,17 +64,6 @@ class App extends Component {
     })
   }
     
-
-
-  // dbUserRemove = (data) => {
-  //   fetch('http://localhost:4000/remove', {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({
-  //       id: this.props.user.id,
-  //       movie_id: data.id
-  //     })
-  //   })
   removeDb = (data, userId) => {
     dbUserRemove(data, userId)
     .then(this.props.onUserRemove(JSON.stringify(data.id)))
@@ -178,7 +154,7 @@ class App extends Component {
             <Route
               exact
               path={'/signin'}
-              render={(props) => <SignIn2 {...props}
+              render={(props) => <SignIn {...props}
                                          onUserLogin={this.props.onUserLogin}
                                          head={'Sign In'}
                                          onRequestUser={this.props.onRequestUser}
