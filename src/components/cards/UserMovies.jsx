@@ -4,19 +4,24 @@ import "../css/moviecard.css"
 
 class UserMovies extends React.Component {
 
-  render() {
-    const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
-    const movieArray = []
+render(){
+  const {userMovies, clicker, loggedIn, onUserSave, renderPage, dbUserRemove, userName} = this.props
+  const movieArray = []
 
-    if (userMovies[0].length === 0) {
-      return (
-        <div className="cardcontainer">
-          <div className="cardhead">
-            {`${userName}'s Movies`}
-          </div>
-          <div className='nosavedmovies'>
-            You have no saved movies
-          </div>
+  let user 
+    if (userName[userName.length - 1] === 's'){
+     user = `${userName}' Movies`
+    }else{
+    user = `${userName}'s Movies`}
+  
+  if (userMovies[0].length === 0) {
+    return (
+      <div className="cardcontainer">
+        <div className="cardhead">
+          {user}
+        </div>
+        <div className='nosavedmovies'>
+          You have no saved movies
         </div>
       )
     } else {
@@ -48,7 +53,7 @@ class UserMovies extends React.Component {
       return (
         <div className="cardcontainer">
           <div className="cardhead">
-            {`${userName}'s Movies`}
+            {user}
           </div>
           <div className="moviecard">
             {moviesCard}
