@@ -207,6 +207,7 @@ class App extends Component {
                                                     loggedIn={this.props.loggedIn}
                                                     userId={this.props.user.id}
                                                     onUserSave={this.saveDb}
+                                                    renderPage={onRenderPage}
               />}/>
 
             <Route
@@ -232,8 +233,6 @@ class App extends Component {
                                              dbUserRemove={this.removeDb}
                                              userId={this.props.user.id}
               />}/>
-
-            <Route exact path={'/test'} component={MovieCard2}/>
 
           </Scroll>
         </Router>

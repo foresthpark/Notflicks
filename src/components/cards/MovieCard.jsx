@@ -27,7 +27,7 @@ const styles = {
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId, movie, onUserSave} = props;
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId, movie, onUserSave, renderPage} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
   const altPoster = `https://i.imgur.com/po9zfIz.png${lazyLoad}`
@@ -39,12 +39,10 @@ function MovieCard(props) {
   }
 
   const handleClick = () => {
-    console.log('now', userId)
     props.onUserSave(props.movie, userId)
   }
 
   const handleClick2 = () => {
-    console.log('then', userId)
     props.dbUserRemove(props.movie, props.userId)
   }
 
@@ -94,7 +92,7 @@ function MovieCard(props) {
             <div className='successfullsave'>
               Successfully Saved!!
               <Link to={`/user/${userId}`}>
-                <div className='gotosaved'>
+                <div className='gotosaved' id='userDetail' onClick={renderPage}>
                   [Click here to go to saved movies]
                 </div>
               </Link>

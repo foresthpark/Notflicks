@@ -3,12 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-<<<<<<< HEAD
-=======
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
->>>>>>> refactor
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -63,7 +57,6 @@ export default function SignIn(props) {
       .then(res => res.json())
       .then(user => {
         if (user.id) {
-          // console.log(this.props.history)
           props.onUserLogin(user)
           props.onRequestUser(user.id)
           props.history.push(`/user/${user.id}`)
@@ -145,7 +138,6 @@ export default function SignIn(props) {
             Sign Up
           </Button>
           <Grid container justify="flex-end">
-<<<<<<< HEAD
             <Link to={'/signin'} variant="body2">
               <Grid item>
                 <div className='gotosignin'>
@@ -153,15 +145,6 @@ export default function SignIn(props) {
                 </div>
               </Grid>
             </Link>
-=======
-            <Grid item>
-              <Link to={'/signin'} variant="body2">
-                <div className='gotosignin'>
-                  Already have an account? Sign in
-                </div>
-              </Link>
-            </Grid>
->>>>>>> refactor
           </Grid>
         </form>
       </div>

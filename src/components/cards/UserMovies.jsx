@@ -17,6 +17,7 @@ render(){
 
     if (userMovies[0].length === 0) {
       return (
+        <div>
         <div className="cardcontainer">
           <div className="cardhead">
             {user}

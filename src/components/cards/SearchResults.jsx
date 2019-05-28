@@ -8,11 +8,7 @@ import Loading from "../loading/Loading";
 class SearchResults extends React.Component {
 
   render() {
-<<<<<<< HEAD
-    const {movies, getMovieDetail, head, isPending2, match, loggedIn, onUserSave} = this.props
-=======
-    const {movies, getMovieDetail, head, isPending2, match, userId} = this.props
->>>>>>> refactor
+    const {movies, getMovieDetail, head, isPending2, match, loggedIn, onUserSave, userId, renderPage} = this.props
     const moviesArray = movies[0].results
 
     let moviesCard;
@@ -31,6 +27,10 @@ class SearchResults extends React.Component {
             loggedIn={loggedIn}
             clicker={getMovieDetail}
             userId={userId}
+            onUserSave={onUserSave}
+            movie={movie}
+            loggedIn={loggedIn}
+            renderPage={renderPage}
           />
         )
       })

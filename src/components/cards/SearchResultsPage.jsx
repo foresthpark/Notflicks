@@ -3,7 +3,7 @@ import Loading from "../loading/Loading";
 import SearchResults from "./SearchResults";
 
 const SearchResultsPage = (props) => {
-  const {movies, getMovieDetail, isPending2, searchInputField, loggedIn, onUserSave} = props
+  const {movies, getMovieDetail, isPending2, searchInputField, loggedIn, onUserSave, renderPage} = props
 
   return isPending2 ? <Loading/> :
     (
@@ -15,6 +15,8 @@ const SearchResultsPage = (props) => {
         loggedIn={loggedIn}
         head={'Search Results'}
         userId={props.userId}
+        onUserSave={onUserSave}
+        renderPage={renderPage}
       />
     );
 }
