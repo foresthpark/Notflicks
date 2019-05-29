@@ -15,14 +15,9 @@ import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
-<<<<<<< HEAD
 import SignIn from '../components/signin/Signin'
-import { dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
-=======
-import Signin from '../components/signin/Signin'
 import {dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
 import CastPage from "../components/cards/CastPage/CastPage";
->>>>>>> 5beb71ec2b0edba70ab882111dae5389adce5020
 
 const mapStateToProps = (state) => {
   return {
@@ -225,7 +220,7 @@ class App extends Component {
               <Route
                 exact
                 path={'/user/:userid'}
-                render={(props) => <Signin {...props}
+                render={(props) => <SignIn {...props}
                                            onUserLogin={this.props.onUserLogin}
                                            head={'Sign In'}
                                            onRequestUser={this.props.onRequestUser}
