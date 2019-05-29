@@ -7,6 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import LinesEllipsis from 'react-lines-ellipsis'
+import {Link} from 'react-router-dom'
 import "../css/moviecard.css"
 
 const styles = {
@@ -19,7 +20,7 @@ const styles = {
 };
 
 function RelateCast(props) {
-  const {classes, poster, character, name, clicker, index} = props;
+  const {classes, poster, character, name, clicker, index, id} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
 
@@ -34,34 +35,37 @@ function RelateCast(props) {
     <div className="innnercard" id={index}>
       <Card className={classes.card}>
         <CardActionArea>
-          <div id={index} onClick={clicker}>
-            <CardMedia
-              component="img"
-              alt={name}
-              className={classes.media}
-              height="200"
-              image={fullURL}
-            />
-          </div>
-          <CardContent>
-            <Typography gutterBottom variant="subtitle1">
-              <div className="charactername">
-                <b>
-                  <LinesEllipsis
-                    text={character}
-                    maxLine='1'
-                    ellipsis=' ...'
-                    trimRight
-                    basedOn='words'
-                  />
-                </b>
-              </div>
-            </Typography>
-            <Typography gutterBottom>
-              <div className="actorname">{name}</div>
-            </Typography>
-          </CardContent>
+          <Link to={`/cast/${id}`}>
+            <div id={index} onClick={clicker}>
+              <CardMedia
+                component="img"
+                alt={name}
+                className={classes.media}
+                height="200"
+                image={fullURL}
+              />
+            </div>
+          </Link>
         </CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="subtitle1">
+            <div className="charactername">
+              <b>
+                <LinesEllipsis
+                  text={character}
+                  maxLine='1'
+                  ellipsis=' ...'
+                  trimRight
+                  basedOn='words'
+                />
+              </b>
+            </div>
+          </Typography>
+          <Typography gutterBottom>
+            <div className="actorname">{name}</div>
+          </Typography>
+        </CardContent>
+
       </Card>
     </div>
   )

@@ -17,6 +17,7 @@ import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
 import Signin from '../components/signin/Signin'
 import {dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
+import CastPage from "../components/cards/CastPage/CastPage";
 
 const mapStateToProps = (state) => {
   return {
@@ -168,6 +169,12 @@ class App extends Component {
                    path={'/details/:movieId'}
                    render={(props) => <MovieDetails {...props}
                    />}/>
+
+            <Route exact
+                   path={'/cast/:castId'}
+                   render={(props) => <CastPage {...props}
+                   />}/>
+
 
             <Route
               exact

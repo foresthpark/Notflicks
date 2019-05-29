@@ -73,6 +73,12 @@
     font-size: 1.4em;
 }
 
+.facecard {
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+
 .charactername {
     font-family: 'open_sansregular';
     text-align: center;
