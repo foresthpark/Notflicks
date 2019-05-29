@@ -1,0 +1,13 @@
+.castface {
+    display: flex;
+    justify-content: center;
+
+}
+
+.castrelatedmovies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+

@@ -15,7 +15,7 @@ import '../css/buttons.css'
 
 const styles = {
   card: {
-    maxWidth: 351,
+    maxWidth: 285,
   },
   media: {
     objectFit: 'cover',
@@ -56,7 +56,7 @@ function MovieCard(props) {
                 component="img"
                 alt="a movie poster"
                 className={classes.media}
-                height="468"
+                height="380px"
                 image={fullURL}
                 title={title}
                 movieid={movieid}
