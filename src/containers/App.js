@@ -15,7 +15,7 @@ import SearchResultsPage from "../components/cards/SearchResultsPage";
 import UserDetail from '../components/userdetail/UserDetail'
 import Register from '../components/register/Register'
 import NavBar from '../components/navigation/NavBar'
-import SignIn from '../components/signin/SignIn'
+import SignIn from '../components/signin/signin'
 import { dbUserSave, dbUserRemove} from '../serverRequests/serverRequests'
 
 const mapStateToProps = (state) => {
