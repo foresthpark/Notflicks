@@ -7,7 +7,7 @@ import {
 } from './constants'
 
 export const requestUser = (text) => async (dispatch) => {
-  const urls = [`http://localhost:4000/user/${text}`]
+  const urls = [`https://pure-coast-97825.herokuapp.com/user/${text}`]
   try {
     dispatch({type: REQUEST_USER_PENDING})
     const data = await Promise.all(urls.map(async function (url) {

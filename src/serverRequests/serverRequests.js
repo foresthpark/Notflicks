@@ -1,4 +1,4 @@
-const url = 'http://localhost:4000/'
+const url = 'https://pure-coast-97825.herokuapp.com/'
 
 export const onSubmitSignIn = (email, password) => {
   return fetch(`${url}signin`, {
