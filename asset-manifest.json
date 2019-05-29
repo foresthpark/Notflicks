@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Notflicks/static/css/main.90784a7c.chunk.css",
-    "main.js": "/Notflicks/static/js/main.b0d74220.chunk.js",
-    "main.js.map": "/Notflicks/static/js/main.b0d74220.chunk.js.map",
-    "runtime~main.js": "/Notflicks/static/js/runtime~main.06e79e30.js",
-    "runtime~main.js.map": "/Notflicks/static/js/runtime~main.06e79e30.js.map",
-    "static/js/2.59563a64.chunk.js": "/Notflicks/static/js/2.59563a64.chunk.js",
-    "static/js/2.59563a64.chunk.js.map": "/Notflicks/static/js/2.59563a64.chunk.js.map",
-    "index.html": "/Notflicks/index.html",
-    "precache-manifest.f2b99038f34e755211b8f2c1f61ab009.js": "/Notflicks/precache-manifest.f2b99038f34e755211b8f2c1f61ab009.js",
-    "service-worker.js": "/Notflicks/service-worker.js",
-    "static/css/main.90784a7c.chunk.css.map": "/Notflicks/static/css/main.90784a7c.chunk.css.map",
-    "static/media/about.css": "/Notflicks/static/media/bebasneue-regular-webfont.96ea7779.woff2",
-    "static/media/detailcard.css": "/Notflicks/static/media/opensans-regular-webfont.39c35d94.woff2",
-    "static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg": "/Notflicks/static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.02a9430b.svg"
+    "main.css": "/notflicks/static/css/main.52d97b04.chunk.css",
+    "main.js": "/notflicks/static/js/main.df60a6f4.chunk.js",
+    "main.js.map": "/notflicks/static/js/main.df60a6f4.chunk.js.map",
+    "runtime~main.js": "/notflicks/static/js/runtime~main.8644946f.js",
+    "runtime~main.js.map": "/notflicks/static/js/runtime~main.8644946f.js.map",
+    "static/js/2.018c8cb5.chunk.js": "/notflicks/static/js/2.018c8cb5.chunk.js",
+    "static/js/2.018c8cb5.chunk.js.map": "/notflicks/static/js/2.018c8cb5.chunk.js.map",
+    "index.html": "/notflicks/index.html",
+    "precache-manifest.cdf260b87c7959e39e5d477a41e4e1bc.js": "/notflicks/precache-manifest.cdf260b87c7959e39e5d477a41e4e1bc.js",
+    "service-worker.js": "/notflicks/service-worker.js",
+    "static/css/main.52d97b04.chunk.css.map": "/notflicks/static/css/main.52d97b04.chunk.css.map",
+    "static/media/navbar.css": "/notflicks/static/media/bebasneue-regular-webfont.96ea7779.woff2",
+    "static/media/detailcard.css": "/notflicks/static/media/opensans-regular-webfont.39c35d94.woff2",
+    "static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg": "/notflicks/static/media/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.02a9430b.svg"
   }
 }
