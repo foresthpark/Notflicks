@@ -13,12 +13,12 @@ class MovieTrailer extends React.Component {
 
           const videoURL = "https://www.youtube.com/watch?v="
           let videoKey = trailer ? trailer.key : null
-          const videoSuffix = "?controls=0"
-          const fullURL = `${videoURL}${videoKey}${videoSuffix}`
+          // const videoSuffix = "?controls=0"
+          const fullURL = `${videoURL}${videoKey}`
 
           return (
             <div className='trailer' id={index}>
-              <ReactPlayer url={fullURL} width={348} height={196}/>
+              <ReactPlayer url={fullURL} width={"80vw"} height={"60vh"} controls={true}/>
             </div>
           )
         })}
