@@ -75,7 +75,7 @@ class App extends Component {
   }
 
   render() {
-    const {movies, isPending, onGetMovieDetail, onRenderPage, movie2} = this.props
+    const {movies, isPending, onGetMovieDetail, onRenderPage, movie2, loggedIn} = this.props
     return isPending ? <Loading/> :
       (
         <Router>
@@ -202,20 +202,33 @@ class App extends Component {
 
               />}/>
 
-            <Route
-              exact
-              path={'/user/:userid'}
-              render={(props) => <UserDetail {...props}
-                                             getMovieDetail={onGetMovieDetail}
-                                             userName={this.props.user.name}
-                                             onRequestUser={this.props.onRequestUser}
-                                             userMovies={this.props.userMovies}
-                                             isPendingUser={this.props.isPendingUser}
-                                             renderPage={this.props.renderPage}
-                                             dbUserRemove={this.removeDb}
-                                             userId={this.props.user.id}
-              />}/>
+            {loggedIn ?
+              <Route
+                exact
+                path={'/user/:userid'}
+                render={(props) => <UserDetail {...props}
+                                               getMovieDetail={onGetMovieDetail}
+                                               userName={this.props.user.name}
+                                               onRequestUser={this.props.onRequestUser}
+                                               userMovies={this.props.userMovies}
+                                               isPendingUser={this.props.isPendingUser}
+                                               renderPage={this.props.renderPage}
+                                               dbUserRemove={this.removeDb}
+                                               userId={this.props.user.id}
+                />}/>
+              :
+              <Route
+                exact
+                path={'/user/:userid'}
+                render={(props) => <Signin {...props}
+                                           onUserLogin={this.props.onUserLogin}
+                                           head={'Sign In'}
+                                           onRequestUser={this.props.onRequestUser}
+                                           userId={this.props.user.id}
+                />
 
+                }/>
+            }
           </Scroll>
         </Router>
       );
