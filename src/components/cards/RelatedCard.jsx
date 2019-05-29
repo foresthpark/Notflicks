@@ -42,9 +42,11 @@ class RelatedCard extends React.Component {
           <RelatedCast
             key={index}
             index={movie.id}
+            id={movie.id}
             poster={movie.profile_path ? movie.profile_path : null}
             character={movie.character}
             name={movie.name}
+            clicker={clicker}
           />
         )
       });

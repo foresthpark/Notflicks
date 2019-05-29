@@ -1,4 +1,5 @@
 .scrolling {
     overflow-y: scroll;
     height: 94vh;
+    -webkit-overflow-scrolling: touch
 }
