@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../css/signin.css'
-import { onSubmitSignIn } from '../../serverRequests/serverRequests'
+import {onSubmitSignIn} from '../../serverRequests/serverRequests'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignIn(props) {
+export default function Signin(props) {
   const classes = useStyles();
 
   const [email, setEmail] = useState('')
@@ -45,13 +45,13 @@ export default function SignIn(props) {
 
   const userSignIn = () => {
     onSubmitSignIn(email, password)
-    .then(user => {
-      if (user.id) {
-        props.onUserLogin(user)
-        props.onRequestUser(user.id)
-        props.history.push(`/user/${user.id}`)
-      }
-    })
+      .then(user => {
+        if (user.id) {
+          props.onUserLogin(user)
+          props.onRequestUser(user.id)
+          props.history.push(`/user/${user.id}`)
+        }
+      })
   }
 
   return (

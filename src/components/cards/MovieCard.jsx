@@ -27,7 +27,7 @@ const styles = {
 };
 
 function MovieCard(props) {
-  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId, movie, onUserSave, renderPage} = props;
+  const {classes, release, title, poster, synopsis, movieid, rating, index, clicker, userId, renderPage} = props;
   const imgURL = "https://image.tmdb.org/t/p/original";
   const lazyLoad = "?tr=w-1,h-1";
   const altPoster = `https://i.imgur.com/po9zfIz.png${lazyLoad}`

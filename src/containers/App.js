@@ -57,16 +57,16 @@ class App extends Component {
 
   saveDb = (data, userId) => {
     dbUserSave(data, userId)
-    .then(movie => {
-      if (movie.movie_id) {
-        this.props.onUserSave(userId, data)
-      }
-    })
+      .then(movie => {
+        if (movie.movie_id) {
+          this.props.onUserSave(userId, data)
+        }
+      })
   }
-    
+
   removeDb = (data, userId) => {
     dbUserRemove(data, userId)
-    .then(this.props.onUserRemove(JSON.stringify(data.id)))
+      .then(this.props.onUserRemove(JSON.stringify(data.id)))
   }
 
   componentDidMount() {
@@ -154,7 +154,7 @@ class App extends Component {
             <Route
               exact
               path={'/signin'}
-              render={(props) => <SignIn {...props}
+              render={(props) => <Signin {...props}
                                          onUserLogin={this.props.onUserLogin}
                                          head={'Sign In'}
                                          onRequestUser={this.props.onRequestUser}
