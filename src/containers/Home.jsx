@@ -15,7 +15,7 @@ import "../components/css/moviecard.css"
 import "./App.css"
 import CarouselCard from "../components/cards/CarouselCard";
 import About from "../components/navigation/About";
-import SignIn from "../components/signin/signin"
+import Signin from "../components/signin/Signin"
 import UserDetail from '../components/userdetail/UserDetail'
 
 
@@ -123,7 +123,7 @@ class Home extends Component {
             <SearchResults movies={movie2[0]} getMovieDetail={onGetMovieDetail} head={'Search Results'}/>
             }
             {renderPage === 'signin' && this.props.loggedIn === false &&
-            <SignIn renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'}/>
+            <Signin renderPage={onRenderPage} onUserLogin={this.props.onUserLogin} head={'Sign In'}/>
             }
             {this.props.loggedIn === true && renderPage === 'userDetail' &&
             <UserDetail
