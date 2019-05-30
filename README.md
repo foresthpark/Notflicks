@@ -9,7 +9,7 @@
   Search for your favorite movies and watch trailers. See what's currently playing in theatres and discover upcoming, popular, and top-rated movies titles.
     <br />
     <br />
-    <a href="https://foresthpark.github.io/Notflicks">View Demo</a>
+    <a href="https://notflicks.herokuapp.com/">View Demo</a>
   </p>
   
 <!-- TOC -->
@@ -20,12 +20,13 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [Updates](#updates)
 * [Contact](#contact)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align='center'>
-<a href="https://foresthpark.github.io/Notflicks">
+<a href="https://notflicks.herokuapp.com/">
     <img src="./src/components/images/notflicks_screenshot.png" alt="Logo" width="600" height="337">
   </a>
 <p>
@@ -62,6 +63,9 @@ npm install
 ```JS
 const API_KEY = 'ENTER YOUR API';
 ```
+
+### Updates
+2019.04.29 - Added PostgreSQL DB and NodeJS backend
 
 <!-- CONTACT -->
 ## Contact
